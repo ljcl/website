@@ -1,0 +1,81 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.3.5/schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    "ignoreUnknown": false
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 80
+  },
+  "linter": {
+    "enabled": true,
+    "domains": {
+      "next": "recommended",
+      "project": "recommended",
+      "react": "recommended",
+      "test": "recommended"
+    },
+    "rules": {
+      "correctness": {
+        "useExhaustiveDependencies": "warn"
+      },
+      "style": {
+        "noNonNullAssertion": "off"
+      },
+      "nursery": {
+        "useSortedClasses": "error",
+        "noReactForwardRef": "error",
+        "noContinue": "error",
+        "noDeprecatedImports": "error",
+        "noImportCycles": "error",
+        "noIncrementDecrement": "error",
+        "noJsxLiterals": "error",
+        "noMisusedPromises": "error",
+        "noFloatingPromises": "error",
+        "noNextAsyncClientComponent": "error",
+        "noParametersOnlyUsedInRecursion": "error",
+        "noShadow": "error",
+        "noUnknownAttribute": "error",
+        "noUnnecessaryConditions": "error",
+        "noUnusedExpressions": "error",
+        "noUselessCatchBinding": "error",
+        "noUselessUndefined": "error",
+        "useArraySortCompare": "error",
+        "useConsistentArrowReturn": "error",
+        "useExhaustiveSwitchCases": "error"
+      }
+    }
+  },
+  "css": {
+    "formatter": {
+      "enabled": true
+    },
+    "parser": {
+      "tailwindDirectives": true,
+      "cssModules": true
+    }
+  },
+  "json": {
+    "formatter": {
+      "enabled": true,
+      "indentWidth": 2
+    }
+  },
+  "assist": {
+    "enabled": true,
+    "actions": {
+      "source": {
+        "recommended": true,
+        "organizeImports": "on",
+        "useSortedProperties": "on"
+      }
+    }
+  }
+}

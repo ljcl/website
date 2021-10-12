@@ -1,0 +1,23 @@
+.pre {
+  position: relative;
+  overflow-x: auto;
+  color: var(--color-white);
+  background: var(--color-code-bg);
+  @media (min-width: 1024px) {
+    margin-right: var(--breakout-margin);
+    margin-left: var(--breakout-margin);
+  }
+}
+
+.languageIdClasses {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: block;
+  padding: 0.25rem;
+  line-height: 1;
+  color: var(--color-code-badge-text);
+  background: var(--color-code-badge-bg);
+  border: 1px solid;
+  border-radius: 3px;
+}

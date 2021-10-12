@@ -1,0 +1,32 @@
+.pre {
+  background: red;
+}
+
+.languageIdClasses {
+  background: green;
+}
+
+
+/*
+export const classes = style({
+  padding: vars.space[4],
+  marginBottom: vars.gap.large,
+  overflowX: 'auto',
+  position: 'relative',
+  lineHeight: vars.lineHeight.more,
+});
+
+export const languageIdClasses = style({
+  display: 'block',
+  position: 'absolute',
+  right: vars.space[4],
+  top: vars.space[4],
+  padding: vars.space[1],
+  borderRadius: '3px',
+  border: '1px solid ',
+  lineHeight: vars.lineHeight.normal,
+  color: 'hsla(0, 0%, 100%, 0.25)',
+  background: 'rgba(0, 0, 0, 0.2)',
+});
+
+*/

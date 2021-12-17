@@ -12,11 +12,11 @@ const Bio = () => {
           <Image src={profileImg} alt="Luke Clark" />
         </figure>
       </div>
-      <div>
+      <div className="font-bold">
         <p className="max-w-sm mb-4">
           Personal site of Luke Clark. Links, snippets and sometimes words.
         </p>
-        <p className="">
+        <p>
           <Link
             href="https://instagram.com/ljcl"
             target="_blank"

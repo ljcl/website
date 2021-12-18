@@ -40,7 +40,7 @@ const Post = ({ code, frontmatter, datetime }: PostType) => {
           </>
         )}
       </Head>
-      <Layout className="prose lg:prose-lg mx-auto my-14">
+      <Layout className="prose-lg lg:prose-xl mx-auto my-14">
         <header>
           <h1 className="!mb-0">{frontmatter.title}</h1>
           <time

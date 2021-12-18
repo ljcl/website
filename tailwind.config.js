@@ -1,6 +1,7 @@
 const typographyHeadings = {
   fontStyle: 'italic',
   textTransform: 'uppercase',
+  fontWeight: 'bold',
 };
 
 const typographyBlock = {
@@ -32,7 +33,7 @@ module.exports = {
     },
     extend: {
       typography: {
-        DEFAULT: typographyBlock,
+        xl: typographyBlock,
         lg: typographyBlock,
       },
     },

@@ -12,7 +12,10 @@ class MyDocument extends Document {
           />
         </Head>
         <body className="bg-white text-base">
-          <div className={clsx('container mx-auto')} style={{ width: '65ch' }}>
+          <div
+            className={clsx('mx-auto', 'container', 'px-4')}
+            style={{ maxWidth: '65ch' }}
+          >
             <Main />
           </div>
           <NextScript />

@@ -17,17 +17,16 @@ export const Link = ({
   underline = true,
   ...linkProps
 }: LinkProps) => (
-  <NextLink passHref {...linkProps}>
-    <a
-      target={target}
-      rel={rel}
-      className={clsx(
-        'text-rose-600 hover:text-rose-500',
-        underline && 'no-underline hover:underline underline-offset-2',
-        className
-      )}
-    >
-      {children}
-    </a>
+  <NextLink
+    target={target}
+    rel={rel}
+    className={clsx(
+      'text-rose-600 hover:text-rose-500',
+      underline && 'no-underline hover:underline underline-offset-2',
+      className
+    )}
+    {...linkProps}
+  >
+    {children}
   </NextLink>
 );

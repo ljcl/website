@@ -4,6 +4,10 @@ const nextConfig = {
     locales: ['en'],
     defaultLocale: 'en',
   },
+  experimental: {
+    appDir: true,
+    serverComponentsExternalPackages: ['mdx-bundler', 'shiki'],
+  },
 };
 
 module.exports = nextConfig;

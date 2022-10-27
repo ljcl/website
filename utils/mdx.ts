@@ -84,7 +84,7 @@ export const getSinglePost = async (slug: string) => {
   const { code, frontmatter } = await bundleMDX({
     source: mdxSource,
     cwd: POSTS_PATH + slug,
-    xdmOptions(options) {
+    mdxOptions(options) {
       options.rehypePlugins = [[withShiki, { highlighter }]];
       options.remarkPlugins = [remarkGfm, ...(options.remarkPlugins ?? [])];
       return options;

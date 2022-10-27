@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from '../Link/Link';
-import { VisuallyHidden } from '../VisuallyHidden/VisuallyHidden';
+import { VisuallyHidden } from '../VisuallyHidden/VisuallyHidden.client';
 interface CardProps {
   href: string;
   title: string;

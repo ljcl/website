@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 const hiddenStyles = {
   display: 'inline-block',
@@ -11,7 +13,7 @@ const hiddenStyles = {
   border: 0,
 } as const;
 
-const VisuallyHidden: React.VFC<{ children: React.ReactElement }> = ({
+const VisuallyHidden: React.FC<{ children: React.ReactElement }> = ({
   children,
   ...delegated
 }) => {

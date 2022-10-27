@@ -17,6 +17,7 @@ const typographyBlock = {
 
 module.exports = {
   content: [
+    './app/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
   ],
@@ -26,10 +27,6 @@ module.exports = {
       base: ['18px', '26px'],
       lg: ['22px', '30px'],
       xl: ['26px', '34px'],
-    },
-    fontFamily: {
-      sans: ['Inter', 'sans-serif'],
-      serif: ['Inter', 'serif'],
     },
     extend: {
       typography: {

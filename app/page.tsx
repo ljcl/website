@@ -2,7 +2,7 @@ import { getAllPosts, PostMetadata } from '@/utils/mdx';
 import { getAllPins, PinboardPostPrepared } from '@/utils/pinboard';
 import { PostCard } from '@/components/Card/PostCard/PostCard';
 import { PinCard } from '@/components/Card/PinCard/PinCard';
-import { VisuallyHidden } from '@/components/VisuallyHidden/VisuallyHidden.client';
+import { VisuallyHidden } from '@/components/VisuallyHidden/VisuallyHidden';
 import { Bio } from '@/components/Bio/Bio';
 
 const mergePostsAndPins = (

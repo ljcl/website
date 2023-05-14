@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from '../Link/Link';
-import { VisuallyHidden } from '../VisuallyHidden/VisuallyHidden.client';
+import { VisuallyHidden } from '../VisuallyHidden/VisuallyHidden';
 interface CardProps {
   href: string;
   title: string;
@@ -21,7 +21,7 @@ export const Card: React.VFC<CardProps> = ({
     React.cloneElement(icon, {
       className: 'h-6 w-6 inline-block va-middle relative',
       'aria-hidden': true,
-      style: { top: '-2px' },
+      style: { top: '-2px', paddingRight: '2px' },
     });
   return (
     <article className="group first:mt-0 mt-12">

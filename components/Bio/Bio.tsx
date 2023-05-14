@@ -2,7 +2,7 @@ import profileImg from './profile-img.jpg';
 import Image from 'next/image';
 import { Link } from '@/components/Link/Link';
 import clsx from 'clsx';
-import styles from './Bio.module.css';
+import styles from './bio.module.css';
 
 const Bio = () => {
   return (

@@ -1,5 +1,5 @@
 import { getSinglePost } from '@/utils/mdx';
-import { Post } from '@/components/Post/Post.client';
+import { Post } from '@/components/Post/Post';
 
 export default async function Page({ params }: { params?: { slug?: string } }) {
   if (!params?.slug) return null;

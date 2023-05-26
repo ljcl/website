@@ -1,9 +1,27 @@
-import { getAllPosts, PostMetadata } from '@/utils/mdx';
-import { getAllPins, PinboardPostPrepared } from '@/utils/pinboard';
-import { PostCard } from '@/components/Card/PostCard/PostCard';
-import { PinCard } from '@/components/Card/PinCard/PinCard';
-import { VisuallyHidden } from '@/components/VisuallyHidden/VisuallyHidden';
-import { Bio } from '@/components/Bio/Bio';
+import { getAllPosts, PostMetadata } from 'lib/posts';
+import { getAllPins, PinboardPostPrepared } from 'lib/pinboard';
+import { PostCard } from 'app/components/Card/PostCard/PostCard';
+import { PinCard } from 'app/components/Card/PinCard/PinCard';
+import { VisuallyHidden } from 'app/components/VisuallyHidden/VisuallyHidden';
+import { Bio } from 'app/components/Bio/Bio';
+
+import type { Metadata } from 'next';
+
+const title = 'Luke Clark';
+const description = 'Sydney based Software Engineer';
+
+export const metadata: Metadata = {
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+  },
+  twitter: {
+    title,
+    description,
+  },
+};
 
 const mergePostsAndPins = (
   posts: PostMetadata[],
@@ -20,11 +38,11 @@ const mergePostsAndPins = (
 
 const isPost = (
   item: PostMetadata | PinboardPostPrepared
-): item is PostMetadata => 'frontmatter' in item;
+): item is PostMetadata => 'meta' in item;
 
 const getContentDate = (content: PostMetadata | PinboardPostPrepared) => {
   if (isPost(content)) {
-    return content.frontmatter.date;
+    return content.meta.date;
   }
   return content.time;
 };
@@ -34,15 +52,12 @@ export default async function Page() {
   const pins = await getAllPins({ AUTH_TOKEN: process.env.PINBOARD_AUTH });
   const content = mergePostsAndPins(posts, pins);
 
-  const title = 'Luke Clark';
-  const description = 'Sydney based Software Engineer';
   return (
     <>
       <VisuallyHidden>
-        <h1>Luke Clark Homepage</h1>
+        <h1>Luke Clark</h1>
       </VisuallyHidden>
-      <Bio />
-      <>
+      <section className="mx-auto container px-4">
         <VisuallyHidden>
           <h2>All Posts</h2>
         </VisuallyHidden>
@@ -53,7 +68,7 @@ export default async function Page() {
             <PinCard key={index} {...item} />
           )
         )}
-      </>
+      </section>
     </>
   );
 }

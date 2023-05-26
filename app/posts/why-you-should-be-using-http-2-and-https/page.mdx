@@ -1,0 +1,81 @@
+import Image from 'next/image';
+import browserSupportHttpsH2 from './browser-support-https-h2.png';
+import chromeSecurityIconHttp from './chrome-security-icon-http.png';
+
+export const metadata = {
+  title: 'Why you should be using HTTP/2 and HTTPS',
+  date: '2016-08-04',
+  description:
+    'You should be using h2 (HTTP/2) and HTTPS and compelling reasons to make the switch to HTTPS if for you still haven’t.',
+};
+
+Why you should be using HTTP/2 and HTTPS
+Some compelling reasons to make the switch to HTTPS if for you still haven’t.
+
+## Free
+
+Previously, SSL certificates did require a tiny investment. That changes with the launch of [Let’s Encrypt](https://letsencrypt.org/). Domain Validated certificates are now completely free. They’ll also auto renew, saving you from the previous manual work required each time it expired.
+
+## HTTP/2 or h2
+
+HTTPS is not itself faster than HTTP, but with h2 (HTTP/2) it absolutely is, and it’s [only available for HTTPS ](http://caniuse.com/#search=http2)connections.
+
+<Image
+  src={browserSupportHttpsH2.src}
+  width={700}
+  height={348}
+  alt="Browser Support for HTTP/2 on HTTPS"
+/>
+
+A couple of notes:
+
+- That little 2 icon refers to HTTP/2 only being available on TLS (HTTPS) connections.
+- IE11 will only use HTTP/2 on Windows 10.
+- OS X 10.11 and up support HTTP/2.
+
+If you want the benefits of h2, **you need to be using HTTPS**.
+
+h2 allows multiple connections synchronously, meaning they can all download at the same time. HTTP on the other hand can only handle a single request from the same server at a time. This also means you’ll no longer have to do tedious tasks like domain sharding, concatenation and CDN mixing.
+
+Whether you have 100 little images loading or only a few, the difference is absolutely noticeable. You can try it yourself on [HTTPvsHTTPS](https://www.httpvshttps.com/).
+
+Don’t forget, it’s literally called HTTP**2**. The original is not always the best.
+
+## Compression benefits of Brotli
+
+[Brotli](https://en.wikipedia.org/wiki/Brotli) is a new kind of [compression](https://blogs.dropbox.com/tech/2016/06/lossless-compression-with-brotli/) which boasts impressive speed improvements, with 20–26% improvements over the current standard gzip. Chrome (49+), Firefox (44+) and Opera (36+) all support Brotli, and you can only use it over a HTTPS connection.
+
+## SEO and Analytics
+
+[Google announced in 2014](https://security.googleblog.com/2014/08/https-as-ranking-signal_6.html) that HTTPS is now a ranking signal. While initially only a small ranking improvement, the intention is to increase that as time goes by, and I’d be surprised if it’s not higher already. When you’re searching for SEO improvements, every bit counts.
+On the Analytics side, referral data moving between http to https is blocked. If your site is not HTTPs you could be losing useful analytics.
+
+## Security Enhancements
+
+Stop content injection from 3rd party extensions, hotspots, Internet Service Providers or straight up attackers, and preventing your traffic being intercepted by other parties.
+
+## Keep using useful browser features
+
+Along with gradually marking [HTTP as insecure](https://www.chromium.org/Home/chromium-security/marking-http-as-non-secure), Google Chrome [intends to remove certain features](https://www.chromium.org/Home/chromium-security/deprecating-powerful-features-on-insecure-origins) of the browser over insecure connections. Some of these features include:
+
+- Geolocation
+- Full Screen Mode
+- Device Motion
+- Device Orientation
+
+If you want to keep using these features, you’ll have no choice but to support HTTPS.
+
+## Trust
+
+Around 20% of visitors look for the green lock in browsers, it’s safe to say there’s trust associated with HTTPS pages. If you’re collecting data of any kind, you should absolutely be encrypting your pages.
+Chrome from version 52, will be displaying an ‘i’ mark for all HTTP pages. This is definitely something a huge amount of your visitors will be seeing.
+Technically the symbol stands for _information_, but I’m not so sure visitors will interpret it that way.
+
+<Image
+  src={chromeSecurityIconHttp.src}
+  width={1314}
+  height={594}
+  alt="Chrome security icon overview"
+/>
+
+It’s safe to say HTTPS is not going away. All new sites should be using HTTPS by default, and the sooner you migrate, the better.

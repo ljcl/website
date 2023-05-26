@@ -1,5 +1,6 @@
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
+import { Analytics } from '@vercel/analytics/react';
 import './global.css';
 import { Metadata } from 'next';
 import { Bio } from './components/Bio/Bio';
@@ -42,6 +43,7 @@ export default function RootLayout({
         <section className="mx-auto container px-4">
           <Bio />
         </section>
+        <Analytics />
       </body>
     </html>
   );

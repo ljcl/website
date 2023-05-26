@@ -1,12 +1,22 @@
-import { Inter } from '@next/font/google';
-import clsx from 'clsx';
+import { Inter } from 'next/font/google';
 import Script from 'next/script';
 import './global.css';
+import { Metadata } from 'next';
+import { Bio } from './components/Bio/Bio';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
-const title = 'Luke Clark';
-const description = 'Sydney based Software Engineer';
+export const metadata: Metadata = {
+  metadataBase: new URL('https://www.lukeclark.com.au'),
+};
+
+const GA_STRING = `
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-CXQM4J1Z9M');
+`;
 
 export default function RootLayout({
   children,
@@ -16,33 +26,22 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.className}>
       <head>
-        <title key="title">Luke Clark</title>
-        <meta property="og:title" content={title} />
-        <meta property="twitter:title" content={title} />
-        <meta name="description" content={description} />
-        <meta property="og:description" content={description} />
-        <meta property="twitter:description" content={description} />
+        <script
+          id="google-analytics"
+          dangerouslySetInnerHTML={{
+            __html: GA_STRING,
+          }}
+        ></script>
       </head>
       <body className="bg-white text-base">
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=UA-17879409-1"
           strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-CXQM4J1Z9M"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'UA-17879409-1');
-        `}
-        </Script>
-        <main
-          className={clsx('mx-auto', 'container', 'px-4')}
-          style={{ maxWidth: '65ch' }}
-        >
-          {children}
-        </main>
+        <main>{children}</main>
+        <section className="mx-auto container px-4">
+          <Bio />
+        </section>
       </body>
     </html>
   );

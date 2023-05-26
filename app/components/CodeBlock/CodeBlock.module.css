@@ -1,0 +1,23 @@
+.pre {
+  overflow-x: auto;
+  position: relative;
+  background: #0d1116;
+  color: white;
+  @media (min-width: 1024px) {
+    margin-left: -6rem;
+    margin-right: -6rem;
+  }
+}
+
+.languageIdClasses {
+  display: block;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  padding: 0.25rem;
+  border-radius: 3px;
+  border: 1px solid;
+  line-height: 1;
+  color: hsla(0, 0%, 100%, 0.50);
+  background: rgba(0, 0, 0, 0.2);
+}

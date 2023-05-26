@@ -1,0 +1,16 @@
+.title {
+  @media (min-width: 768px) {
+    text-align: center;
+    max-width: 95%;
+  }
+
+  margin: 0 auto;
+  font-size: clamp(1rem, 8vw, 6rem);
+}
+
+.meta {
+  @media (min-width: 768px) {
+    text-align: center;
+    max-width: 95%;
+  }
+}

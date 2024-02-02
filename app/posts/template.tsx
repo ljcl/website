@@ -4,12 +4,17 @@ import Balancer from 'react-wrap-balancer';
 import { Link } from 'app/components/Link/Link';
 import type { Metadata } from 'next';
 import styles from './post.module.css';
+import React from 'react';
 
 /**
  * Nasty little hack to fetch the pathname from the headers
  */
 async function getPost() {
+  const headersList = headers();
+  console.log(Array.from(headersList));
+
   const pathname = headers().get('x-pathname') || '';
+  console.log('path?', pathname);
   const strippedPath = /[^/]*$/.exec(pathname)?.[0] || '';
 
   return getSinglePost('/' + strippedPath);

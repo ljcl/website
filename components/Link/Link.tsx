@@ -1,5 +1,5 @@
+import { cn } from '#util/cn';
 import { default as NextLink, LinkProps as NextLinkProps } from 'next/link';
-import clsx from 'clsx';
 
 interface LinkProps extends NextLinkProps {
   children?: React.ReactNode;
@@ -20,7 +20,7 @@ export const Link = ({
   <NextLink
     target={target}
     rel={rel}
-    className={clsx(
+    className={cn(
       'text-rose-600 hover:text-rose-500',
       underline && 'no-underline hover:underline underline-offset-2',
       className

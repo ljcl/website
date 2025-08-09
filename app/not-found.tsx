@@ -1,5 +1,5 @@
 import Balancer from 'react-wrap-balancer';
-import { Link } from './components/Link/Link';
+import { Link } from '#components/Link/Link';
 import styles from './notFound.module.css';
 
 export default function NotFound() {

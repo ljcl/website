@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { cn } from '#util/cn';
 import styles from './CodeBlock.module.css';
 
 interface CodeBlockProps
@@ -18,7 +18,7 @@ export const CodeBlock = ({
   return (
     <pre
       {...preProps}
-      className={clsx(
+      className={cn(
         className,
         styles.pre,
         '!leading-normal',

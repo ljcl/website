@@ -16,8 +16,9 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["app/components/*"],
-      "@/utils/*": ["lib/*"]
+      "#components/*": ["components/*"],
+      "#lib/*": ["lib/*"],
+      "#util/*": ["util/*"]
     },
     "plugins": [
       {

@@ -1,7 +1,7 @@
 import type { MDXComponents } from 'mdx/types';
-import { Link } from 'app/components/Link/Link';
-import { CodeBlock } from 'app/components/CodeBlock/CodeBlock';
-import { Code } from 'app/components/Code/Code';
+import { Link } from '#components/Link/Link';
+import { CodeBlock } from '#components/CodeBlock/CodeBlock';
+import { Code } from '#components/Code/Code';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {

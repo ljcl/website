@@ -6,9 +6,7 @@ import mdx from '@next/mdx';
 const nextConfig = {
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   reactStrictMode: true,
-  experimental: {
-    serverComponentsExternalPackages: ['shiki', 'rehype-pretty-code'],
-  },
+  serverExternalPackages: ['shiki', 'rehype-pretty-code'],
   async redirects() {
     return [
       {

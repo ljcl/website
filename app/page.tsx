@@ -1,9 +1,8 @@
-import { getAllPosts, PostMetadata } from 'lib/posts';
-import { getAllPins, PinboardPostPrepared } from 'lib/pinboard';
-import { PostCard } from 'app/components/Card/PostCard/PostCard';
-import { PinCard } from 'app/components/Card/PinCard/PinCard';
-import { VisuallyHidden } from 'app/components/VisuallyHidden/VisuallyHidden';
-import { Bio } from 'app/components/Bio/Bio';
+import { getAllPosts, PostMetadata } from '#lib/posts';
+import { getAllPins, PinboardPostPrepared } from '#lib/pinboard';
+import { PostCard } from '#components/Card/PostCard/PostCard';
+import { PinCard } from '#components/Card/PinCard/PinCard';
+import { VisuallyHidden } from '#components/VisuallyHidden/VisuallyHidden';
 
 import type { Metadata } from 'next';
 

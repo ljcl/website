@@ -1,12 +1,12 @@
 # Luke Clark Personal Site - AI Coding Instructions
 
-This is a Next.js 13+ personal blog using the App Router, MDX content, and Pinboard integration for link aggregation.
+This is a Next.js 15 personal blog using the App Router, MDX content, and Pinboard integration for link aggregation.
 
 ## Architecture Overview
 
-- **Mixed Content System**: Merges blog posts (`app/posts/*/page.mdx`) with Pinboard links (`lib/pinboard.ts`) on homepage, sorted chronologically
-- **File-based Routing**: Blog posts live in `app/posts/[slug]/page.mdx` with metadata exports
-- **Component Library**: Modular components in `app/components/` with co-located CSS modules
+- **Mixed Content System**: Merges blog posts (`content/posts/*/page.mdx`) with Pinboard links (`lib/pinboard.ts`) on homepage, sorted chronologically
+- **File-based Routing**: Blog posts live in `content/posts/[slug]/page.mdx` with metadata exports
+- **Component Library**: Modular components in `components/` with co-located CSS modules
 - **MDX Processing**: Custom components via `mdx-components.tsx` with syntax highlighting (rehype-pretty-code, Shiki)
 
 ## Key Patterns
@@ -24,9 +24,9 @@ export const metadata = {
 
 ### Component Organization
 
-- Components live in `app/components/[ComponentName]/ComponentName.tsx`
+- Components live in `components/[ComponentName]/ComponentName.tsx`
 - CSS modules: `ComponentName.module.css`
-- Use `clsx` for conditional classes, combine with Tailwind utilities
+- Use `cn` named export from `#util/cn` for conditional classes, which combines clsx with tailwind-merge
 
 ### Content Aggregation
 

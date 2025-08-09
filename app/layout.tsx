@@ -3,7 +3,7 @@ import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/react';
 import './global.css';
 import { Metadata } from 'next';
-import { Bio } from './components/Bio/Bio';
+import { Bio } from '#components/Bio/Bio';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
 

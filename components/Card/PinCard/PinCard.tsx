@@ -1,4 +1,4 @@
-import { PinboardPostPrepared } from '../../../../lib/pinboard';
+import { PinboardPostPrepared } from '#lib/pinboard';
 import { Card } from '../Card';
 
 interface PinCardProps extends PinboardPostPrepared {}

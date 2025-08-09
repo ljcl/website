@@ -1,5 +1,5 @@
-import { readdir } from 'fs/promises';
-import path from 'path';
+import { readdir } from 'node:fs/promises';
+import path from 'node:path';
 
 export interface PostMeta {
   title: string;
@@ -19,10 +19,7 @@ async function* getMdxFiles(dir: string): any {
     if (dirent.isDirectory()) {
       yield* getMdxFiles(res);
     } else if (/\.mdx?$/.test(res)) {
-      const relativePath = res.split(POSTS_PATH).pop() ?? '';
-      // console.log(relativePath);
-      const slug = relativePath.replace(/(\/page)?\.mdx?$/, '');
-      yield getMdxMetadata(slug);
+      yield getMdxMetadata(res);
     }
   }
 }
@@ -30,21 +27,20 @@ async function* getMdxFiles(dir: string): any {
 /** Strips out the posts path (and index.mdx if it exists), returning a slug */
 async function getMdxMetadata(fileName: string) {
   const relativePath = fileName.split(POSTS_PATH).pop() ?? '';
-  const slug = relativePath.replace(/(\/page)?\.mdx?$/, '');
+  const slug = relativePath.replace(/(\/page)?\.mdx?$/, '').replace('/', '');
   const meta = await getMetaOfFile(slug);
 
   return {
     meta,
-    slug: path.join('posts', slug),
+    slug,
   };
 }
 
-export const POSTS_PATH = path.join(process.cwd(), 'app', 'posts');
+export const POSTS_PATH = path.join(process.cwd(), 'content', 'posts');
 
 const getMetaOfFile = async (slug: string) => {
   try {
-    // Restrict the directory with a hard-coded string to avoid traversal of all directories.
-    const { metadata } = await import(`../app/posts${slug}/page.mdx`);
+    const { metadata } = await import(`../content/posts/${slug}/page.mdx`);
     return metadata;
   } catch (e) {
     console.error('Failed to fetch metadata for', slug);
@@ -62,10 +58,21 @@ export const getAllPosts = async () => {
   return sorted;
 };
 
+function augmentMetadata(meta: PostMeta) {
+  const date = new Date(meta.date);
+  return {
+    ...meta,
+    date,
+    dateTime: date.toISOString().split('T')[0],
+  };
+}
+
 export const getSinglePost = async (slug: string) => {
-  const meta = await getMetaOfFile(slug);
+  const post = await import(`../content/posts/${slug}/page.mdx`);
 
   return {
-    meta,
+    meta: augmentMetadata(post.metadata),
+    slug,
+    Content: post.default,
   };
 };

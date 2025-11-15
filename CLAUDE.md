@@ -8,7 +8,7 @@ This is a Next.js 15 personal blog using the App Router, MDX content, and Pinboa
 **Language**: TypeScript 5.9 (strict mode enabled)
 **Styling**: Tailwind CSS v4 + CSS Modules
 **Content**: MDX with syntax highlighting via Shiki/rehype-pretty-code
-**Node Version**: 22.x
+**Node Version**: 24.x
 
 ### Core Concept: Mixed Content System
 

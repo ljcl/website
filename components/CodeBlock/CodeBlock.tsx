@@ -25,7 +25,10 @@ export const CodeBlock = ({
       "!p-4",
       "!mb-12",
     )}
+    data-testid="CodeBlock"
   >
-    <div className="code-container">{children}</div>
+    <div className="code-container" data-testid="CodeBlockContainer">
+      {children}
+    </div>
   </pre>
 );

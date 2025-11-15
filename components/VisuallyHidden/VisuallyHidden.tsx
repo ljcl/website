@@ -16,7 +16,7 @@ const VisuallyHidden: React.FC<{ children: React.ReactNode }> = ({
   children,
   ...delegated
 }) => (
-  <span style={hiddenStyles} {...delegated}>
+  <span style={hiddenStyles} {...delegated} className="sr-only">
     {children}
   </span>
 );

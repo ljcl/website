@@ -6,17 +6,17 @@ interface CardProps {
   href: string;
   title: string;
   description?: string;
-  icon?: React.ReactElement;
+  icon?: React.ReactElement | null;
   iconText?: string;
 }
 
-export const Card: React.FC<CardProps> = ({
+export const Card = ({
   title,
   href,
   description,
   icon = null,
   iconText,
-}) => {
+}: CardProps) => {
   const iconWithClasses = icon
     ? React.cloneElement(icon, {
         className: "h-6 w-6 inline-block va-middle relative",

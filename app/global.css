@@ -83,13 +83,13 @@
 
 @layer components {
   .layout-container {
-    @apply container mx-auto;
     padding-inline: var(--container-padding);
+    @apply container mx-auto;
   }
 
   .text-meta {
-    @apply text-sm uppercase;
     color: var(--color-text-muted);
+    @apply text-sm uppercase;
   }
 
   .article-prose {
@@ -102,6 +102,6 @@
    ============================================ */
 
 body {
-  background: var(--color-bg-page);
   color: var(--color-text-primary);
+  background: var(--color-bg-page);
 }

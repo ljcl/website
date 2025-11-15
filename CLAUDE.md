@@ -77,10 +77,12 @@ components/[ComponentName]/
 ```
 
 **Code Conventions:**
+- Use JSDoc to describe stories, as it appears in VSCode and Storybook
 - Use `React.FC<Props>` for functional components
 - Always use **named exports** (not default exports)
 - Props interfaces should be defined above the component
 - Co-locate CSS modules with components
+- **All components MUST have Storybook stories** (see Storybook Stories section below)
 
 **Example:**
 ```tsx
@@ -94,6 +96,166 @@ export const Card: React.FC<CardProps> = ({ title, href, description }) => {
   return <article className={cn('...')}>...</article>;
 };
 ```
+
+### Storybook Stories
+
+**MANDATORY**: All components must have accompanying Storybook stories co-located in the component directory.
+
+**Format**: CSF (Next) - Component Story Format using factory functions
+**Location**: `components/[ComponentName]/[ComponentName].stories.tsx` (use `.tsx` for JSX, `.ts` for plain TypeScript)
+
+**Structure Pattern:**
+```
+components/[ComponentName]/
+├── ComponentName.tsx
+├── ComponentName.stories.tsx   # Required for all components (.tsx if using JSX)
+└── ComponentName.module.css    # Optional
+```
+
+**Story File Template:**
+```typescript
+import preview from "#.storybook/preview";
+import { ComponentName } from "./ComponentName";
+
+const meta = preview.meta({
+  component: ComponentName,
+  // Optional: Add parameters, decorators, tags
+  // parameters: { layout: 'centered' },
+});
+
+/** Primary story, use JSDoc here */
+export const Primary = meta.story({
+  args: {
+    // Component props here
+    title: "Example Title",
+    description: "Example description",
+  },
+});
+
+/** Additional variants using .extend(), use JSDoc here */
+export const WithoutDescription = Primary.extend({
+  args: {
+    description: undefined,
+  },
+});
+```
+
+**Key Conventions:**
+- Import `preview` from `.storybook/preview` (not `.storybook/preview.ts`)
+- Use `preview.meta()` to create component metadata (provides type safety)
+- Use `meta.story()` to define individual stories (not default exports)
+- Story names use PascalCase (e.g., `Primary`, `WithoutDescription`)
+- Create variants with `.extend()` for related story variations
+- All stories auto-generate documentation via `autodocs` tag
+
+**Story Composition:**
+```typescript
+// Extend existing stories to create variants
+export const Disabled = Primary.extend({
+  args: {
+    disabled: true,
+  },
+});
+
+// Access composed properties (merged from story + meta + preview)
+// Use Primary.composed.args instead of Primary.args
+```
+
+**Configuration:**
+- **Framework**: `@storybook/nextjs-vite` (Vite-based Next.js integration)
+- **Addons**: Docs, A11y (accessibility testing), Vitest
+- **Global Styles**: Automatically imported via `app/global.css` in preview
+- **Accessibility**: Set to `"todo"` mode (shows violations in UI, doesn't fail CI)
+
+**Component Testing:**
+
+All component tests are written using Storybook's test framework, which integrates seamlessly with stories.
+
+**Testing Philosophy:**
+- Stories serve as both documentation and smoke tests
+- Tests use real browser rendering with user interaction simulation
+- Tests are co-located with stories in the same file
+- Automatic Vitest integration for CI/CD
+
+**Test Syntax (CSF Next):**
+```typescript
+export const InteractiveExample = meta.story({
+  args: {
+    onClick: fn(), // Use fn() from storybook/test for spies
+    disabled: false,
+  },
+});
+
+// Attach tests directly to stories using .test()
+InteractiveExample.test('should handle click events', async ({ canvas, userEvent, args }) => {
+  const button = await canvas.findByRole('button');
+  await userEvent.click(button);
+  await expect(args.onClick).toHaveBeenCalled();
+});
+
+InteractiveExample.test('should be accessible', async ({ canvas }) => {
+  const button = await canvas.findByRole('button');
+  await expect(button).toHaveAccessibleName();
+});
+```
+
+**Test Function Parameters:**
+- `canvas` - Query methods for the rendered story (e.g., `canvas.findByRole()`, `canvas.getByText()`)
+- `userEvent` - User interaction simulation (e.g., `userEvent.click()`, `userEvent.type()`)
+- `args` - Access to story arguments for assertions
+
+**Testing Patterns:**
+```typescript
+import { fn, expect } from 'storybook/test';
+
+// 1. Render Tests - Verify component renders in various states
+export const EmptyState = meta.story({
+  args: { items: [] },
+});
+
+// 2. Interaction Tests - Simulate user behavior
+export const WithInteraction = meta.story({
+  args: { onSubmit: fn() },
+});
+
+WithInteraction.test('should submit form', async ({ canvas, userEvent, args }) => {
+  const input = await canvas.findByRole('textbox');
+  await userEvent.type(input, 'Hello');
+
+  const submit = await canvas.findByRole('button', { name: /submit/i });
+  await userEvent.click(submit);
+
+  await expect(args.onSubmit).toHaveBeenCalledWith('Hello');
+});
+
+// 3. Accessibility Tests - Ensure WCAG compliance (automatic via addon-a11y)
+// 4. Visual Tests - Compare snapshots (handled by Chromatic/other tools)
+```
+
+**Key Testing Utilities:**
+- `fn()` from `storybook/test` - Creates spy functions for callbacks
+- `expect()` from `storybook/test` - Assertion library
+- `canvas.findBy*()` - Async queries that wait for elements
+- `canvas.getBy*()` - Sync queries that throw if not found
+- `userEvent.*` - Simulates user interactions (click, type, hover, etc.)
+
+**Watch Mode & TDD:**
+```bash
+pnpm test-storybook --watch  # Run tests in watch mode for TDD workflow
+```
+
+**CI/CD Integration:**
+Stories automatically transform into Vitest tests. The addon-vitest integration means tests run in CI without additional configuration.
+
+**Running Storybook:**
+```bash
+pnpm storybook          # Start Storybook dev server
+pnpm build-storybook    # Build static Storybook
+pnpm test-storybook     # Run all component tests
+```
+
+**Reference Example:**
+See [components/Card/Card.stories.tsx](components/Card/Card.stories.tsx) for a comprehensive working example with multiple stories and tests.
 
 ### Import Patterns
 

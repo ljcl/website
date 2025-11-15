@@ -1,7 +1,8 @@
 import bundleAnalyzer from "@next/bundle-analyzer";
 import mdx from "@next/mdx";
+import type { NextConfig } from "next";
 
-const nextConfig = {
+const nextConfig: NextConfig = {
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   reactStrictMode: true,
   serverExternalPackages: ["shiki", "rehype-pretty-code"],

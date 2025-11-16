@@ -27,3 +27,8 @@ jobs:
 
       - name: Run tests
         run: pnpm run test-storybook
+
+      - name: "notify vercel"
+        uses: "vercel/repository-dispatch/actions/status@v1"
+        with:
+          name: "Vercel - personal-site: Components"

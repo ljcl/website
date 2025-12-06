@@ -1,0 +1,92 @@
+{
+  "content": {
+    "text": {
+      "body": {
+        "default": {
+          "value": "{colors.base.black}",
+          "type": "color",
+          "comment": "Primary body text color"
+        },
+        "inverse": {
+          "value": "{colors.gray.200}",
+          "type": "color",
+          "comment": "Primary body text in dark mode"
+        }
+      },
+      "heading": {
+        "default": {
+          "value": "{colors.base.black}",
+          "type": "color",
+          "comment": "Heading text color"
+        },
+        "inverse": {
+          "value": "{colors.gray.300}",
+          "type": "color",
+          "comment": "Heading text in dark mode"
+        }
+      },
+      "muted": {
+        "default": {
+          "value": "{colors.gray.500}",
+          "type": "color",
+          "comment": "Muted text for metadata and secondary info"
+        },
+        "inverse": {
+          "value": "{colors.gray.600}",
+          "type": "color",
+          "comment": "Muted text in dark mode"
+        }
+      },
+      "secondary": {
+        "default": {
+          "value": "{colors.gray.700}",
+          "type": "color",
+          "comment": "Secondary text color"
+        },
+        "inverse": {
+          "value": "{colors.gray.600}",
+          "type": "color",
+          "comment": "Secondary text in dark mode"
+        }
+      }
+    },
+    "bg": {
+      "page": {
+        "default": {
+          "value": "{colors.base.white}",
+          "type": "color",
+          "comment": "Page background color"
+        },
+        "inverse": {
+          "value": "{colors.dark.bg}",
+          "type": "color",
+          "comment": "Page background in dark mode"
+        }
+      },
+      "code-badge": {
+        "default": {
+          "value": "rgba(0, 0, 0, 0.2)",
+          "type": "color",
+          "comment": "Code badge background"
+        },
+        "inverse": {
+          "value": "rgba(255, 255, 255, 0.1)",
+          "type": "color",
+          "comment": "Code badge background in dark mode"
+        }
+      }
+    },
+    "code-badge-text": {
+      "default": {
+        "value": "hsla(0, 0%, 100%, 0.5)",
+        "type": "color",
+        "comment": "Code badge text color"
+      },
+      "inverse": {
+        "value": "rgba(255, 255, 255, 0.6)",
+        "type": "color",
+        "comment": "Code badge text in dark mode"
+      }
+    }
+  }
+}

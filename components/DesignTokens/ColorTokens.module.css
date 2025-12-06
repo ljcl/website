@@ -1,0 +1,60 @@
+.container {
+  padding: 2rem;
+}
+
+.title {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--content-text-heading);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.token {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--content-bg-page);
+  border: 1px solid var(--content-text-muted);
+  border-radius: 8px;
+}
+
+.swatch {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.name {
+  font-family: monospace;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--content-text-primary);
+}
+
+.value {
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: var(--content-text-secondary);
+}
+
+.comment {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--content-text-muted);
+}

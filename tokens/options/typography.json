@@ -1,0 +1,13 @@
+{
+  "typography": {
+    "fontSize": {
+      "title": {
+        "fluid": {
+          "value": "clamp(1rem, 8vw, 6rem)",
+          "type": "dimension",
+          "comment": "Fluid title font size - scales from 16px to 96px"
+        }
+      }
+    }
+  }
+}

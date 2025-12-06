@@ -1,0 +1,24 @@
+{
+  "spacing": {
+    "4": {
+      "value": "1rem",
+      "type": "dimension",
+      "comment": "Base spacing unit - 16px"
+    },
+    "12": {
+      "value": "3rem",
+      "type": "dimension",
+      "comment": "Large spacing - 48px"
+    },
+    "14": {
+      "value": "3.5rem",
+      "type": "dimension",
+      "comment": "Section spacing - 56px"
+    },
+    "breakout": {
+      "value": "-6rem",
+      "type": "dimension",
+      "comment": "Negative spacing for breakout layouts - -96px"
+    }
+  }
+}

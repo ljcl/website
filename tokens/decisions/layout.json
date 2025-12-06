@@ -1,0 +1,25 @@
+{
+  "layout": {
+    "container": {
+      "padding": {
+        "value": "{spacing.4}",
+        "type": "dimension",
+        "comment": "Container horizontal padding"
+      }
+    },
+    "section": {
+      "spacing": {
+        "value": "{spacing.14}",
+        "type": "dimension",
+        "comment": "Vertical spacing between major sections"
+      }
+    },
+    "breakout": {
+      "margin": {
+        "value": "{spacing.breakout}",
+        "type": "dimension",
+        "comment": "Negative margin for full-width breakout elements"
+      }
+    }
+  }
+}

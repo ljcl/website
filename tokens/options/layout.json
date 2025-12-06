@@ -1,0 +1,13 @@
+{
+  "layout-options": {
+    "container": {
+      "maxWidth": {
+        "narrow": {
+          "value": "95%",
+          "type": "dimension",
+          "comment": "Maximum container width for narrow layouts"
+        }
+      }
+    }
+  }
+}

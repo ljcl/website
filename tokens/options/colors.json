@@ -1,0 +1,74 @@
+{
+  "colors": {
+    "rose": {
+      "400": {
+        "value": "#fb7185",
+        "type": "color",
+        "comment": "Rose 400 - bright rose for dark mode accents"
+      },
+      "500": {
+        "value": "#f43f5e",
+        "type": "color",
+        "comment": "Rose 500 - medium rose for hover states"
+      },
+      "600": {
+        "value": "#e11d48",
+        "type": "color",
+        "comment": "Rose 600 - deep rose for primary accents"
+      }
+    },
+    "gray": {
+      "200": {
+        "value": "#e5e5e5",
+        "type": "color",
+        "comment": "Gray 200 - soft gray for dark mode text"
+      },
+      "300": {
+        "value": "#d4d4d4",
+        "type": "color",
+        "comment": "Gray 300 - light gray for dark mode headings"
+      },
+      "500": {
+        "value": "#6b7280",
+        "type": "color",
+        "comment": "Gray 500 - medium gray for muted text"
+      },
+      "600": {
+        "value": "#a3a3a3",
+        "type": "color",
+        "comment": "Gray 600 - gray for secondary text"
+      },
+      "700": {
+        "value": "#374151",
+        "type": "color",
+        "comment": "Gray 700 - dark gray for light mode text"
+      }
+    },
+    "base": {
+      "white": {
+        "value": "#ffffff",
+        "type": "color",
+        "comment": "Pure white"
+      },
+      "black": {
+        "value": "#000000",
+        "type": "color",
+        "comment": "Pure black"
+      }
+    },
+    "code": {
+      "bg": {
+        "value": "#0d1116",
+        "type": "color",
+        "comment": "Code block background color"
+      }
+    },
+    "dark": {
+      "bg": {
+        "value": "#1a1a1a",
+        "type": "color",
+        "comment": "Dark mode page background"
+      }
+    }
+  }
+}

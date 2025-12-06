@@ -1,15 +1,15 @@
 .title {
   margin: 0 auto;
-  font-size: var(--font-size-title-fluid);
+  font-size: var(--typography-fontSize-title-fluid);
   @media (min-width: 768px) {
-    max-width: var(--container-max-width-narrow);
+    max-width: var(--layout-container-maxWidth-narrow);
     text-align: center;
   }
 }
 
 .meta {
   @media (min-width: 768px) {
-    max-width: var(--container-max-width-narrow);
+    max-width: var(--layout-container-maxWidth-narrow);
     text-align: center;
   }
 }

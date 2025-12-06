@@ -31,17 +31,17 @@ export default {
     },
     extend: {
       colors: {
-        accent: "var(--color-accent)",
-        "accent-hover": "var(--color-accent-hover)",
-        "text-primary": "var(--color-text-primary)",
-        "text-heading": "var(--color-text-heading)",
-        "text-muted": "var(--color-text-muted)",
-        "text-secondary": "var(--color-text-secondary)",
-        "bg-page": "var(--color-bg-page)",
+        accent: "var(--brand-color-primary)",
+        "accent-hover": "var(--brand-color-primary-hover)",
+        "text-primary": "var(--content-text-body)",
+        "text-heading": "var(--content-text-heading)",
+        "text-muted": "var(--content-text-muted)",
+        "text-secondary": "var(--content-text-secondary)",
+        "bg-page": "var(--content-bg-page)",
       },
       spacing: {
-        "container-padding": "var(--container-padding)",
-        section: "var(--section-spacing)",
+        "container-padding": "var(--layout-container-padding)",
+        section: "var(--layout-section-spacing)",
       },
       typography: {
         xl: typographyBlock,

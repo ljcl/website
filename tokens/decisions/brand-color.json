@@ -1,0 +1,38 @@
+{
+  "brand-color": {
+    "primary": {
+      "default": {
+        "value": "{colors.rose.600}",
+        "type": "color",
+        "comment": "Primary brand color for interactive elements"
+      },
+      "hover": {
+        "value": "{colors.rose.500}",
+        "type": "color",
+        "comment": "Primary brand color hover state"
+      },
+      "inverse": {
+        "value": "{colors.rose.500}",
+        "type": "color",
+        "comment": "Primary brand color in dark mode (brighter)"
+      }
+    },
+    "accent": {
+      "light": {
+        "value": "{colors.rose.400}",
+        "type": "color",
+        "comment": "Lighter accent for dark mode hover states"
+      },
+      "default": {
+        "value": "{colors.rose.500}",
+        "type": "color",
+        "comment": "Accent color"
+      },
+      "dark": {
+        "value": "{colors.rose.600}",
+        "type": "color",
+        "comment": "Darker accent for emphasis"
+      }
+    }
+  }
+}

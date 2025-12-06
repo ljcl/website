@@ -4,3 +4,4 @@ onlyBuiltDependencies:
   - "lefthook"
   - "sharp"
   - "unrs-resolver"
+  - "@tailwindcss/oxide"

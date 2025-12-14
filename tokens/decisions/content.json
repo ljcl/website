@@ -25,6 +25,18 @@
           "comment": "Heading text in dark mode"
         }
       },
+      "code": {
+        "default": {
+          "value": "{colors.dark.bg}",
+          "type": "color",
+          "comment": "Page background color"
+        },
+        "inverse": {
+          "value": "{colors.gray.200}",
+          "type": "color",
+          "comment": "Page background in dark mode"
+        }
+      },
       "muted": {
         "default": {
           "value": "{colors.gray.500}",
@@ -50,7 +62,52 @@
         }
       }
     },
+    "border": {
+      "code": {
+        "default": {
+          "value": "{colors.gray.200}",
+          "type": "color",
+          "comment": "Code border color"
+        },
+        "inverse": {
+          "value": "{colors.gray.700}",
+          "type": "color",
+          "comment": "Code border in dark mode"
+        }
+      },
+      "mark": {
+        "default": {
+          "value": "{colors.code.mark}",
+          "type": "color",
+          "comment": "Code diff mark color"
+        }
+      }
+    },
     "bg": {
+      "code": {
+        "default": {
+          "value": "{colors.base.white}",
+          "type": "color",
+          "comment": "Page background color"
+        },
+        "inverse": {
+          "value": "{colors.base.black}",
+          "type": "color",
+          "comment": "Page background in dark mode"
+        }
+      },
+      "code-title": {
+        "default": {
+          "value": "{colors.code.title.light}",
+          "type": "color",
+          "comment": "Code Title background color"
+        },
+        "inverse": {
+          "value": "{colors.code.title.dark}",
+          "type": "color",
+          "comment": "Code Title background in dark mode"
+        }
+      },
       "page": {
         "default": {
           "value": "{colors.base.white}",

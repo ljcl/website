@@ -39,7 +39,7 @@ The site merges two content sources on the homepage, sorted chronologically:
 │   │   ├── PostCard/
 │   │   └── PinCard/
 │   ├── Code/
-│   ├── CodeBlock/
+│   ├── InlineCode/
 │   ├── Link/
 │   ├── VisuallyHidden/
 │   └── Image/
@@ -514,8 +514,7 @@ export interface PostMeta {
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     a: ({ href, ...props }) => <Link href={href as string} {...props} />,
-    code: Code,
-    pre: CodeBlock,
+    Code,
     ...components,
   };
 }
@@ -524,8 +523,97 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 **Processing Chain:**
 
 - `remark-gfm`: GitHub-flavored markdown support
-- `rehype-pretty-code`: Syntax highlighting with Shiki
-- Theme: `github-dark`
+- `remarkCodeHike`: CodeHike MDX processing
+- `recmaCodeHike`: CodeHike recma transformations
+
+### CodeHike Integration
+
+**Code Highlighting**: CodeHike v1 (replaces rehype-pretty-code/Shiki)
+
+**Features:**
+
+- Syntax highlighting with annotation support
+- Custom React Server Components for code enhancements
+- Design token integration for theming
+- Interactive code features (callouts, diffs, focus, etc.)
+
+**Annotation Syntax:**
+
+Annotations use comments to mark code for special rendering:
+
+```js
+// !border(1:3) #e11d48
+// !highlight[greeting]
+const greeting = "Hello";
+console.log(greeting);
+```
+
+**Available Annotations:**
+
+- `border(lines) color` - Colored border around lines (e.g., `// !border(1:3) #e11d48`)
+- `highlight(lines)` or `highlight[range]` - Background highlight (e.g., `// !highlight(2:4)`)
+- `focus(lines)` - Dim non-focused lines (e.g., `// !focus(2:3)`)
+- `mark(line)` - Left-side marker for important lines (e.g., `// !mark(5)`)
+- `callout[range] "message"` - Tooltip on hover (e.g., `// !callout[greeting] "The greeting variable"`)
+- `diff(line) +/-` - Show added/removed lines (e.g., `// !diff(1) +`)
+- `collapse(lines) "label"` - Collapsible code sections
+
+**Metadata Attributes:**
+
+Add metadata after the language identifier:
+
+````markdown
+```js title="example.js" showLineNumbers
+const greeting = "Hello";
+```
+````
+
+**Component Architecture:**
+
+```
+components/Code/Code.tsx   # Main code block component (Pre wrapper)
+components/InlineCode/InlineCode.tsx              # Inline code component
+lib/codehike-handlers.ts              # Annotation handlers
+lib/codehike-theme.ts                 # Theme mapping to design tokens
+```
+
+**Theme System:**
+
+CodeHike integrates with design tokens via CSS custom properties:
+
+- `--ch-bg` → `--colors-code-bg`
+- `--ch-fg` → `--colors-base-white`
+- `--ch-border-color` → `--brand-color-primary`
+- `--ch-highlight-bg` → `--brand-color-primary`
+
+All CodeHike colors automatically support dark mode via design tokens.
+
+**Creating Custom Handlers:**
+
+Add new handlers to `lib/codehike-handlers.ts`:
+
+```typescript
+export const myHandler: AnnotationHandler = {
+  name: "myAnnotation",
+  Block: ({ annotation, children }) => (
+    <div className="...">{children}</div>
+  ),
+};
+
+// Add to handlers array
+export const handlers = [...existingHandlers, myHandler];
+```
+
+**Testing:**
+
+All annotation handlers must have Storybook stories demonstrating:
+
+- Basic usage
+- With query parameters
+- Combined with other annotations
+- Accessibility compliance
+
+See `components/Code/Code.stories.tsx` for examples.
 
 ## Development Workflows
 

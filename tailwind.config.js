@@ -38,6 +38,13 @@ export default {
         "text-muted": "var(--content-text-muted)",
         "text-secondary": "var(--content-text-secondary)",
         "bg-page": "var(--content-bg-page)",
+        // CodeHike colors
+        "code-bg": "var(--ch-bg)",
+        "code-title-bg": "var(--ch-title-bg)",
+        "code-fg": "var(--ch-fg)",
+        "code-highlight": "var(--ch-highlight-bg)",
+        "code-border": "var(--ch-border-color)",
+        "code-mark": "var(--content-border-mark)",
       },
       spacing: {
         "container-padding": "var(--layout-container-padding)",
@@ -46,6 +53,12 @@ export default {
       typography: {
         xl: typographyBlock,
         lg: typographyBlock,
+      },
+      borderColor: {
+        "code-border": "var(--ch-border-color)",
+      },
+      backgroundColor: {
+        "code-highlight": "var(--ch-highlight-bg)",
       },
     },
     screens: {

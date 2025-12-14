@@ -1,11 +1,11 @@
 import bundleAnalyzer from "@next/bundle-analyzer";
-import mdx from "@next/mdx";
+import createMDX from "@next/mdx";
+import type { CodeHikeConfig } from "codehike/mdx";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   reactStrictMode: true,
-  serverExternalPackages: ["shiki", "rehype-pretty-code"],
   async redirects() {
     return [
       {
@@ -44,26 +44,23 @@ const nextConfig: NextConfig = {
   },
 };
 
+const chConfig: CodeHikeConfig = {
+  components: { code: "Code", inlineCode: "InlineCode" },
+};
+
+const withMDX = createMDX({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: ["remark-gfm", ["remark-codehike", chConfig]],
+    recmaPlugins: [["recma-codehike", chConfig]],
+  },
+});
+
 const config = async () => {
-  const plugins = [
-    bundleAnalyzer({
-      enabled: process.env.ANALYZE === "true",
-    }),
-    mdx({
-      options: {
-        remarkPlugins: ["remark-gfm"],
-        rehypePlugins: [
-          [
-            "rehype-pretty-code",
-            {
-              theme: "github-dark",
-            },
-          ],
-        ],
-      },
-    }),
-  ];
-  return plugins.reduce((acc, next) => next(acc), nextConfig);
+  const withAnalyzer = bundleAnalyzer({
+    enabled: process.env.ANALYZE === "true",
+  });
+  return withAnalyzer(withMDX(nextConfig));
 };
 
 export default config;

@@ -57,10 +57,27 @@
       }
     },
     "code": {
+      "mark": {
+        "value": "rgb(14, 165, 233)",
+        "type": "color",
+        "comment": "Code block mark color"
+      },
       "bg": {
         "value": "#0d1116",
         "type": "color",
         "comment": "Code block background color"
+      },
+      "title": {
+        "light": {
+          "value": "#f8fafc",
+          "type": "color",
+          "comment": "Code block background color"
+        },
+        "dark": {
+          "value": "#171717",
+          "type": "color",
+          "comment": "Code block background color dark"
+        }
       }
     },
     "dark": {

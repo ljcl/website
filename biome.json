@@ -30,7 +30,13 @@
         "noNonNullAssertion": "off"
       },
       "nursery": {
-        "useSortedClasses": "error",
+        "useSortedClasses": {
+          "level": "error",
+          "fix": "safe",
+          "options": {
+            "functions": ["clsx", "cn", "twMerge"]
+          }
+        },
         "noReactForwardRef": "error",
         "noContinue": "error",
         "noDeprecatedImports": "error",

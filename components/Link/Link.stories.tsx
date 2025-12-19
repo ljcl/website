@@ -21,8 +21,8 @@ Primary.test("should render link with correct href", async ({ canvas }) => {
 
 Primary.test("should have accent color classes", async ({ canvas }) => {
   const link = await canvas.findByRole("link");
-  await expect(link).toHaveClass("text-accent");
-  await expect(link).toHaveClass("hover:text-accent-hover");
+  await expect(link).toHaveClass("text-brand-primary");
+  await expect(link).toHaveClass("hover:text-brand-primary-hover");
 });
 
 Primary.test("should have underline classes", async ({ canvas }) => {
@@ -92,7 +92,7 @@ CustomClass.test("should have custom classes", async ({ canvas }) => {
 
 CustomClass.test("should preserve default classes", async ({ canvas }) => {
   const link = await canvas.findByRole("link");
-  await expect(link).toHaveClass("text-accent");
+  await expect(link).toHaveClass("text-brand-primary");
 });
 
 /** Link with complex children (icon + text) */
@@ -174,6 +174,6 @@ AllProps.test("should have all link attributes", async ({ canvas }) => {
 AllProps.test("should combine all classes", async ({ canvas }) => {
   const link = await canvas.findByRole("link");
   await expect(link).toHaveClass("font-semibold");
-  await expect(link).toHaveClass("text-accent");
+  await expect(link).toHaveClass("text-brand-primary");
   await expect(link).toHaveClass("hover:underline");
 });

@@ -1,7 +1,7 @@
 import bundleAnalyzer from "@next/bundle-analyzer";
 import createMDX from "@next/mdx";
-import type { CodeHikeConfig } from "codehike/mdx";
-import type { NextConfig } from "next";
+import { type CodeHikeConfig } from "codehike/mdx";
+import { type NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],

@@ -1,0 +1,26 @@
+/* Grid layout, color-mix, and :last-child must stay in CSS */
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  padding: 1rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--page-text-muted) 30%, transparent);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+/* color-mix background must stay in CSS */
+.name {
+  display: inline-block;
+  width: fit-content;
+  padding: 0.25rem 0.5rem;
+  font-family: monospace;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--page-text-body);
+  background: color-mix(in srgb, var(--page-text-muted) 15%, transparent);
+  border-radius: 4px;
+}

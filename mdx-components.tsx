@@ -1,4 +1,4 @@
-import type { MDXComponents } from "mdx/types";
+import { type MDXComponents } from "mdx/types";
 import { Code, InlineCode } from "#components/Code/Code";
 import { Link } from "#components/Link/Link";
 

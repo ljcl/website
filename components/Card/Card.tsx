@@ -27,7 +27,7 @@ export const Card = ({
   return (
     <article className="group mt-12 first:mt-0">
       <Link href={`${href}`} underline={false}>
-        <h3 className="font-semibold text-lg uppercase italic underline-offset-2 hover:underline group-hover:text-accent-hover">
+        <h3 className="font-semibold text-lg uppercase italic underline-offset-2 hover:underline group-hover:text-brand-primary-hover">
           {iconWithClasses && (
             <div className="inline-block">
               {iconWithClasses}
@@ -37,7 +37,7 @@ export const Card = ({
           {title}
         </h3>
         {description && (
-          <p className="mt-4 text-text-secondary">{description}</p>
+          <p className="mt-4 text-page-text-secondary">{description}</p>
         )}
       </Link>
     </article>

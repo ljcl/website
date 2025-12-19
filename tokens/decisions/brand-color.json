@@ -18,20 +18,20 @@
       }
     },
     "accent": {
-      "light": {
-        "value": "{colors.rose.400}",
-        "type": "color",
-        "comment": "Lighter accent for dark mode hover states"
-      },
       "default": {
         "value": "{colors.rose.500}",
         "type": "color",
-        "comment": "Accent color"
+        "comment": "Accent color for secondary emphasis"
       },
-      "dark": {
-        "value": "{colors.rose.600}",
+      "hover": {
+        "value": "{colors.rose.400}",
         "type": "color",
-        "comment": "Darker accent for emphasis"
+        "comment": "Accent color hover state"
+      },
+      "inverse": {
+        "value": "{colors.rose.400}",
+        "type": "color",
+        "comment": "Accent color in dark mode"
       }
     }
   }

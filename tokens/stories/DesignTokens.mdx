@@ -1,0 +1,102 @@
+import { Meta, Canvas, TableOfContents } from "@storybook/addon-docs/blocks";
+import * as Options from "./Options.stories";
+import * as Decisions from "./Decisions.stories";
+
+<Meta name="Design Tokens" title="Design Tokens" />
+
+<TableOfContents />
+
+# Design Tokens
+
+This project uses a **three-tier token architecture** powered by Style Dictionary v5, inspired by [Sam Iam's approach](https://samiamdesigns.substack.com/p/a-new-approach-to-naming-design-tokens).
+
+## The Levels
+
+### Level 1 - Options
+
+Raw design values with no semantic meaning. These are the building blocks.
+
+- **Colors**: `--colors-rose-600`, `--colors-gray-500`
+- **Spacing**: `--spacing-4`, `--spacing-14`
+- **Typography**: `--typography-fontSize-title-fluid`
+
+Options are defined in `tokens/options/` and should rarely be used directly in components.
+
+<Canvas of={Options.Options} />
+
+### Level 2 - Decisions
+
+Purpose-based tokens that reference Options. These encode design intent and are what you should use in components.
+
+- **Brand**: `--brand-color-primary`, `--brand-color-accent`
+- **Page**: `--page-text-body`, `--page-bg`
+- **Code**: `--code-bg`, `--code-border`
+- **Layout**: `--layout-container-padding`
+
+Decisions are defined in `tokens/decisions/` and include `default/inverse` variants for automatic dark mode support.
+
+<Canvas of={Decisions.Decisions} />
+
+### Level 3 - Components (Future)
+
+Component-specific tokens that reference Decisions. Not yet implemented.
+
+---
+
+## Dark Mode
+
+Tokens use a `default/inverse` pattern for theming:
+
+```json
+{
+  "page-text-body": {
+    "default": { "value": "{colors.base.black}" },
+    "inverse": { "value": "{colors.gray.200}" }
+  }
+}
+```
+
+Style Dictionary automatically generates:
+
+- `variables-light.css` with default values
+- `variables-dark.css` wrapped in `@media (prefers-color-scheme: dark)`
+
+Each token row below shows both **Light** and **Dark** values side-by-side when an inverse exists.
+
+
+## Usage
+
+### In CSS
+
+```css
+.my-component {
+  color: var(--page-text-body);
+  background: var(--page-bg);
+  border: 1px solid var(--brand-color-primary);
+}
+```
+
+### In Tailwind
+
+Tokens are mapped to Tailwind utilities in `tailwind.config.js`:
+
+```jsx
+<div className="text-brand-primary bg-page-bg">Content</div>
+```
+
+### Reference Chain
+
+Decision tokens show their reference underneath the computed value:
+
+- `--brand-color-primary` ← `{colors.rose.600}`
+
+This helps to understand how semantic tokens map back to raw values.
+
+---
+
+## Adding New Tokens
+
+1. Add to `tokens/options/` (raw values) or `tokens/decisions/` (semantic)
+2. Run `pnpm tokens` to regenerate
+3. Tokens auto-appear in this documentation
+4. Update `tailwind.config.js` if you want Tailwind utilities

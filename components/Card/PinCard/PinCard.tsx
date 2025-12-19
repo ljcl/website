@@ -1,4 +1,4 @@
-import type { PinboardPostPrepared } from "#lib/pinboard";
+import { type PinboardPostPrepared } from "#lib/pinboard";
 import { Card } from "../Card";
 import { ExternalLinkIcon } from "./ExternalLinkIcon";
 

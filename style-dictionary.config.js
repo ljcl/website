@@ -76,6 +76,47 @@ const inverseCSSFormat = {
 StyleDictionary.registerFormat(inverseCSSFormat);
 
 /**
+ * Register custom format for Storybook documentation
+ * Outputs flat array with full metadata including inverse values
+ * @type {import('style-dictionary/types').Format}
+ */
+const storybookFormat = {
+  name: "json/storybook",
+  format: async ({ dictionary }) => {
+    const tokens = dictionary.allTokens
+      .filter((token) => !token.path.includes("inverse"))
+      .map((token) => {
+        // Find matching inverse token
+        const inversePath = [...token.path.slice(0, -1), "inverse"];
+        const inverseToken = dictionary.allTokens.find(
+          (t) => t.path.join(".") === inversePath.join("."),
+        );
+
+        // Clean path (remove 'default' suffix)
+        const cleanPath = token.path.filter((p) => p !== "default");
+        const cleanName = cleanPath.join("-");
+
+        return {
+          name: `--${cleanName}`,
+          path: cleanPath,
+          value: token.value,
+          original: token.original?.value || token.value,
+          type: token.type || token.$type || "unknown",
+          comment: token.comment || null,
+          tier: token.filePath?.includes("options") ? "options" : "decisions",
+          category: token.path[0],
+          inverseValue: inverseToken?.value || null,
+          inverseOriginal: inverseToken?.original?.value || null,
+        };
+      });
+
+    return `${JSON.stringify({ tokens }, null, 2)}\n`;
+  },
+};
+
+StyleDictionary.registerFormat(storybookFormat);
+
+/**
  * Light mode configuration (default variants only)
  * @type {import('style-dictionary/types').Config}
  */
@@ -141,6 +182,10 @@ const lightConfig = {
         {
           destination: "tokens-metadata.json",
           format: "json/nested",
+        },
+        {
+          destination: "tokens-for-storybook.json",
+          format: "json/storybook",
         },
       ],
     },

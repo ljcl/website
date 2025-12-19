@@ -1,7 +1,19 @@
 import { defineMain } from "@storybook/nextjs-vite/node";
 
 export default defineMain({
-  stories: ["../**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  stories: [
+    {
+      directory: "../tokens/stories",
+    },
+    {
+      titlePrefix: "Components",
+      directory: "../components",
+    },
+    {
+      titlePrefix: "App",
+      directory: "../app",
+    },
+  ],
   addons: [
     "@storybook/addon-docs",
     "@storybook/addon-a11y",

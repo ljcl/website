@@ -24,7 +24,7 @@ export const Link = ({
     target={target}
     rel={rel}
     className={cn(
-      "text-accent hover:text-accent-hover",
+      "text-brand-primary hover:text-brand-primary-hover",
       underline && "no-underline underline-offset-2 hover:underline",
       className,
     )}

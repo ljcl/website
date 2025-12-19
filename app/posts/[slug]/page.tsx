@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { type Metadata } from "next";
 import { notFound } from "next/navigation";
 import Balancer from "react-wrap-balancer";
 import { Link } from "#components/Link/Link";
@@ -65,7 +65,7 @@ export default async function PostPage({ params }: PageProps) {
             <Link href="/" className="mb-12 block text-meta no-underline">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="-top-px relative inline h-5 w-5"
+                className="relative -top-px inline h-5 w-5"
                 viewBox="0 0 20 20"
                 fill="currentColor"
                 aria-hidden="true"

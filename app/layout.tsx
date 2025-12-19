@@ -1,8 +1,9 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/react";
-import { Inter } from "next/font/google";
 import "./global.css";
-import type { Metadata } from "next";
+
+import { type Metadata } from "next";
+import { Inter } from "next/font/google";
 import { Bio } from "#components/Bio/Bio";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });

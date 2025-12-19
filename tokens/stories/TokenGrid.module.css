@@ -1,0 +1,8 @@
+/* Grid layout and color-mix must stay in CSS */
+.tableHeader {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  padding: 0.75rem 0;
+  border-bottom: 2px solid color-mix(in srgb, var(--page-text-muted) 40%, transparent);
+}

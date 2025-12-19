@@ -1,4 +1,4 @@
-import type { PostMetadata } from "#lib/posts";
+import { type PostMetadata } from "#lib/posts";
 import { Card } from "../Card";
 
 interface PostCardProps extends PostMetadata {}

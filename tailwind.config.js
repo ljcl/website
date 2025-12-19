@@ -31,20 +31,29 @@ export default {
     },
     extend: {
       colors: {
-        accent: "var(--brand-color-primary)",
-        "accent-hover": "var(--brand-color-primary-hover)",
-        "text-primary": "var(--content-text-body)",
-        "text-heading": "var(--content-text-heading)",
-        "text-muted": "var(--content-text-muted)",
-        "text-secondary": "var(--content-text-secondary)",
-        "bg-page": "var(--content-bg-page)",
-        // CodeHike colors
-        "code-bg": "var(--ch-bg)",
-        "code-title-bg": "var(--ch-title-bg)",
-        "code-fg": "var(--ch-fg)",
-        "code-highlight": "var(--ch-highlight-bg)",
-        "code-border": "var(--ch-border-color)",
-        "code-mark": "var(--content-border-mark)",
+        // Brand colors
+        "brand-primary": "var(--brand-color-primary)",
+        "brand-primary-hover": "var(--brand-color-primary-hover)",
+        "brand-accent": "var(--brand-color-accent)",
+        "brand-accent-hover": "var(--brand-color-accent-hover)",
+
+        // Page text
+        "page-text-body": "var(--page-text-body)",
+        "page-text-heading": "var(--page-text-heading)",
+        "page-text-muted": "var(--page-text-muted)",
+        "page-text-secondary": "var(--page-text-secondary)",
+
+        // Page background
+        "page-bg": "var(--page-bg)",
+
+        // Code block colors
+        "code-bg": "var(--code-bg)",
+        "code-bg-title": "var(--code-bg-title)",
+        "code-text": "var(--code-text)",
+        "code-text-badge": "var(--code-text-badge)",
+        "code-bg-badge": "var(--code-bg-badge)",
+        "code-border": "var(--code-border)",
+        "code-border-mark": "var(--code-border-mark)",
       },
       spacing: {
         "container-padding": "var(--layout-container-padding)",
@@ -55,10 +64,10 @@ export default {
         lg: typographyBlock,
       },
       borderColor: {
-        "code-border": "var(--ch-border-color)",
+        "code-border": "var(--code-border)",
       },
       backgroundColor: {
-        "code-highlight": "var(--ch-highlight-bg)",
+        "code-highlight": "var(--brand-color-primary)",
       },
     },
     screens: {

@@ -1,37 +1,33 @@
 :root {
-  /* Background colors */
-  --ch-bg: var(--content-bg-code);
-  --ch-title-bg: var(--content-bg-code-title);
+  /* Map CodeHike vars to design tokens */
+  --ch-bg: var(--code-bg);
+  --ch-title-bg: var(--code-bg-title);
+  --ch-fg: var(--code-text);
+  --ch-border-color: var(--code-border);
+  --ch-highlight-bg: var(--brand-color-primary);
+  --ch-highlight-fg: var(--colors-base-white);
   --ch-selection-bg: var(--brand-color-primary);
 
-  /* Text colors */
-  --ch-fg: var(--content-text-code);
-  --ch-comment: var(--content-text-muted);
-
   /* Syntax highlighting */
-  --ch-keyword: var(--brand-color-accent-light);
+  --ch-keyword: var(--brand-color-accent-hover);
   --ch-string: var(--colors-rose-400);
   --ch-function: var(--brand-color-primary);
   --ch-variable: var(--colors-gray-200);
   --ch-number: var(--brand-color-accent);
+  --ch-comment: var(--page-text-muted);
 
-  /* Annotation colors */
-  --ch-highlight-bg: var(--brand-color-primary);
-  --ch-highlight-fg: var(--colors-base-white);
-  --ch-border-color: var(--content-border-code);
-
-  /* UI elements */
-  --ch-badge-bg: var(--content-bg-code-badge);
-  --ch-badge-fg: var(--content-code-badge-text);
+  /* Badge */
+  --ch-badge-bg: var(--code-bg-badge);
+  --ch-badge-fg: var(--code-text-badge);
 }
 
-/* Dark mode overrides */
 @media (prefers-color-scheme: dark) {
   :root {
-    --ch-selection-bg: var(--brand-color-accent-dark);
+    --ch-selection-bg: var(--brand-color-accent);
   }
 }
 
+/* CodeHike numbered theme variables */
 :root {
   --ch-0: light;
   --ch-1: #6e7781;

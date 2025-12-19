@@ -9,13 +9,13 @@ export default function NotFound() {
         <Balancer>{"Not found"}</Balancer>
       </h1>
       <div className={`layout-container ${styles.meta}`}>
-        <p className="text-sm text-text-muted">
+        <p className="text-page-text-muted text-sm">
           {"Sorry, couldn't find that one"}
         </p>
         <Link href="/" className="mb-12 block text-meta no-underline">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="-top-px relative inline h-5 w-5"
+            className="relative -top-px inline h-5 w-5"
             viewBox="0 0 20 20"
             fill="currentColor"
           >

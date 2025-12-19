@@ -1,8 +1,8 @@
 "use client";
 
 import { type AnnotationHandler, getPreRef, InnerPre } from "codehike/code";
-import type React from "react";
 import { useLayoutEffect, useRef } from "react";
+import type React from "react";
 
 export const FocusHandlerPreWithRef: AnnotationHandler["PreWithRef"] = (
   props,

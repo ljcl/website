@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { type Metadata } from "next";
 import { PinCard } from "#components/Card/PinCard/PinCard";
 import { PostCard } from "#components/Card/PostCard/PostCard";
 import { VisuallyHidden } from "#components/VisuallyHidden/VisuallyHidden";

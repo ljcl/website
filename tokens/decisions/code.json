@@ -1,0 +1,83 @@
+{
+  "code": {
+    "text": {
+      "default": {
+        "value": "{colors.dark.bg}",
+        "type": "color",
+        "comment": "Code block text color"
+      },
+      "inverse": {
+        "value": "{colors.gray.200}",
+        "type": "color",
+        "comment": "Code block text in dark mode"
+      }
+    },
+    "text-badge": {
+      "default": {
+        "value": "hsla(0, 0%, 100%, 0.5)",
+        "type": "color",
+        "comment": "Code badge text color"
+      },
+      "inverse": {
+        "value": "rgba(255, 255, 255, 0.6)",
+        "type": "color",
+        "comment": "Code badge text in dark mode"
+      }
+    },
+    "bg": {
+      "default": {
+        "value": "{colors.base.white}",
+        "type": "color",
+        "comment": "Code block background color"
+      },
+      "inverse": {
+        "value": "{colors.base.black}",
+        "type": "color",
+        "comment": "Code block background in dark mode"
+      }
+    },
+    "bg-title": {
+      "default": {
+        "value": "{colors.code.title.light}",
+        "type": "color",
+        "comment": "Code title bar background"
+      },
+      "inverse": {
+        "value": "{colors.code.title.dark}",
+        "type": "color",
+        "comment": "Code title bar background in dark mode"
+      }
+    },
+    "bg-badge": {
+      "default": {
+        "value": "rgba(0, 0, 0, 0.2)",
+        "type": "color",
+        "comment": "Code badge background"
+      },
+      "inverse": {
+        "value": "rgba(255, 255, 255, 0.1)",
+        "type": "color",
+        "comment": "Code badge background in dark mode"
+      }
+    },
+    "border": {
+      "default": {
+        "value": "{colors.gray.200}",
+        "type": "color",
+        "comment": "Code block border color"
+      },
+      "inverse": {
+        "value": "{colors.gray.700}",
+        "type": "color",
+        "comment": "Code block border in dark mode"
+      }
+    },
+    "border-mark": {
+      "default": {
+        "value": "{colors.code.mark}",
+        "type": "color",
+        "comment": "Code diff mark color"
+      }
+    }
+  }
+}

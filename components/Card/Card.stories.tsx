@@ -31,7 +31,7 @@ Post.test(
 
     await userEvent.hover(link);
     // Heading should have hover classes applied
-    await expect(heading).toHaveClass(/group-hover:text-accent-hover/);
+    await expect(heading).toHaveClass(/group-hover:text-brand-primary-hover/);
   },
 );
 

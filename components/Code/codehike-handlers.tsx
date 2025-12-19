@@ -1,9 +1,9 @@
-import type {
-  AnnotationHandler,
-  BlockAnnotation,
-  InlineAnnotation,
+import {
+  type AnnotationHandler,
+  type BlockAnnotation,
+  type InlineAnnotation,
+  InnerLine,
 } from "codehike/code";
-import { InnerLine } from "codehike/code";
 import { FocusHandlerPreWithRef } from "./FocusHandlerPreWithRef";
 
 /**
@@ -108,7 +108,7 @@ export const calloutHandler: AnnotationHandler = {
         >
           <div
             style={{ left: `${column}ch` }}
-            className="-translate-y-1/2 -top-px absolute h-2 w-2 rotate-45 border-code-mark border-t border-l bg-code-bg"
+            className="absolute -top-px h-2 w-2 -translate-y-1/2 rotate-45 border-code-mark border-t border-l bg-code-bg"
           />
           <p>{annotation.query}</p>
         </div>

@@ -5,7 +5,8 @@
   gap: 1.5rem;
   align-items: start;
   padding: 1rem 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--page-text-muted) 30%, transparent);
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--page-text-muted) 30%, transparent);
 }
 
 .row:last-child {

@@ -1,14 +1,17 @@
 import Image from "next/image";
 import { Link } from "#components/Link/Link";
-import { cn } from "#util/cn";
 import styles from "./bio.module.css";
 import profileImg from "./profile-img.jpg";
 
 const Bio = () => (
   <aside className="my-14 flex">
-    <div className={cn("mr-4 mb-8", styles.avatar)}>
-      <figure className={cn("h-24 w-24", styles.mask, styles.maskSquircle)}>
-        <Image src={profileImg} alt="Luke Clark" />
+    <div className="relative mr-4 mb-8 inline-flex">
+      <figure className={`block h-24 w-24 overflow-hidden ${styles.mask}`}>
+        <Image
+          src={profileImg}
+          alt="Luke Clark"
+          className="h-full w-full object-cover"
+        />
       </figure>
     </div>
     <div className="font-bold">

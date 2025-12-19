@@ -1,6 +1,13 @@
 import { defineMain } from "@storybook/nextjs-vite/node";
 
 export default defineMain({
+  viteFinal: (config) => ({
+    ...config,
+    optimizeDeps: {
+      ...config.optimizeDeps,
+      include: [...(config.optimizeDeps?.include ?? []), "react-wrap-balancer"],
+    },
+  }),
   stories: [
     {
       directory: "../tokens/stories",

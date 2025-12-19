@@ -59,6 +59,15 @@ export default {
         "container-padding": "var(--layout-container-padding)",
         section: "var(--layout-section-spacing)",
       },
+      maxWidth: {
+        narrow: "var(--layout-container-maxWidth-narrow)",
+      },
+      fontSize: {
+        "title-fluid": [
+          "var(--typography-fontSize-title-fluid)",
+          { lineHeight: "1.1" },
+        ],
+      },
       typography: {
         xl: typographyBlock,
         lg: typographyBlock,

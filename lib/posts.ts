@@ -13,6 +13,11 @@ export interface PostMetadata {
   slug: string;
 }
 
+export interface AdjacentPosts {
+  prev?: PostMetadata;
+  next?: PostMetadata;
+}
+
 async function* getMdxFiles(
   dir: string,
 ): AsyncGenerator<PostMetadata, void, unknown> {
@@ -80,6 +85,23 @@ export const getSinglePostMeta = async (slug: string) => {
   return {
     meta: augmentMetadata(post.metadata),
     slug,
+  };
+};
+
+/**
+ * Returns the chronologically adjacent posts around the given slug.
+ * prev = older post (chronologically before), next = newer post (chronologically after).
+ * getAllPosts returns newest-first, so index+1 is older (prev) and index-1 is newer (next).
+ */
+export const getAdjacentPosts = async (
+  currentSlug: string,
+): Promise<AdjacentPosts> => {
+  const posts = await getAllPosts();
+  const index = posts.findIndex((post) => post.slug === currentSlug);
+  if (index === -1) return {};
+  return {
+    prev: posts[index + 1],
+    next: posts[index - 1],
   };
 };
 

@@ -46,8 +46,10 @@ const getContentDate = (content: PostMetadata | PinboardPostPrepared) => {
 };
 
 export default async function Page() {
-  const posts = await getAllPosts();
-  const pins = await getAllPins({ AUTH_TOKEN: process.env.PINBOARD_AUTH });
+  const [posts, pins] = await Promise.all([
+    getAllPosts(),
+    getAllPins({ AUTH_TOKEN: process.env.PINBOARD_AUTH }),
+  ]);
   const content = mergePostsAndPins(posts, pins);
 
   return (

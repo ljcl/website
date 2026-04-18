@@ -6,7 +6,7 @@ const meta = preview.meta({
   component: Link,
 });
 
-/** Default link with underline on hover */
+/** Internal link rendered via next/link. Hover underline comes from global a rules. */
 export const Primary = meta.story({
   args: {
     href: "/example",
@@ -19,33 +19,28 @@ Primary.test("should render link with correct href", async ({ canvas }) => {
   await expect(link).toHaveAttribute("href", "/example");
 });
 
-Primary.test("should have accent color classes", async ({ canvas }) => {
-  const link = await canvas.findByRole("link");
-  await expect(link).toHaveClass("text-brand-primary");
-  await expect(link).toHaveClass("hover:text-brand-primary-hover");
-});
+Primary.test(
+  "should not render external glyph for internal href",
+  async ({ canvas }) => {
+    const link = await canvas.findByRole("link");
+    const svg = link.querySelector("svg");
+    await expect(svg).not.toBeInTheDocument();
+  },
+);
 
-Primary.test("should have underline classes", async ({ canvas }) => {
-  const link = await canvas.findByRole("link");
-  await expect(link).toHaveClass("hover:underline");
-  await expect(link).toHaveClass("no-underline");
-  await expect(link).toHaveClass("underline-offset-2");
-});
-
-/** Link without underline */
+/** Link with underline prop disabled (retained for back-compat, no visible effect). */
 export const NoUnderline = Primary.extend({
   args: {
     underline: false,
   },
 });
 
-NoUnderline.test("should not have underline classes", async ({ canvas }) => {
+NoUnderline.test("should still render link", async ({ canvas }) => {
   const link = await canvas.findByRole("link");
-  await expect(link).not.toHaveClass("hover:underline");
-  await expect(link).not.toHaveClass("no-underline");
+  await expect(link).toBeInTheDocument();
 });
 
-/** External link with target and rel */
+/** External link renders a plain anchor with an ArrowUpRight glyph suffix. */
 export const External = meta.story({
   args: {
     href: "https://example.com",
@@ -75,7 +70,24 @@ External.test(
   },
 );
 
-/** Link with custom className */
+External.test("should render external glyph", async ({ canvas }) => {
+  const link = await canvas.findByRole("link");
+  const svg = link.querySelector("svg");
+  await expect(svg).toBeInTheDocument();
+  await expect(svg).toHaveAttribute("aria-hidden", "true");
+});
+
+External.test(
+  "should use inline-flex with baseline items for glyph alignment",
+  async ({ canvas }) => {
+    const link = await canvas.findByRole("link");
+    await expect(link).toHaveClass("inline-flex");
+    await expect(link).toHaveClass("items-baseline");
+    await expect(link).toHaveClass("gap-1");
+  },
+);
+
+/** Link with custom className merged onto the anchor. */
 export const CustomClass = meta.story({
   args: {
     href: "/custom",
@@ -90,12 +102,7 @@ CustomClass.test("should have custom classes", async ({ canvas }) => {
   await expect(link).toHaveClass("text-lg");
 });
 
-CustomClass.test("should preserve default classes", async ({ canvas }) => {
-  const link = await canvas.findByRole("link");
-  await expect(link).toHaveClass("text-brand-primary");
-});
-
-/** Link with complex children (icon + text) */
+/** Link with complex children (icon + text) - internal variant */
 export const WithIcon = meta.story({
   args: {
     href: "/icon-link",
@@ -152,7 +159,7 @@ LongText.test("should handle long text content", async ({ canvas }) => {
   await expect(link.textContent?.length || 0).toBeGreaterThan(50);
 });
 
-/** Link with all props combined */
+/** External link combining all props */
 export const AllProps = meta.story({
   args: {
     href: "https://github.com/example/repo",
@@ -171,9 +178,13 @@ AllProps.test("should have all link attributes", async ({ canvas }) => {
   await expect(link).toHaveAttribute("rel", "noopener noreferrer");
 });
 
-AllProps.test("should combine all classes", async ({ canvas }) => {
+AllProps.test("should include custom className", async ({ canvas }) => {
   const link = await canvas.findByRole("link");
   await expect(link).toHaveClass("font-semibold");
-  await expect(link).toHaveClass("text-brand-primary");
-  await expect(link).toHaveClass("hover:underline");
+});
+
+AllProps.test("should render the external glyph", async ({ canvas }) => {
+  const link = await canvas.findByRole("link");
+  const svgs = link.querySelectorAll("svg");
+  await expect(svgs.length).toBeGreaterThanOrEqual(1);
 });

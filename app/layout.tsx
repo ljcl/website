@@ -3,10 +3,41 @@ import { Analytics } from "@vercel/analytics/react";
 import "./global.css";
 
 import { type Metadata } from "next";
-import { Inter } from "next/font/google";
+import {
+  Cormorant_Garamond,
+  JetBrains_Mono,
+  Pirata_One,
+  Space_Grotesk,
+} from "next/font/google";
 import { Bio } from "#components/Bio/Bio";
+import { Masthead } from "#components/Masthead/Masthead";
 
-const inter = Inter({ subsets: ["latin"], display: "swap" });
+const display = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const sans = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
+const blackletter = Pirata_One({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-blackletter",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.lukeclark.com.au"),
@@ -22,8 +53,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.className}>
-      <body className="text-base">
+    <html
+      lang="en"
+      className={`${display.variable} ${sans.variable} ${mono.variable} ${blackletter.variable}`}
+    >
+      <body>
+        <Masthead />
         <main>{children}</main>
         <section className="layout-container">
           <Bio />

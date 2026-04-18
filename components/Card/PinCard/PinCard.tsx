@@ -2,13 +2,15 @@ import { type PinboardPostPrepared } from "#lib/pinboard";
 import { Card } from "../Card";
 import { ExternalLinkIcon } from "./ExternalLinkIcon";
 
-interface PinCardProps extends PinboardPostPrepared {}
-
-export const PinCard: React.FC<PinCardProps> = (props) => (
+export const PinCard = ({
+  description,
+  extended,
+  href,
+}: PinboardPostPrepared) => (
   <Card
-    title={props.description}
-    description={props.extended}
-    href={props.href}
+    title={description}
+    description={extended}
+    href={href}
     icon={ExternalLinkIcon}
     iconText="External Link"
   />

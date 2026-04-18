@@ -1,7 +1,8 @@
 export const ExternalLinkIcon = (
   <svg
     viewBox="0 0 15 15"
-    className="h-6 w-6"
+    className="va-middle relative inline-block h-6 w-6"
+    style={{ top: "-2px", paddingRight: "2px" }}
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"

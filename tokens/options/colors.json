@@ -1,90 +1,109 @@
 {
   "colors": {
-    "rose": {
-      "400": {
-        "value": "#fb7185",
-        "type": "color",
-        "comment": "Rose 400 - bright rose for dark mode accents"
-      },
-      "500": {
-        "value": "#f43f5e",
-        "type": "color",
-        "comment": "Rose 500 - medium rose for hover states"
-      },
-      "600": {
-        "value": "#e11d48",
-        "type": "color",
-        "comment": "Rose 600 - deep rose for primary accents"
-      }
-    },
-    "gray": {
-      "200": {
-        "value": "#e5e5e5",
-        "type": "color",
-        "comment": "Gray 200 - soft gray for dark mode text"
-      },
-      "300": {
-        "value": "#d4d4d4",
-        "type": "color",
-        "comment": "Gray 300 - light gray for dark mode headings"
-      },
-      "500": {
-        "value": "#6b7280",
-        "type": "color",
-        "comment": "Gray 500 - medium gray for muted text"
-      },
-      "600": {
-        "value": "#a3a3a3",
-        "type": "color",
-        "comment": "Gray 600 - gray for secondary text"
-      },
-      "700": {
-        "value": "#374151",
-        "type": "color",
-        "comment": "Gray 700 - dark gray for light mode text"
-      }
-    },
-    "base": {
-      "white": {
-        "value": "#ffffff",
-        "type": "color",
-        "comment": "Pure white"
-      },
-      "black": {
+    "void": {
+      "000": {
         "value": "#000000",
         "type": "color",
-        "comment": "Pure black"
+        "comment": "Pure black. Avoid in favor of void.050."
+      },
+      "050": {
+        "value": "#07060a",
+        "type": "color",
+        "comment": "Canonical page background. A hair warmer than pure black."
+      },
+      "100": {
+        "value": "#0d0b10",
+        "type": "color",
+        "comment": "Card / panel background (elev-1)."
+      },
+      "200": {
+        "value": "#14121a",
+        "type": "color",
+        "comment": "Nested panel / menu (elev-2)."
+      },
+      "300": { "value": "#1c1a22", "type": "color", "comment": "Deep void." },
+      "400": {
+        "value": "#2a2830",
+        "type": "color",
+        "comment": "Highest void surface."
       }
     },
-    "code": {
-      "mark": {
-        "value": "rgb(14, 165, 233)",
+    "bone": {
+      "100": {
+        "value": "#3a3740",
         "type": "color",
-        "comment": "Code block mark color"
+        "comment": "Ash. Borders and rules on dark."
       },
-      "bg": {
-        "value": "#0d1116",
+      "200": {
+        "value": "#57545e",
         "type": "color",
-        "comment": "Code block background color"
+        "comment": "Tertiary text / captions."
       },
-      "title": {
-        "light": {
-          "value": "#f8fafc",
-          "type": "color",
-          "comment": "Code block background color"
-        },
-        "dark": {
-          "value": "#171717",
-          "type": "color",
-          "comment": "Code block background color dark"
-        }
+      "300": {
+        "value": "#817d88",
+        "type": "color",
+        "comment": "Secondary text."
+      },
+      "400": {
+        "value": "#b6b2bc",
+        "type": "color",
+        "comment": "High-muted text."
+      },
+      "500": {
+        "value": "#d8d3dc",
+        "type": "color",
+        "comment": "Light parchment."
+      },
+      "600": {
+        "value": "#ebe6e4",
+        "type": "color",
+        "comment": "Primary offwhite. Aged paper, not pure white."
+      },
+      "700": {
+        "value": "#f5f0ea",
+        "type": "color",
+        "comment": "Parchment. Inverse page bg."
       }
     },
-    "dark": {
-      "bg": {
-        "value": "#1a1a1a",
+    "blood": {
+      "100": {
+        "value": "#2a0408",
         "type": "color",
-        "comment": "Dark mode page background"
+        "comment": "Deepest blood. Backgrounds and tints."
+      },
+      "200": { "value": "#4a060c", "type": "color", "comment": "Wash / tint." },
+      "300": { "value": "#7a0a12", "type": "color", "comment": "Deep mark." },
+      "400": {
+        "value": "#9f0d17",
+        "type": "color",
+        "comment": "Primary mark. The brand accent."
+      },
+      "500": {
+        "value": "#c5111c",
+        "type": "color",
+        "comment": "Bright mark. Inverse primary."
+      },
+      "600": {
+        "value": "#e61622",
+        "type": "color",
+        "comment": "Signal red. Hover / active."
+      },
+      "700": {
+        "value": "#ff1a26",
+        "type": "color",
+        "comment": "Maximum red. Use sparingly."
+      }
+    },
+    "ember": {
+      "400": {
+        "value": "#6b2411",
+        "type": "color",
+        "comment": "Smoldering accent. Warnings / ceremony."
+      },
+      "500": {
+        "value": "#8a3418",
+        "type": "color",
+        "comment": "Ember highlight."
       }
     }
   }

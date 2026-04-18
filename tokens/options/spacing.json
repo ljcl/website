@@ -1,24 +1,23 @@
 {
   "spacing": {
-    "4": {
-      "value": "1rem",
+    "1": { "value": "0.25rem", "type": "dimension", "comment": "4px" },
+    "2": { "value": "0.5rem", "type": "dimension", "comment": "8px" },
+    "3": { "value": "0.75rem", "type": "dimension", "comment": "12px" },
+    "4": { "value": "1rem", "type": "dimension", "comment": "16px base" },
+    "5": {
+      "value": "1.5rem",
       "type": "dimension",
-      "comment": "Base spacing unit - 16px"
+      "comment": "24px card padding min"
     },
-    "12": {
-      "value": "3rem",
-      "type": "dimension",
-      "comment": "Large spacing - 48px"
-    },
-    "14": {
-      "value": "3.5rem",
-      "type": "dimension",
-      "comment": "Section spacing - 56px"
-    },
+    "6": { "value": "2rem", "type": "dimension", "comment": "32px" },
+    "7": { "value": "3rem", "type": "dimension", "comment": "48px gutter" },
+    "8": { "value": "4rem", "type": "dimension", "comment": "64px" },
+    "9": { "value": "6rem", "type": "dimension", "comment": "96px" },
+    "10": { "value": "9rem", "type": "dimension", "comment": "144px" },
     "breakout": {
       "value": "-6rem",
       "type": "dimension",
-      "comment": "Negative spacing for breakout layouts - -96px"
+      "comment": "Negative spacing for full-bleed breakouts."
     }
   }
 }

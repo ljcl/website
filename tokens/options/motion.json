@@ -1,0 +1,30 @@
+{
+  "motion": {
+    "ease": {
+      "ritual": {
+        "value": "cubic-bezier(0.2, 0.6, 0.2, 1)",
+        "type": "cubicBezier",
+        "comment": "Slow, deliberate. The only approved ease for Ordo."
+      },
+      "linear": { "value": "linear", "type": "cubicBezier" }
+    },
+    "duration": {
+      "fast": {
+        "value": "160ms",
+        "type": "duration",
+        "comment": "Hover / press."
+      },
+      "base": {
+        "value": "320ms",
+        "type": "duration",
+        "comment": "Default transition."
+      },
+      "slow": { "value": "800ms", "type": "duration" },
+      "ritual": {
+        "value": "1333ms",
+        "type": "duration",
+        "comment": "Hero reveals."
+      }
+    }
+  }
+}

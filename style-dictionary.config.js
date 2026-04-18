@@ -10,8 +10,8 @@ import { fileHeader } from "style-dictionary/utils";
  * Tier 3 (Components): Component-specific tokens (future)
  *
  * Key Innovation: Single source with default/inverse variants
- * - Light mode outputs .default variants (suffix removed)
- * - Dark mode outputs .inverse variants (suffix removed, wrapped in media query)
+ * - Dark mode outputs .default variants (canonical)
+ * - Light mode outputs .inverse variants (wrapped in @media prefers-color-scheme: light)
  */
 
 /**
@@ -69,7 +69,7 @@ const inverseCSSFormat = {
       })
       .join("\n");
 
-    return `${header}@media (prefers-color-scheme: dark) {\n  :root {\n${variables}\n  }\n}\n`;
+    return `${header}@media (prefers-color-scheme: light) {\n  :root {\n${variables}\n  }\n}\n`;
   },
 };
 
@@ -192,6 +192,7 @@ const lightConfig = {
   },
 
   log: {
+    errors: { brokenReferences: "warn" },
     warnings: "warn",
     verbosity: "default",
   },
@@ -221,6 +222,7 @@ const darkConfig = {
   },
 
   log: {
+    errors: { brokenReferences: "warn" },
     warnings: "warn",
     verbosity: "default",
   },

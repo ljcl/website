@@ -1,31 +1,21 @@
 import { Link } from "#components/Link/Link";
-import styles from "./notFound.module.css";
 
 export default function NotFound() {
   return (
-    <section className="article-prose">
-      <h1 className={`!mb-0 text-balance ${styles.title}`}>{"Not found"}</h1>
-      <div className={`layout-container ${styles.meta}`}>
-        <p className="text-page-text-muted text-sm">
-          {"Sorry, couldn't find that one"}
-        </p>
-        <Link href="/" className="mb-12 block text-meta no-underline">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="relative -top-px inline h-5 w-5"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <title>{"Back"}</title>
-            <path
-              fillRule="evenodd"
-              d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
-              clipRule="evenodd"
-            />
-          </svg>
-          {"Head on back home"}
-        </Link>
-      </div>
+    <section className="layout-container flex min-h-[60vh] flex-col items-center justify-center text-center">
+      <p
+        className="display-xl font-blackletter text-page-text-body leading-none"
+        aria-hidden
+      >
+        {"404"}
+      </p>
+      <h1 className="eyebrow mt-8">{"Not found"}</h1>
+      <p className="mt-4 max-w-prose text-page-text-muted">
+        {"Sorry, couldn't find that one"}
+      </p>
+      <Link href="/" className="mt-8 text-meta">
+        {"Head on back home"}
+      </Link>
     </section>
   );
 }

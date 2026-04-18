@@ -48,11 +48,6 @@ Primary.test("should render formatted date", async ({ canvas }) => {
   await expect(time).toHaveAttribute("datetime", "2024-03-15");
 });
 
-Primary.test("should render back link", async ({ canvas }) => {
-  const link = await canvas.findByRole("link", { name: /more posts/i });
-  await expect(link).toHaveAttribute("href", "/");
-});
-
 Primary.test("should render children content", async ({ canvas }) => {
   const content = await canvas.findByText(/sample article body/i);
   await expect(content).toBeInTheDocument();

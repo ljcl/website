@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 64" width="80" height="64" role="img" aria-label="lc.">
+  <style><![CDATA[
+    @import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
+    text { font-family: 'Pirata One', serif; }
+  ]]></style>
+  <text x="0" y="54" font-size="64" fill="currentColor">lc</text>
+  <text x="56" y="54" font-size="64" fill="#9f0d17">.</text>
+</svg>

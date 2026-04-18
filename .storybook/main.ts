@@ -25,6 +25,7 @@ export default defineMain({
     "@storybook/addon-docs",
     "@storybook/addon-a11y",
     "@storybook/addon-vitest",
+    "@storybook/addon-mcp",
   ],
   features: {
     experimentalRSC: true,

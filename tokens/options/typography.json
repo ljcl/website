@@ -1,13 +1,93 @@
 {
   "typography": {
+    "fontFamily": {
+      "display": {
+        "value": "\"Cormorant Garamond\", \"EB Garamond\", \"Times New Roman\", serif",
+        "type": "fontFamily"
+      },
+      "sans": {
+        "value": "\"Space Grotesk\", -apple-system, BlinkMacSystemFont, \"Helvetica Neue\", sans-serif",
+        "type": "fontFamily"
+      },
+      "mono": {
+        "value": "\"JetBrains Mono\", \"SF Mono\", Menlo, monospace",
+        "type": "fontFamily"
+      },
+      "blackletter": {
+        "value": "\"Pirata One\", \"UnifrakturMaguntia\", \"Cormorant Garamond\", serif",
+        "type": "fontFamily"
+      }
+    },
     "fontSize": {
       "title": {
         "fluid": {
           "value": "clamp(1rem, 8vw, 6rem)",
           "type": "dimension",
-          "comment": "Fluid title font size - scales from 16px to 96px"
+          "comment": "Legacy fluid title size. Removed when Article is refactored."
         }
+      },
+      "display": {
+        "xl": {
+          "value": "clamp(4.5rem, 3rem + 8vw, 11rem)",
+          "type": "dimension"
+        },
+        "l": {
+          "value": "clamp(3rem, 2rem + 5vw, 6.5rem)",
+          "type": "dimension"
+        },
+        "m": {
+          "value": "clamp(2rem, 1.5rem + 3vw, 3.75rem)",
+          "type": "dimension"
+        }
+      },
+      "h1": { "value": "clamp(2rem, 1.5rem + 2vw, 3rem)", "type": "dimension" },
+      "h2": {
+        "value": "clamp(1.5rem, 1.25rem + 1vw, 2rem)",
+        "type": "dimension"
+      },
+      "h3": { "value": "1.375rem", "type": "dimension" },
+      "h4": { "value": "1.125rem", "type": "dimension" },
+      "body": { "value": "1rem", "type": "dimension" },
+      "body-sm": { "value": "0.875rem", "type": "dimension" },
+      "caption": { "value": "0.75rem", "type": "dimension" },
+      "micro": {
+        "value": "0.6875rem",
+        "type": "dimension",
+        "comment": "All-caps label size."
       }
+    },
+    "lineHeight": {
+      "display": {
+        "value": "0.92",
+        "type": "other",
+        "comment": "Tight display leading. Letters almost touch."
+      },
+      "heading": { "value": "1.05", "type": "other" },
+      "body": { "value": "1.5", "type": "other" },
+      "tight": { "value": "1.2", "type": "other" }
+    },
+    "letterSpacing": {
+      "display": {
+        "value": "-0.01em",
+        "type": "other",
+        "comment": "Display serif tracking."
+      },
+      "caps": {
+        "value": "0.18em",
+        "type": "other",
+        "comment": "All-caps tracking."
+      },
+      "caps-tight": { "value": "0.08em", "type": "other" }
+    },
+    "fontWeight": {
+      "display": {
+        "value": "500",
+        "type": "other",
+        "comment": "Serif looks heavy fast; 500 is the 'bold'."
+      },
+      "regular": { "value": "400", "type": "other" },
+      "medium": { "value": "500", "type": "other" },
+      "bold": { "value": "700", "type": "other" }
     }
   }
 }

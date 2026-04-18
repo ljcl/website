@@ -2,37 +2,31 @@
   "brand-color": {
     "primary": {
       "default": {
-        "value": "{colors.rose.600}",
+        "value": "{colors.blood.400}",
         "type": "color",
-        "comment": "Primary brand color for interactive elements"
-      },
-      "hover": {
-        "value": "{colors.rose.500}",
-        "type": "color",
-        "comment": "Primary brand color hover state"
+        "comment": "The mark. Reserved for emphasis and active states."
       },
       "inverse": {
-        "value": "{colors.rose.500}",
+        "value": "{colors.blood.500}",
         "type": "color",
-        "comment": "Primary brand color in dark mode (brighter)"
+        "comment": "On bone inverse surfaces. One step brighter for contrast."
       }
+    },
+    "primary-hover": {
+      "default": {
+        "value": "{colors.blood.600}",
+        "type": "color",
+        "comment": "Signal red. Hover / active."
+      },
+      "inverse": { "value": "{colors.blood.400}", "type": "color" }
     },
     "accent": {
       "default": {
-        "value": "{colors.rose.500}",
+        "value": "{colors.blood.200}",
         "type": "color",
-        "comment": "Accent color for secondary emphasis"
+        "comment": "Wash / tint for selection backgrounds."
       },
-      "hover": {
-        "value": "{colors.rose.400}",
-        "type": "color",
-        "comment": "Accent color hover state"
-      },
-      "inverse": {
-        "value": "{colors.rose.400}",
-        "type": "color",
-        "comment": "Accent color in dark mode"
-      }
+      "inverse": { "value": "{colors.blood.300}", "type": "color" }
     }
   }
 }

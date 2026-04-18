@@ -1,66 +1,78 @@
 {
   "page": {
+    "bg": {
+      "default": {
+        "value": "{colors.void.050}",
+        "type": "color",
+        "comment": "Canonical page background. Near-black."
+      },
+      "inverse": {
+        "value": "{colors.bone.700}",
+        "type": "color",
+        "comment": "Parchment. Inverse (light) surface."
+      }
+    },
+    "bg-elev-1": {
+      "default": {
+        "value": "{colors.void.100}",
+        "type": "color",
+        "comment": "Card / panel on void."
+      },
+      "inverse": { "value": "{colors.bone.600}", "type": "color" }
+    },
+    "bg-elev-2": {
+      "default": {
+        "value": "{colors.void.200}",
+        "type": "color",
+        "comment": "Nested panel / menu."
+      },
+      "inverse": { "value": "{colors.bone.500}", "type": "color" }
+    },
     "text": {
       "body": {
         "default": {
-          "value": "{colors.base.black}",
+          "value": "{colors.bone.600}",
           "type": "color",
-          "comment": "Primary body text color"
+          "comment": "Primary text. Aged paper, not pure white."
         },
-        "inverse": {
-          "value": "{colors.gray.200}",
-          "type": "color",
-          "comment": "Primary body text in dark mode"
-        }
+        "inverse": { "value": "{colors.void.050}", "type": "color" }
       },
       "heading": {
-        "default": {
-          "value": "{colors.base.black}",
-          "type": "color",
-          "comment": "Heading text color"
-        },
-        "inverse": {
-          "value": "{colors.gray.300}",
-          "type": "color",
-          "comment": "Heading text in dark mode"
-        }
+        "default": { "value": "{colors.bone.600}", "type": "color" },
+        "inverse": { "value": "{colors.void.050}", "type": "color" }
       },
       "muted": {
         "default": {
-          "value": "{colors.gray.500}",
+          "value": "{colors.bone.300}",
           "type": "color",
-          "comment": "Muted text for metadata and secondary info"
+          "comment": "Secondary. Metadata, captions."
         },
-        "inverse": {
-          "value": "{colors.gray.600}",
-          "type": "color",
-          "comment": "Muted text in dark mode"
-        }
+        "inverse": { "value": "{colors.void.300}", "type": "color" }
       },
-      "secondary": {
+      "dim": {
         "default": {
-          "value": "{colors.gray.700}",
+          "value": "{colors.bone.200}",
           "type": "color",
-          "comment": "Secondary text color"
+          "comment": "Tertiary. Fine print."
         },
-        "inverse": {
-          "value": "{colors.gray.600}",
-          "type": "color",
-          "comment": "Secondary text in dark mode"
-        }
+        "inverse": { "value": "{colors.void.200}", "type": "color" }
       }
     },
-    "bg": {
+    "rule": {
       "default": {
-        "value": "{colors.base.white}",
+        "value": "#26232c",
         "type": "color",
-        "comment": "Page background color"
+        "comment": "1.5px hairline."
       },
-      "inverse": {
-        "value": "{colors.dark.bg}",
+      "inverse": { "value": "{colors.bone.400}", "type": "color" }
+    },
+    "rule-strong": {
+      "default": {
+        "value": "{colors.bone.100}",
         "type": "color",
-        "comment": "Page background in dark mode"
-      }
+        "comment": "Heavier divider."
+      },
+      "inverse": { "value": "{colors.void.300}", "type": "color" }
     }
   }
 }

@@ -1,0 +1,21 @@
+{
+  "stroke": {
+    "width": {
+      "regular": {
+        "value": "1.5px",
+        "type": "dimension",
+        "comment": "Default stroke. Not 1, not 2."
+      },
+      "heavy": {
+        "value": "3px",
+        "type": "dimension",
+        "comment": "Section dividers, active underlines."
+      }
+    },
+    "radius": {
+      "value": "0",
+      "type": "dimension",
+      "comment": "NOTHING is rounded."
+    }
+  }
+}

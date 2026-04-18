@@ -2,24 +2,26 @@
   "layout": {
     "container": {
       "padding": {
-        "value": "{spacing.4}",
+        "value": "{spacing.5}",
         "type": "dimension",
-        "comment": "Container horizontal padding"
+        "comment": "Mobile container padding (24px). Desktop scales via Tailwind."
       }
     },
     "section": {
       "spacing": {
-        "value": "{spacing.14}",
+        "value": "{spacing.9}",
         "type": "dimension",
-        "comment": "Vertical spacing between major sections"
+        "comment": "Vertical spacing between major sections (96px)."
       }
     },
     "breakout": {
-      "margin": {
-        "value": "{spacing.breakout}",
-        "type": "dimension",
-        "comment": "Negative margin for full-width breakout elements"
-      }
-    }
+      "margin": { "value": "{spacing.breakout}", "type": "dimension" }
+    },
+    "stroke": {
+      "regular": { "value": "{stroke.width.regular}", "type": "dimension" },
+      "heavy": { "value": "{stroke.width.heavy}", "type": "dimension" }
+    },
+    "radius": { "value": "{stroke.radius}", "type": "dimension" },
+    "gutter": { "value": "{spacing.7}", "type": "dimension" }
   }
 }

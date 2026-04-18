@@ -24,10 +24,8 @@ export async function generateMetadata({
     return {};
   }
 
-  const title = `${meta.title} - Luke Clark`;
-
   return {
-    title,
+    title: meta.title,
     description: meta.description,
     openGraph: {
       title: meta.title,

@@ -1,13 +1,10 @@
-import Balancer from "react-wrap-balancer";
 import { Link } from "#components/Link/Link";
 import styles from "./notFound.module.css";
 
 export default function NotFound() {
   return (
     <section className="article-prose">
-      <h1 className={`!mb-0 ${styles.title}`}>
-        <Balancer>{"Not found"}</Balancer>
-      </h1>
+      <h1 className={`!mb-0 text-balance ${styles.title}`}>{"Not found"}</h1>
       <div className={`layout-container ${styles.meta}`}>
         <p className="text-page-text-muted text-sm">
           {"Sorry, couldn't find that one"}

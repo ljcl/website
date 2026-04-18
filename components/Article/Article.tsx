@@ -1,5 +1,4 @@
 import { type ReactNode } from "react";
-import Balancer from "react-wrap-balancer";
 import { Link } from "#components/Link/Link";
 
 interface ArticleProps {
@@ -16,8 +15,8 @@ interface ArticleProps {
 export const Article = ({ title, date, dateTime, children }: ArticleProps) => (
   <article className="article-prose">
     <header>
-      <h1 className="layout-container !mb-0 mx-auto text-title-fluid md:max-w-narrow md:text-center">
-        <Balancer>{title}</Balancer>
+      <h1 className="layout-container !mb-0 mx-auto text-balance text-title-fluid md:max-w-narrow md:text-center">
+        {title}
       </h1>
       <section className="layout-container md:max-w-narrow md:text-center">
         <time dateTime={dateTime} className="mb-12 text-meta">

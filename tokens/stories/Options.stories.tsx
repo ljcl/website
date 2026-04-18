@@ -16,9 +16,9 @@ const optionTokens = byTier("options");
 /**
  * Raw design values with no semantic meaning. These are the building blocks.
  *
- * - **Colors**: `--colors-rose-600`, `--colors-gray-500`
+ * - **Colors**: `--colors-void-050`, `--colors-bone-600`, `--colors-blood-400`
  * - **Spacing**: `--spacing-4`, `--spacing-14`
- * - **Typography**: `--typography-fontSize-title-fluid`
+ * - **Typography**: `--typography-fontSize-display-l`
  *
  * Options are defined in `tokens/options/` and should rarely be used directly in components.
  */

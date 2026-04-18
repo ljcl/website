@@ -14,11 +14,11 @@ This project uses a **three-tier token architecture** powered by Style Dictionar
 
 ### Level 1 - Options
 
-Raw design values with no semantic meaning. These are the building blocks.
+Raw design values with no semantic meaning. These are the building blocks. Colors are organised into four families: **Void** (near-black grounds), **Bone** (aged-paper foregrounds), **Blood** (gothic reds), and **Ember** (smoldering warnings).
 
-- **Colors**: `--colors-rose-600`, `--colors-gray-500`
+- **Colors**: `--colors-void-050`, `--colors-bone-600`, `--colors-blood-400`
 - **Spacing**: `--spacing-4`, `--spacing-14`
-- **Typography**: `--typography-fontSize-title-fluid`
+- **Typography**: `--typography-fontSize-display-l`
 
 Options are defined in `tokens/options/` and should rarely be used directly in components.
 
@@ -45,13 +45,13 @@ Component-specific tokens that reference Decisions. Not yet implemented.
 
 ## Dark Mode
 
-Tokens use a `default/inverse` pattern for theming:
+Dark is canonical. Tokens use a `default/inverse` pattern, where `default` is the dark (void) theme and `inverse` is the light (bone) theme:
 
 ```json
 {
   "page-text-body": {
-    "default": { "value": "{colors.base.black}" },
-    "inverse": { "value": "{colors.gray.200}" }
+    "default": { "value": "{colors.bone.600}" },
+    "inverse": { "value": "{colors.void.050}" }
   }
 }
 ```
@@ -88,7 +88,7 @@ Tokens are mapped to Tailwind utilities in `tailwind.config.js`:
 
 Decision tokens show their reference underneath the computed value:
 
-- `--brand-color-primary` ← `{colors.rose.600}`
+- `--brand-color-primary` maps to `{colors.blood.400}`
 
 This helps to understand how semantic tokens map back to raw values.
 

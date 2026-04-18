@@ -40,7 +40,7 @@ export const TokenRow = ({ token }: TokenRowProps) => {
       <div className="flex flex-col gap-1">
         <code className={styles.name}>{token.name}</code>
         {token.comment && (
-          <p className="mt-1 text-page-text-secondary text-sm leading-snug">
+          <p className="mt-1 text-page-text-muted text-sm leading-snug">
             {token.comment}
           </p>
         )}
@@ -50,7 +50,7 @@ export const TokenRow = ({ token }: TokenRowProps) => {
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-3">
           {renderVisualizer(token.value)}
-          <div className="flex flex-col text-[0.8125rem] text-page-text-secondary">
+          <div className="flex flex-col text-[0.8125rem] text-page-text-muted">
             <code>{token.value}</code>
             {isReference && (
               <code className="mt-1 flex items-center gap-1 text-brand-accent text-xs">
@@ -66,7 +66,7 @@ export const TokenRow = ({ token }: TokenRowProps) => {
         {token.inverseValue ? (
           <div className="flex items-center gap-3">
             {renderVisualizer(token.inverseValue)}
-            <div className="flex flex-col text-[0.8125rem] text-page-text-secondary">
+            <div className="flex flex-col text-[0.8125rem] text-page-text-muted">
               <code>{token.inverseValue}</code>
               {isReference && (
                 <code className="mt-1 flex items-center gap-1 text-brand-accent text-xs">

@@ -1,91 +1,41 @@
-:root {
-  /* Map CodeHike vars to design tokens */
+/* CodeHike theme wired to Ordo Noctis tokens. */
+.ch-code,
+.ch-code-inline {
   --ch-bg: var(--code-bg);
-  --ch-title-bg: var(--code-bg-title);
   --ch-fg: var(--code-text);
   --ch-border-color: var(--code-border);
+  --ch-border-radius: 0;
   --ch-highlight-bg: var(--brand-color-primary);
-  --ch-highlight-fg: var(--colors-base-white);
-  --ch-selection-bg: var(--brand-color-primary);
-
-  /* Syntax highlighting */
-  --ch-keyword: var(--brand-color-accent-hover);
-  --ch-string: var(--colors-rose-400);
-  --ch-function: var(--brand-color-primary);
-  --ch-variable: var(--colors-gray-200);
-  --ch-number: var(--brand-color-accent);
-  --ch-comment: var(--page-text-muted);
-
-  /* Badge */
-  --ch-badge-bg: var(--code-bg-badge);
-  --ch-badge-fg: var(--code-text-badge);
+  --ch-selection-bg: var(--brand-color-accent);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --ch-selection-bg: var(--brand-color-accent);
-  }
-}
-
-/* CodeHike numbered theme variables */
-:root {
-  --ch-0: light;
-  --ch-1: #6e7781;
-  --ch-2: #0550ae;
-  --ch-3: #953800;
-  --ch-4: #24292f;
-  --ch-5: #8250df;
-  --ch-6: #116329;
-  --ch-7: #cf222e;
-  --ch-8: #0a3069;
-  --ch-9: #82071e;
-  --ch-10: #f6f8fa;
-  --ch-11: #ffebe9;
-  --ch-12: #dafbe1;
-  --ch-13: #ffd8b5;
-  --ch-14: #eaeef2;
-  --ch-15: #57606a;
-  --ch-16: #ffffff;
-  --ch-17: #eaeef280;
-  --ch-18: #fdff0033;
-  --ch-19: #1a85ff;
-  --ch-20: #add6ff;
-  --ch-21: #0969da;
-  --ch-22: #f6f8fa;
-  --ch-23: #d0d7de;
-  --ch-24: #8c959f;
-  --ch-25: #afb8c133;
-  --ch-26: #ffffffe6;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --ch-0: dark;
-    --ch-1: #8b949e;
-    --ch-2: #79c0ff;
-    --ch-3: #ffa657;
-    --ch-4: #c9d1d9;
-    --ch-5: #d2a8ff;
-    --ch-6: #7ee787;
-    --ch-7: #ff7b72;
-    --ch-8: #a5d6ff;
-    --ch-9: #ffa198;
-    --ch-10: #f0f6fc;
-    --ch-11: #490202;
-    --ch-12: #04260f;
-    --ch-13: #5a1e02;
-    --ch-14: #161b22;
-    --ch-15: #8b949e;
-    --ch-16: #0d1117;
-    --ch-17: #6e76811a;
-    --ch-18: #ffffff0b;
-    --ch-19: #3794ff;
-    --ch-20: #264f78;
-    --ch-21: #1f6feb;
-    --ch-22: #010409;
-    --ch-23: #30363d;
-    --ch-24: #6e7681;
-    --ch-25: #6e768166;
-    --ch-26: #0d1117e6;
-  }
+/* Numbered theme variables. Muted bone / blood / ember palette. */
+.ch-code {
+  --ch-0: var(--colors-bone-600);
+  --ch-1: var(--colors-blood-500);
+  --ch-2: var(--colors-bone-400);
+  --ch-3: var(--colors-bone-300);
+  --ch-4: var(--colors-ember-500);
+  --ch-5: var(--colors-bone-500);
+  --ch-6: var(--colors-blood-400);
+  --ch-7: var(--colors-bone-600);
+  --ch-8: var(--colors-bone-300);
+  --ch-9: var(--colors-ember-400);
+  --ch-10: var(--colors-bone-500);
+  --ch-11: var(--colors-blood-500);
+  --ch-12: var(--colors-bone-400);
+  --ch-13: var(--colors-bone-600);
+  --ch-14: var(--colors-bone-300);
+  --ch-15: var(--colors-ember-500);
+  --ch-16: var(--colors-bone-500);
+  --ch-17: var(--colors-blood-400);
+  --ch-18: var(--colors-bone-600);
+  --ch-19: var(--colors-bone-300);
+  --ch-20: var(--colors-ember-400);
+  --ch-21: var(--colors-bone-500);
+  --ch-22: var(--colors-blood-500);
+  --ch-23: var(--colors-bone-400);
+  --ch-24: var(--colors-bone-600);
+  --ch-25: var(--colors-bone-300);
+  --ch-26: var(--colors-ember-500);
 }

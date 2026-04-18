@@ -37,9 +37,9 @@ export async function Code({ codeblock }: CodeProps) {
     : highlighted.meta;
 
   return (
-    <div className="relative mb-12! overflow-hidden rounded-lg border border-code-border bg-code-bg text-code-fg leading-normal! lg:mx-(--spacing-breakout) lg:max-w-[calc(100vw-2*var(--layout-container-padding))]">
+    <div className="relative mb-12! overflow-hidden rounded-lg border border-code-border bg-code-bg text-code-text leading-normal! lg:mx-(--spacing-breakout) lg:max-w-[calc(100vw-2*var(--layout-container-padding))]">
       {displayMeta ? (
-        <div className="flex border-code-border border-b bg-code-title-bg px-4 py-4 text-sm">
+        <div className="flex border-code-border border-b bg-code-bg px-4 py-4 text-sm">
           <div className="flex items-center gap-3 text-sm">
             <CodeIcon title={displayMeta} />
             <span>{displayMeta}</span>
@@ -57,7 +57,7 @@ export async function Code({ codeblock }: CodeProps) {
       <Pre
         code={highlighted}
         handlers={handlers}
-        className="group m-0 flex-1 whitespace-pre-wrap rounded-none px-0 py-4 selection:bg-code-highlight selection:text-code-fg"
+        className="group m-0 flex-1 whitespace-pre-wrap rounded-none px-0 py-4 selection:bg-code-highlight selection:text-code-text"
       />
     </div>
   );
@@ -71,7 +71,7 @@ export async function InlineCode({ codeblock }: { codeblock: RawCode }) {
     <Inline
       code={highlighted}
       style={highlighted.style}
-      className="rounded-lg selection:bg-code-highlight selection:text-code-fg"
+      className="rounded-lg selection:bg-code-highlight selection:text-code-text"
     />
   );
 }

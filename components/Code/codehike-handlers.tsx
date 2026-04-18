@@ -104,11 +104,11 @@ export const calloutHandler: AnnotationHandler = {
         {children}
         <div
           style={{ minWidth: `${column + 4}ch` }}
-          className="relative prose-p:mx-2 my-1 prose-p:my-1 w-fit select-none whitespace-break-spaces rounded border border-code-mark bg-code-bg px-0"
+          className="relative prose-p:mx-2 my-1 prose-p:my-1 w-fit select-none whitespace-break-spaces rounded border border-brand-primary bg-code-bg px-0"
         >
           <div
             style={{ left: `${column}ch` }}
-            className="absolute -top-px h-2 w-2 -translate-y-1/2 rotate-45 border-code-mark border-t border-l bg-code-bg"
+            className="absolute -top-px h-2 w-2 -translate-y-1/2 rotate-45 border-brand-primary border-t border-l bg-code-bg"
           />
           <p>{annotation.query}</p>
         </div>
@@ -123,7 +123,7 @@ export const calloutHandler: AnnotationHandler = {
     >
       {children}
       {annotation.query && (
-        <span className="absolute top-full left-0 z-10 mt-2 hidden whitespace-nowrap rounded border border-code-border bg-code-bg p-2 text-code-fg text-sm shadow-lg group-hover:block">
+        <span className="absolute top-full left-0 z-10 mt-2 hidden whitespace-nowrap rounded border border-code-border bg-code-bg p-2 text-code-text text-sm shadow-lg group-hover:block">
           {annotation.query}
         </span>
       )}

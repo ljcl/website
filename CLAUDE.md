@@ -8,7 +8,7 @@ This is a Next.js 15 personal blog using the App Router, MDX content, and Pinboa
 **Language**: TypeScript 5.9 (strict mode enabled)
 **Styling**: Tailwind CSS v4 + CSS Modules + Style Dictionary v5
 **Design Tokens**: Three-tier system (Options → Decisions → Components)
-**Content**: MDX with syntax highlighting via Shiki/rehype-pretty-code
+**Content**: MDX with syntax highlighting and annotations via CodeHike v1
 **Node Version**: 24.x
 
 ### Core Concept: Mixed Content System
@@ -33,16 +33,23 @@ The site merges two content sources on the homepage, sorted chronologically:
 │           └── post.module.css  # Post-specific styles
 │
 ├── components/                   # Modular component library
+│   ├── Article/                 # Blog post article wrapper
 │   ├── Bio/
 │   ├── Card/
 │   │   ├── Card.tsx             # Base card component
 │   │   ├── PostCard/
 │   │   └── PinCard/
-│   ├── Code/
-│   ├── InlineCode/
+│   ├── Code/                    # Code block + InlineCode + CodeHike handlers
 │   ├── Link/
-│   ├── VisuallyHidden/
-│   └── Image/
+│   └── VisuallyHidden/
+│
+├── tokens/                       # Design token source (Style Dictionary)
+│   ├── options/                 # Tier 1: raw values
+│   ├── decisions/               # Tier 2: semantic intent
+│   └── stories/                 # Storybook docs + visualizers
+│
+├── generated/
+│   └── tokens/                  # Build output (CSS, TS, JSON metadata)
 │
 ├── lib/                          # Data fetching and business logic
 │   ├── posts.ts                 # MDX post discovery and metadata parsing
@@ -57,8 +64,9 @@ The site merges two content sources on the homepage, sorted chronologically:
 │           └── page.mdx         # Blog post content with metadata
 │
 ├── Configuration:
-│   ├── next.config.mjs          # MDX integration, bundle analyzer, redirects
+│   ├── next.config.ts           # MDX integration, bundle analyzer, redirects
 │   ├── tailwind.config.js       # Custom typography and font sizing
+│   ├── style-dictionary.config.js # Token build config (light + dark)
 │   ├── tsconfig.json            # Path aliases and strict mode
 │   ├── mdx-components.tsx       # Custom MDX component mappings
 │   ├── middleware.ts            # Pathname injection for post layout metadata
@@ -295,10 +303,10 @@ import { getAllPosts } from "#lib/posts";
 
 **Primary: Design Tokens + Tailwind CSS**
 
-- Two-tier CSS custom property system (primitive + semantic tokens)
+- Three-tier CSS custom property system (Options, Decisions, Components)
 - Tailwind extended with token-based color/spacing utilities
 - Custom font sizes: `sm` (16px/22px) to `xl` (26px/34px)
-- Rose/pink accent colors via semantic tokens: `accent`, `accent-hover`
+- Rose/pink brand colors via semantic tokens: `brand-primary`, `brand-primary-hover`, `brand-accent`
 - Custom typography plugin with italic, uppercase, bold headings
 - Automatic dark mode via `prefers-color-scheme` media query
 
@@ -335,7 +343,8 @@ The project uses a three-tier token architecture inspired by [Sam Iam's approach
 
 - Purpose-based tokens with clear semantic meaning
 - Front-loaded context for readability
-- Examples: `brand-color.primary`, `content.text.body`, `layout.container.padding`
+- Examples: `brand-color.primary`, `page.text.body`, `code.bg`, `layout.container.padding`
+- Files: `brand-color.json`, `page.json`, `code.json`, `layout.json`
 
 **Tier 3: Components** (Future)
 
@@ -373,7 +382,8 @@ The project uses a three-tier token architecture inspired by [Sam Iam's approach
 :root {
   --colors-rose-600: #e11d48;
   --brand-color-primary: var(--colors-rose-600);
-  --content-text-body: var(--colors-base-black);
+  --page-text-body: var(--colors-base-black);
+  --page-bg: var(--colors-base-white);
   --layout-container-padding: var(--spacing-4);
 }
 
@@ -381,8 +391,8 @@ The project uses a three-tier token architecture inspired by [Sam Iam's approach
 @media (prefers-color-scheme: dark) {
   :root {
     --brand-color-primary: var(--colors-rose-500);
-    --content-text-body: var(--colors-gray-200);
-    --content-bg-page: var(--colors-dark-bg);
+    --page-text-body: var(--colors-gray-200);
+    --page-bg: var(--colors-dark-bg);
   }
 }
 ```
@@ -410,7 +420,8 @@ pnpm build          # Auto-builds tokens first
 - `generated/tokens/variables-dark.css` - Dark mode overrides with media query
 - `generated/tokens/tokens.ts` - TypeScript constants
 - `generated/tokens/tokens.d.ts` - TypeScript type definitions
-- `generated/tokens/tokens-metadata.json` - Storybook documentation
+- `generated/tokens/tokens-metadata.json` - Nested token metadata
+- `generated/tokens/tokens-for-storybook.json` - Flat tokens (with inverse values) for docs
 
 **Tailwind Integration:**
 
@@ -418,15 +429,18 @@ Tokens are extended into Tailwind config for utility classes:
 
 ```javascript
 colors: {
-  accent: 'var(--brand-color-primary)',
-  'accent-hover': 'var(--brand-color-primary-hover)',
-  'text-primary': 'var(--content-text-body)',
-  'text-muted': 'var(--content-text-muted)',
-  'bg-page': 'var(--content-bg-page)',
+  'brand-primary': 'var(--brand-color-primary)',
+  'brand-primary-hover': 'var(--brand-color-primary-hover)',
+  'brand-accent': 'var(--brand-color-accent)',
+  'page-text-body': 'var(--page-text-body)',
+  'page-text-muted': 'var(--page-text-muted)',
+  'page-bg': 'var(--page-bg)',
+  'code-bg': 'var(--code-bg)',
+  'code-border': 'var(--code-border)',
 }
 ```
 
-This enables both CSS variables AND Tailwind utilities: `text-accent`, `bg-bg-page`, etc.
+This enables both CSS variables AND Tailwind utilities: `text-brand-primary`, `bg-page-bg`, `bg-code-bg`, etc.
 
 **Component Utilities:**
 
@@ -434,13 +448,13 @@ Reusable utility classes for common patterns:
 
 ```css
 .layout-container {
-  @apply container mx-auto;
   padding-inline: var(--layout-container-padding);
+  @apply container mx-auto;
 }
 
 .text-meta {
+  color: var(--page-text-muted);
   @apply text-sm uppercase;
-  color: var(--content-text-muted);
 }
 
 .article-prose {
@@ -448,11 +462,12 @@ Reusable utility classes for common patterns:
 }
 ```
 
+Defined in `app/global.css` under `@layer components`.
+
 **Documentation:**
 
-- See `tokens/README.md` for complete token system documentation
-- See `DESIGN-TOKENS-MIGRATION.md` for migration guide and architecture details
-- View tokens in Storybook under "Design Tokens" section
+- See `tokens/stories/DesignTokens.mdx` for complete token system documentation
+- View tokens in Storybook under "Design Tokens" section (Options + Decisions visualizers in `tokens/stories/`)
 
 ### Blog Posts Structure
 
@@ -476,7 +491,7 @@ Write your content here using MDX syntax.
 
 - Metadata extracted via dynamic `import()` in `lib/posts.ts`
 - Posts auto-appear on homepage sorted by date (newest first)
-- Syntax highlighting: Shiki with `github-dark` theme
+- Syntax highlighting: CodeHike with GitHub-style light/dark themes mapped to design tokens
 - Markdown features: GitHub Flavored Markdown (remark-gfm)
 
 ### TypeScript Patterns
@@ -513,12 +528,15 @@ export interface PostMeta {
 ```typescript
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
+    ...components,
     a: ({ href, ...props }) => <Link href={href as string} {...props} />,
     Code,
-    ...components,
+    InlineCode,
   };
 }
 ```
+
+Both `Code` and `InlineCode` are exported from `components/Code/Code.tsx`.
 
 **Processing Chain:**
 
@@ -550,13 +568,11 @@ console.log(greeting);
 
 **Available Annotations:**
 
-- `border(lines) color` - Colored border around lines (e.g., `// !border(1:3) #e11d48`)
-- `highlight(lines)` or `highlight[range]` - Background highlight (e.g., `// !highlight(2:4)`)
 - `focus(lines)` - Dim non-focused lines (e.g., `// !focus(2:3)`)
-- `mark(line)` - Left-side marker for important lines (e.g., `// !mark(5)`)
+- `mark(line) [color]` - Left-side marker for important lines, optional color (e.g., `// !mark(5) gold`, `// !mark[/important/] pink`)
 - `callout[range] "message"` - Tooltip on hover (e.g., `// !callout[greeting] "The greeting variable"`)
 - `diff(line) +/-` - Show added/removed lines (e.g., `// !diff(1) +`)
-- `collapse(lines) "label"` - Collapsible code sections
+- `line-numbers` - Show line numbers alongside code
 
 **Metadata Attributes:**
 
@@ -571,26 +587,29 @@ const greeting = "Hello";
 **Component Architecture:**
 
 ```
-components/Code/Code.tsx   # Main code block component (Pre wrapper)
-components/InlineCode/InlineCode.tsx              # Inline code component
-lib/codehike-handlers.ts              # Annotation handlers
-lib/codehike-theme.ts                 # Theme mapping to design tokens
+components/Code/Code.tsx              # Main code block component + InlineCode export
+components/Code/codehike-handlers.tsx # Annotation handlers (focus, mark, callout, diff, line-numbers)
+components/Code/FocusHandlerPreWithRef.tsx # Ref wrapper for focus scroll behavior
+components/Code/CopyButton.tsx        # Copy-to-clipboard button
+components/Code/code.css              # CodeHike CSS variable mapping + syntax theme
 ```
 
 **Theme System:**
 
-CodeHike integrates with design tokens via CSS custom properties:
+CodeHike integrates with design tokens via CSS custom properties (defined in `components/Code/code.css`):
 
-- `--ch-bg` → `--colors-code-bg`
-- `--ch-fg` → `--colors-base-white`
-- `--ch-border-color` → `--brand-color-primary`
+- `--ch-bg` → `--code-bg`
+- `--ch-fg` → `--code-text`
+- `--ch-border-color` → `--code-border`
 - `--ch-highlight-bg` → `--brand-color-primary`
+- `--ch-selection-bg` → `--brand-color-primary` (light) / `--brand-color-accent` (dark)
+- Syntax colors (`--ch-keyword`, `--ch-string`, etc.) also map to brand/page tokens
 
-All CodeHike colors automatically support dark mode via design tokens.
+Numbered theme variables (`--ch-0` through `--ch-26`) are set directly for GitHub-style light/dark palettes via `prefers-color-scheme`.
 
 **Creating Custom Handlers:**
 
-Add new handlers to `lib/codehike-handlers.ts`:
+Add new handlers to `components/Code/codehike-handlers.tsx`:
 
 ```typescript
 export const myHandler: AnnotationHandler = {
@@ -633,7 +652,7 @@ ANALYZE=true pnpm build  # Bundle analysis
 2. Add metadata export with `title`, `date`, and optional `description`
 3. Write content using MDX syntax
 4. Posts automatically appear on homepage (sorted by date)
-5. Add redirects in `next.config.mjs` if migrating existing URLs
+5. Add redirects in `next.config.ts` if migrating existing URLs
 
 **Static Generation:**
 
@@ -666,7 +685,7 @@ app/page.tsx
 
 ### Configuration
 
-- `next.config.mjs`: MDX processing, redirects, bundle analysis
+- `next.config.ts`: MDX processing, redirects, bundle analysis
 - `tailwind.config.js`: Custom font sizes and typography
 - `tsconfig.json`: Path aliases and compiler options
 - `mdx-components.tsx`: Custom MDX component mappings
@@ -703,7 +722,7 @@ app/page.tsx
 - **Dynamic Metadata**: Per-page SEO metadata
 
 **Redirects:**
-Legacy URLs are redirected in `next.config.mjs` for backward compatibility.
+Legacy URLs are redirected in `next.config.ts` for backward compatibility.
 
 ## Notable Dependencies
 
@@ -712,8 +731,8 @@ Legacy URLs are redirected in `next.config.mjs` for backward compatibility.
 - `clsx` (v2.1.1): Conditional class names
 - `tailwind-merge` (v3.3.1): Prevent Tailwind conflicts
 - `remark-gfm` (v4.0.1): GitHub-flavored markdown
-- `shiki` (v3.9.2): Code syntax highlighting
-- `rehype-pretty-code` (v0.14.1): Code block enhancement
+- `codehike` (v1.x) with `remark-codehike` / `recma-codehike`: Code syntax highlighting and annotations
+- `style-dictionary` (v5): Design token build tool
 
 ## Project Boundaries
 

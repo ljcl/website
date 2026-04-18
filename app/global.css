@@ -5,23 +5,201 @@
 @plugin "@tailwindcss/typography";
 @config "../tailwind.config.js";
 
-@layer components {
-  .layout-container {
-    padding-inline: var(--layout-container-padding);
-    @apply container mx-auto;
+@layer base {
+  html {
+    color: var(--page-text-body);
+    background: var(--page-bg);
   }
 
-  .text-meta {
-    color: var(--page-text-muted);
-    @apply text-sm uppercase;
+  body {
+    font-family: var(--typography-fontFamily-sans);
+    font-weight: var(--typography-fontWeight-regular);
+    line-height: var(--typography-lineHeight-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
-  .article-prose {
-    @apply prose-lg lg:prose-xl mx-auto my-14;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    font-family: var(--typography-fontFamily-display);
+    font-weight: var(--typography-fontWeight-display);
+    line-height: var(--typography-lineHeight-heading);
+    color: var(--page-text-heading);
+    letter-spacing: var(--typography-letterSpacing-display);
+  }
+
+  p {
+    max-width: 64ch;
+    margin: 0;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    text-decoration-thickness: var(--layout-stroke-regular);
+    text-underline-offset: 4px;
+    transition: color var(--motion-duration-fast) var(--motion-ease-ritual);
+  }
+  a:hover {
+    color: var(--brand-color-primary-hover);
+    text-decoration: underline;
+  }
+
+  hr {
+    height: var(--layout-stroke-regular);
+    margin: 0;
+    background: var(--page-rule);
+    border: 0;
   }
 }
 
-body {
-  color: var(--page-text-body);
-  background: var(--page-bg);
+@layer components {
+  .layout-container {
+    max-width: 96rem;
+    padding-inline: var(--layout-container-padding);
+    margin-inline: auto;
+  }
+
+  .display-xl {
+    font-family: var(--typography-fontFamily-display);
+    font-size: var(--typography-fontSize-display-xl);
+    font-weight: var(--typography-fontWeight-display);
+    line-height: var(--typography-lineHeight-display);
+    letter-spacing: var(--typography-letterSpacing-display);
+  }
+  .display-l {
+    font-family: var(--typography-fontFamily-display);
+    font-size: var(--typography-fontSize-display-l);
+    font-weight: var(--typography-fontWeight-display);
+    line-height: var(--typography-lineHeight-display);
+    letter-spacing: var(--typography-letterSpacing-display);
+  }
+  .display-m {
+    font-family: var(--typography-fontFamily-display);
+    font-size: var(--typography-fontSize-display-m);
+    font-weight: var(--typography-fontWeight-display);
+    line-height: var(--typography-lineHeight-display);
+    letter-spacing: var(--typography-letterSpacing-display);
+  }
+  .display-italic {
+    font-style: italic;
+    font-weight: var(--typography-fontWeight-regular);
+  }
+
+  .eyebrow,
+  .label-caps {
+    font-family: var(--typography-fontFamily-sans);
+    font-size: var(--typography-fontSize-micro);
+    font-weight: var(--typography-fontWeight-medium);
+    color: var(--page-text-muted);
+    text-transform: uppercase;
+    letter-spacing: var(--typography-letterSpacing-caps);
+  }
+
+  .mark {
+    font-family: var(--typography-fontFamily-display);
+    font-style: italic;
+    color: var(--brand-color-primary);
+  }
+
+  .rule {
+    display: block;
+    width: 100%;
+    height: var(--layout-stroke-regular);
+    background: var(--page-rule);
+    border: 0;
+  }
+  .rule--strong {
+    height: var(--layout-stroke-heavy);
+    background: var(--page-rule-strong);
+  }
+  .rule--blood {
+    background: var(--brand-color-primary);
+  }
+
+  .ledger-row {
+    display: grid;
+    grid-template-columns: minmax(120px, 1fr) minmax(0, 3fr) minmax(80px, auto);
+    gap: var(--spacing-5);
+    align-items: baseline;
+    padding-block: var(--spacing-5);
+    border-bottom: var(--layout-stroke-regular) solid var(--page-rule);
+  }
+  .ledger-row p {
+    text-decoration: none;
+  }
+  .ledger-row:hover p {
+    text-decoration: none;
+  }
+
+  .article-prose {
+    max-width: 64ch;
+    margin-block: var(--spacing-9);
+    margin-inline: auto;
+    font-family: var(--typography-fontFamily-sans);
+    font-size: var(--typography-fontSize-body);
+    line-height: var(--typography-lineHeight-body);
+  }
+  .article-prose h1 {
+    margin-block: var(--spacing-7) var(--spacing-5);
+    font-family: var(--typography-fontFamily-display);
+    font-size: var(--typography-fontSize-display-l);
+    font-weight: var(--typography-fontWeight-display);
+    line-height: var(--typography-lineHeight-display);
+    letter-spacing: var(--typography-letterSpacing-display);
+  }
+  .article-prose h2 {
+    margin-block: var(--spacing-7) var(--spacing-4);
+    font-family: var(--typography-fontFamily-display);
+    font-size: var(--typography-fontSize-h1);
+    font-weight: var(--typography-fontWeight-display);
+    line-height: var(--typography-lineHeight-display);
+    letter-spacing: var(--typography-letterSpacing-display);
+  }
+  .article-prose h3 {
+    margin-block: var(--spacing-6) var(--spacing-3);
+    font-family: var(--typography-fontFamily-display);
+    font-size: var(--typography-fontSize-h2);
+    font-weight: var(--typography-fontWeight-display);
+    line-height: var(--typography-lineHeight-heading);
+    letter-spacing: var(--typography-letterSpacing-display);
+  }
+  .article-prose p {
+    margin-block: var(--spacing-4);
+  }
+  .article-prose blockquote {
+    padding-inline-start: var(--spacing-6);
+    margin-block: var(--spacing-7);
+    font-family: var(--typography-fontFamily-display);
+    font-size: var(--typography-fontSize-h2);
+    font-style: italic;
+    font-weight: var(--typography-fontWeight-regular);
+    line-height: var(--typography-lineHeight-tight);
+    color: var(--brand-color-primary);
+    border: 0;
+  }
+  .article-prose hr {
+    height: var(--layout-stroke-heavy);
+    background: var(--page-rule-strong);
+  }
+}
+
+@layer utilities {
+  .text-meta {
+    font-size: var(--typography-fontSize-caption);
+    color: var(--page-text-muted);
+    text-transform: uppercase;
+    letter-spacing: var(--typography-letterSpacing-caps);
+  }
+  .hang-left {
+    margin-inline-start: calc(-1 * var(--spacing-7));
+  }
+  .hang-right {
+    margin-inline-end: calc(-1 * var(--spacing-7));
+  }
 }

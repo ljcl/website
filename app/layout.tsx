@@ -10,6 +10,10 @@ const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.lukeclark.com.au"),
+  title: {
+    default: "Luke Clark",
+    template: "%s - Luke Clark",
+  },
 };
 
 export default function RootLayout({

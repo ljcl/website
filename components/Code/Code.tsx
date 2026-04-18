@@ -1,4 +1,5 @@
 import { highlight, Inline, Pre, type RawCode } from "codehike/code";
+import { cacheLife } from "next/cache";
 import { CopyButton } from "./CopyButton";
 import { handlers } from "./codehike-handlers";
 import { CodeIcon } from "./Icons";
@@ -27,6 +28,8 @@ interface CodeProps {
  * ```
  */
 export async function Code({ codeblock }: CodeProps) {
+  "use cache";
+  cacheLife("max");
   const highlighted = await highlight(codeblock, "github-from-css");
 
   const displayMeta = highlighted?.meta?.match(/^name="([^"]+)"$/)
@@ -61,6 +64,8 @@ export async function Code({ codeblock }: CodeProps) {
 }
 
 export async function InlineCode({ codeblock }: { codeblock: RawCode }) {
+  "use cache";
+  cacheLife("max");
   const highlighted = await highlight(codeblock, "github-from-css");
   return (
     <Inline

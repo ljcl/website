@@ -1,3 +1,5 @@
+import { cacheLife, cacheTag } from "next/cache";
+
 interface PinboardResponse {
   date: string;
   user: string;
@@ -29,6 +31,10 @@ const preparePinboardPins = (pin: PinboardPost): PinboardPostPrepared => ({
 export const getAllPins = async (config: {
   AUTH_TOKEN?: string;
 }): Promise<PinboardPostPrepared[]> => {
+  "use cache";
+  cacheLife("hours");
+  cacheTag("pinboard");
+
   if (!config.AUTH_TOKEN) {
     throw new Error("AUTH_TOKEN is required");
   }

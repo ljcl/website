@@ -4,6 +4,7 @@ import { type CodeHikeConfig } from "codehike/mdx";
 import { type NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  cacheComponents: true,
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   reactStrictMode: true,
   async redirects() {

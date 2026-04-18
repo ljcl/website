@@ -1,5 +1,6 @@
 import { readdir } from "node:fs/promises";
 import path from "node:path";
+import { cacheLife } from "next/cache";
 
 export interface PostMeta {
   title: string;
@@ -50,6 +51,8 @@ const getMetaOfFile = async (slug: string) => {
 };
 
 export const getAllPosts = async () => {
+  "use cache";
+  cacheLife("max");
   const posts: PostMetadata[] = [];
   for await (const post of getMdxFiles(POSTS_PATH)) {
     posts.push(post);
@@ -69,12 +72,24 @@ function augmentMetadata(meta: PostMeta) {
   };
 }
 
-export const getSinglePost = async (slug: string) => {
+export const getSinglePostMeta = async (slug: string) => {
+  "use cache";
+  cacheLife("max");
   const post = await import(`../content/posts/${slug}/page.mdx`);
 
   return {
     meta: augmentMetadata(post.metadata),
     slug,
+  };
+};
+
+export const getSinglePost = async (slug: string) => {
+  const { meta, slug: postSlug } = await getSinglePostMeta(slug);
+  const post = await import(`../content/posts/${slug}/page.mdx`);
+
+  return {
+    meta,
+    slug: postSlug,
     Content: post.default,
   };
 };

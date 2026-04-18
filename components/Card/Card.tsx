@@ -1,36 +1,43 @@
+import Link from "next/link";
 import { type ReactNode } from "react";
-import { Link } from "#components/Link/Link";
-import { VisuallyHidden } from "#components/VisuallyHidden/VisuallyHidden";
+import { cn } from "#util/cn";
 
 interface CardProps {
   href: string;
   title: string;
+  eyebrow?: string;
   description?: string;
   icon?: ReactNode;
-  iconText?: string;
+  index?: number;
+  className?: string;
 }
 
 export const Card = ({
   title,
   href,
+  eyebrow = "Item",
   description,
   icon,
-  iconText,
+  index,
+  className,
 }: CardProps) => (
-  <article className="group mt-12 first:mt-0">
-    <Link href={`${href}`} underline={false}>
-      <h3 className="font-semibold text-lg uppercase italic underline-offset-2 hover:underline group-hover:text-brand-primary-hover">
-        {icon && (
-          <span className="inline-block">
-            {icon}
-            {iconText && <VisuallyHidden>{iconText}</VisuallyHidden>}
-          </span>
-        )}
+  <Link href={href} className={cn("ledger-row group", className)}>
+    <div className="flex flex-col gap-1">
+      <span className="eyebrow">{eyebrow}</span>
+    </div>
+    <div className="flex flex-col gap-2">
+      <h3 className="display-m inline-flex items-baseline gap-2 transition-colors duration-fast ease-ritual group-hover:text-brand-primary-hover">
         {title}
+        {icon}
       </h3>
       {description && (
-        <p className="mt-4 text-page-text-secondary">{description}</p>
+        <p className="max-w-prose text-page-text-muted">{description}</p>
       )}
-    </Link>
-  </article>
+    </div>
+    {index !== undefined && (
+      <span className="text-right font-mono text-caption text-page-text-muted tabular-nums">
+        {String(index).padStart(2, "0")}
+      </span>
+    )}
+  </Link>
 );

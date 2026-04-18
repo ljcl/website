@@ -1,4 +1,4 @@
-import type React from "react";
+import { type ReactNode } from "react";
 
 const hiddenStyles = {
   display: "inline-block",
@@ -12,12 +12,8 @@ const hiddenStyles = {
   border: 0,
 } as const;
 
-const VisuallyHidden: React.FC<{ children: React.ReactNode }> = ({
-  children,
-  ...delegated
-}) => (
-  <span style={hiddenStyles} {...delegated} className="sr-only">
+export const VisuallyHidden = ({ children }: { children: ReactNode }) => (
+  <span style={hiddenStyles} className="sr-only">
     {children}
   </span>
 );
-export { VisuallyHidden };

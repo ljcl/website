@@ -39,11 +39,11 @@ export const TokenRow = ({ token }: TokenRowProps) => {
       {/* Column 1: Token name and description */}
       <div className="flex flex-col gap-1">
         <code className={styles.name}>{token.name}</code>
-        {token.comment && (
+        {token.comment ? (
           <p className="mt-1 text-page-text-muted text-sm leading-snug">
             {token.comment}
           </p>
-        )}
+        ) : null}
       </div>
 
       {/* Column 2: Light value */}

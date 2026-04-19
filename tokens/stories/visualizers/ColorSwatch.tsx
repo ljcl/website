@@ -12,8 +12,8 @@ export const ColorSwatch = ({ value, label }: ColorSwatchProps) => (
   <div
     className="h-12 w-12 shrink-0 rounded border border-black/10 dark:border-white/10"
     style={{ backgroundColor: value }}
-    title={label || value}
+    title={label ?? value}
     role="img"
-    aria-label={label || `Color: ${value}`}
+    aria-label={label ?? `Color: ${value}`}
   />
 );

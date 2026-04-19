@@ -15,7 +15,9 @@ interface CodeProps {
 }
 
 export function CodeView({ highlighted }: { highlighted: HighlightedCode }) {
-  const nameMatch = highlighted?.meta?.match(/^name="([^"]+)"$/);
+  const nameMatch = highlighted?.meta
+    ? /^name="([^"]+)"$/.exec(highlighted.meta)
+    : null;
   const displayMeta = nameMatch ? nameMatch[1] : highlighted.meta;
 
   return (

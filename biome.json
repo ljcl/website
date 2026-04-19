@@ -21,7 +21,8 @@
       "next": "recommended",
       "project": "recommended",
       "react": "recommended",
-      "test": "recommended"
+      "test": "recommended",
+      "types": "recommended"
     },
     "rules": {
       "correctness": {
@@ -60,7 +61,21 @@
         "noUnknownAttribute": "error",
         "noUnnecessaryConditions": "error",
         "useArraySortCompare": "error",
-        "useExhaustiveSwitchCases": "error"
+        "useExhaustiveSwitchCases": "error",
+        "noLeakedRender": "error",
+        "useNullishCoalescing": {
+          "level": "error",
+          "fix": "safe"
+        },
+        "useAwaitThenable": "error",
+        "noDuplicatedSpreadProps": "error",
+        "noSyncScripts": "error",
+        "useRequiredScripts": "error",
+        "noBeforeInteractiveScriptOutsideDocument": "error",
+        "useFind": "warn",
+        "useImportsFirst": "warn",
+        "noUnsafePlusOperands": "warn",
+        "useRegexpExec": "warn"
       },
       "suspicious": {
         "noReactForwardRef": "error",

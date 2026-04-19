@@ -122,11 +122,11 @@ export const calloutHandler: AnnotationHandler = {
       title={annotation.query}
     >
       {children}
-      {annotation.query && (
+      {annotation.query ? (
         <span className="absolute top-full left-0 z-10 mt-2 hidden whitespace-nowrap rounded border border-code-border bg-code-bg p-2 text-code-text text-sm shadow-lg group-hover:block">
           {annotation.query}
         </span>
-      )}
+      ) : null}
     </span>
   ),
 };

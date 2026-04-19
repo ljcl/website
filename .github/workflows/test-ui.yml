@@ -1,35 +1,58 @@
 name: UI Tests
 
-on: [push]
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+permissions:
+  contents: read
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    container:
-      # Make sure to grab the latest version of the Playwright image
-      # https://playwright.dev/docs/docker#pull-the-image
-      image: mcr.microsoft.com/playwright:v1.57.0-noble
+    permissions:
+      contents: read
+      statuses: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
+      - uses: ./.github/actions/setup
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Get Playwright version
+        id: playwright-version
+        run: |
+          version=$(pnpm ls playwright --depth=0 --json | jq -r '.[0].devDependencies.playwright.version // .[0].dependencies.playwright.version')
+          if [ -z "$version" ] || [ "$version" = "null" ]; then
+            version=$(pnpm exec playwright --version | awk '{print $2}')
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "Playwright version: $version"
+
+      - name: Cache Playwright browsers
+        id: playwright-cache
+        uses: actions/cache@v4
         with:
-          node-version-file: .tool-versions
-
-      - name: Install dependencies
-        run: pnpm install
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}
 
       - name: Install Playwright browsers
-        run: pnpm exec playwright install --with-deps chrome
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Install system deps only (cache hit path)
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        run: pnpm exec playwright install-deps chromium
 
       - name: Run tests
         run: pnpm run test-storybook
 
-      - name: "notify vercel"
-        uses: "vercel/repository-dispatch/actions/status@v1"
+      - name: Notify Vercel
+        if: github.event_name == 'pull_request'
+        uses: vercel/repository-dispatch/actions/status@30f760c6640485cd92f8c785ef361382555fb712 # v1
         with:
           name: "Vercel - personal-site: Components"

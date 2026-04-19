@@ -1,41 +1,86 @@
-/* CodeHike theme wired to Ordo Noctis tokens. */
+/*
+ * CodeHike theme wired to Ordo Noctis tokens.
+ *
+ * Hue roles (kept minimal, consistent with gothic aesthetic):
+ * - bone for text, comments, variables (neutral)
+ * - blood for keywords, tags, classes, errors (primary accent)
+ * - ember for strings, constants, numbers, functions (warm secondary accent)
+ *
+ * Contrast tuned for bone-700 (#f5f0ea) in light and void-100 (#0d0b10) in dark.
+ */
+
 .ch-code,
 .ch-code-inline {
   --ch-bg: var(--code-bg);
   --ch-fg: var(--code-text);
   --ch-border-color: var(--code-border);
   --ch-border-radius: 0;
-  --ch-highlight-bg: var(--brand-color-primary);
-  --ch-selection-bg: var(--brand-color-accent);
+  --ch-highlight-bg: rgb(from var(--brand-color-primary) r g b / 0.18);
+  --ch-selection-bg: rgb(from var(--brand-color-primary) r g b / 0.28);
 }
 
-/* Numbered theme variables. Muted bone / blood / ember palette. */
-.ch-code {
-  --ch-0: var(--colors-bone-600);
-  --ch-1: var(--colors-blood-500);
-  --ch-2: var(--colors-bone-400);
-  --ch-3: var(--colors-bone-300);
-  --ch-4: var(--colors-ember-500);
-  --ch-5: var(--colors-bone-500);
-  --ch-6: var(--colors-blood-400);
-  --ch-7: var(--colors-bone-600);
-  --ch-8: var(--colors-bone-300);
-  --ch-9: var(--colors-ember-400);
-  --ch-10: var(--colors-bone-500);
-  --ch-11: var(--colors-blood-500);
-  --ch-12: var(--colors-bone-400);
-  --ch-13: var(--colors-bone-600);
-  --ch-14: var(--colors-bone-300);
-  --ch-15: var(--colors-ember-500);
-  --ch-16: var(--colors-bone-500);
-  --ch-17: var(--colors-blood-400);
-  --ch-18: var(--colors-bone-600);
-  --ch-19: var(--colors-bone-300);
-  --ch-20: var(--colors-ember-400);
-  --ch-21: var(--colors-bone-500);
-  --ch-22: var(--colors-blood-500);
-  --ch-23: var(--colors-bone-400);
-  --ch-24: var(--colors-bone-600);
-  --ch-25: var(--colors-bone-300);
-  --ch-26: var(--colors-ember-500);
+/* Dark mode (canonical) */
+.ch-code,
+.ch-code-inline {
+  --ch-0: dark;
+  --ch-1: #817d88; /* comments - bone-300 */
+  --ch-2: #f0b888; /* constants, numbers - warm ember tint */
+  --ch-3: #d8d3dc; /* variables, entity names - bone-500 */
+  --ch-4: #ebe6e4; /* foreground - bone-600 */
+  --ch-5: #ff8a5c; /* function names - bright ember */
+  --ch-6: #e61622; /* tags, classes - blood-600 */
+  --ch-7: #ff5c65; /* keywords - bright coral-red */
+  --ch-8: #e0a478; /* strings - muted ember */
+  --ch-9: #ff1a26; /* errors - blood-700 */
+  --ch-10: #ebe6e4;
+  --ch-11: #2a0408; /* deleted bg - blood-100 */
+  --ch-12: #14121a; /* inserted bg - void-200 */
+  --ch-13: #4a060c; /* changed bg - blood-200 */
+  --ch-14: #57545e; /* ignored fg - bone-200 */
+  --ch-15: #b6b2bc; /* brackets - bone-400 */
+  --ch-16: var(--code-bg);
+  --ch-17: rgba(245, 240, 234, 0.06); /* line highlight */
+  --ch-18: rgba(245, 240, 234, 0.04); /* range highlight */
+  --ch-19: #c5111c;
+  --ch-20: #4a060c; /* selection bg */
+  --ch-21: #9f0d17; /* focus border */
+  --ch-22: #07060a;
+  --ch-23: #26232c; /* border */
+  --ch-24: #57545e; /* line number fg */
+  --ch-25: rgba(184, 181, 189, 0.2);
+  --ch-26: rgba(13, 11, 16, 0.9);
+}
+
+/* Light (parchment) mode overrides */
+@media (prefers-color-scheme: light) {
+  .ch-code,
+  .ch-code-inline {
+    --ch-0: light;
+    --ch-1: #57545e; /* comments - bone-200, 6.5:1 on parchment */
+    --ch-2: #6b2411; /* constants, numbers - ember-400 deep */
+    --ch-3: #1c1a22; /* variables - void-300 */
+    --ch-4: #07060a; /* foreground - void-050 */
+    --ch-5: #8a3418; /* function names - ember-500 */
+    --ch-6: #7a0a12; /* tags, classes - blood-300 */
+    --ch-7: #9f0d17; /* keywords - blood-400 brand */
+    --ch-8: #6b2411; /* strings - ember-400 */
+    --ch-9: #c5111c; /* errors - blood-500 */
+    --ch-10: #07060a;
+    --ch-11: #f2d4d0; /* deleted bg - soft blood tint */
+    --ch-12: #e8dcc8; /* inserted bg - parchment ember tint */
+    --ch-13: #eadcca; /* changed bg */
+    --ch-14: #d8d3dc; /* ignored fg - bone-500 */
+    --ch-15: #817d88; /* brackets - bone-300 */
+    --ch-16: var(--code-bg);
+    --ch-17: rgba(26, 22, 32, 0.04);
+    --ch-18: rgba(26, 22, 32, 0.03);
+    --ch-19: #9f0d17;
+    --ch-20: rgba(159, 13, 23, 0.18); /* selection */
+    --ch-21: #9f0d17;
+    --ch-22: #ebe6e4;
+    --ch-23: #b6b2bc;
+    --ch-24: #817d88; /* line number fg */
+    --ch-25: rgba(87, 84, 94, 0.15);
+    --ch-26: rgba(245, 240, 234, 0.9);
+  }
 }

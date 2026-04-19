@@ -24,6 +24,43 @@
         "uriFormat": "%s",
         "action": "debugWithEdge"
       }
+    },
+    {
+      "name": "Vitest: debug current file",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["vitest", "run", "${relativeFile}"],
+      "console": "integratedTerminal",
+      "smartStep": true
+    },
+    {
+      "name": "Vitest: debug all",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["vitest", "run"],
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Storybook: dev",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["storybook"],
+      "serverReadyAction": {
+        "pattern": "Local:\\s+(https?://\\S+)",
+        "uriFormat": "%s",
+        "action": "debugWithEdge"
+      }
+    },
+    {
+      "name": "Storybook: test-storybook",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["test-storybook"],
+      "console": "integratedTerminal"
     }
   ]
 }

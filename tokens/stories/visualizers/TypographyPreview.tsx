@@ -16,9 +16,9 @@ export const TypographyPreview = ({ value, label }: TypographyPreviewProps) => {
   return (
     <div
       className="flex h-12 min-w-20 items-center overflow-hidden"
-      title={label || value}
+      title={label ?? value}
       role="img"
-      aria-label={label || `Typography: ${value}`}
+      aria-label={label ?? `Typography: ${value}`}
     >
       <span
         className="font-semibold text-page-text-body leading-none"

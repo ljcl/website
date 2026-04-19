@@ -56,14 +56,14 @@ export default async function PostPage({ params }: PageProps) {
       <Article title={meta.title} date={meta.date} dateTime={meta.dateTime}>
         <Content />
       </Article>
-      {(prev || next) && (
+      {prev || next ? (
         <section className="layout-container pb-16">
           <hr className="rule rule--strong" />
           <nav
             aria-label="Post navigation"
             className="grid grid-cols-1 md:grid-cols-2"
           >
-            {prev && (
+            {prev ? (
               <div className="grid grid-rows-[auto_1fr]">
                 <span className="eyebrow mt-6 mb-2 block">{"Older"}</span>
                 <PostCard
@@ -74,8 +74,8 @@ export default async function PostPage({ params }: PageProps) {
                   slug={prev.slug}
                 />
               </div>
-            )}
-            {next && (
+            ) : null}
+            {next ? (
               <div className="grid grid-rows-[auto_1fr] md:col-start-2">
                 <span className="eyebrow mt-6 mb-2 block">{"Newer"}</span>
                 <PostCard
@@ -86,10 +86,10 @@ export default async function PostPage({ params }: PageProps) {
                   slug={next.slug}
                 />
               </div>
-            )}
+            ) : null}
           </nav>
         </section>
-      )}
+      ) : null}
     </>
   );
 }

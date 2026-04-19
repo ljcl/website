@@ -39,9 +39,9 @@ export const SpacingBar = ({ value, label }: SpacingBarProps) => {
         <div
           className={barClasses}
           style={{ width: `${cappedWidth}px` }}
-          title={label || value}
+          title={label ?? value}
           role="img"
-          aria-label={label || `Spacing: ${value}`}
+          aria-label={label ?? `Spacing: ${value}`}
         />
       );
     }
@@ -51,9 +51,9 @@ export const SpacingBar = ({ value, label }: SpacingBarProps) => {
       <div
         className={barClasses}
         style={{ width: value }}
-        title={label || value}
+        title={label ?? value}
         role="img"
-        aria-label={label || `Spacing: ${value}`}
+        aria-label={label ?? `Spacing: ${value}`}
       />
     );
   };

@@ -38,14 +38,14 @@ export const Card = ({
     <>
       <div className="flex flex-col gap-1">
         <span className="eyebrow">{eyebrow}</span>
-        {date && (
+        {date ? (
           <time
             className="font-mono text-caption text-page-text-muted"
             dateTime={date}
           >
             {formatLedgerDate(date)}
           </time>
-        )}
+        ) : null}
       </div>
       <div className="flex flex-col gap-2">
         <h3
@@ -57,14 +57,14 @@ export const Card = ({
           {title}
           {trailing}
         </h3>
-        {hostTag && (
+        {hostTag ? (
           <span className="font-mono text-caption text-page-text-muted">
             {hostTag}
           </span>
-        )}
-        {description && (
+        ) : null}
+        {description ? (
           <p className="max-w-prose text-page-text-muted">{description}</p>
-        )}
+        ) : null}
       </div>
       {index !== undefined && <LedgerIndex value={index} />}
     </>

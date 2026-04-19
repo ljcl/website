@@ -1,35 +1,31 @@
 name: UI Tests
 
-on: [push]
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+permissions:
+  contents: read
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    container:
-      # Make sure to grab the latest version of the Playwright image
-      # https://playwright.dev/docs/docker#pull-the-image
-      image: mcr.microsoft.com/playwright:v1.57.0-noble
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: .tool-versions
-
-      - name: Install dependencies
-        run: pnpm install
+      - uses: ./.github/actions/setup
 
       - name: Install Playwright browsers
-        run: pnpm exec playwright install --with-deps chrome
+        run: pnpm exec playwright install --with-deps chromium
 
       - name: Run tests
         run: pnpm run test-storybook
 
-      - name: "notify vercel"
-        uses: "vercel/repository-dispatch/actions/status@v1"
+      - name: Notify Vercel
+        if: github.event_name == 'pull_request'
+        uses: vercel/repository-dispatch/actions/status@30f760c6640485cd92f8c785ef361382555fb712 # v1
         with:
           name: "Vercel - personal-site: Components"

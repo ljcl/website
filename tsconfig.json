@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2022",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -14,12 +14,11 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
-    "baseUrl": ".",
     "paths": {
-      "#.storybook/*": [".storybook/*"],
-      "#components/*": ["components/*"],
-      "#lib/*": ["lib/*"],
-      "#util/*": ["util/*"]
+      "#.storybook/*": ["./.storybook/*"],
+      "#components/*": ["./components/*"],
+      "#lib/*": ["./lib/*"],
+      "#util/*": ["./util/*"]
     },
     "plugins": [
       {

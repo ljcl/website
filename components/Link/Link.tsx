@@ -29,8 +29,8 @@ export const Link = ({
     return (
       <a
         href={typeof href === "string" ? href : undefined}
-        target={target}
-        rel={rel}
+        target={target ?? "_blank"}
+        rel={rel ?? "noopener noreferrer"}
         className={cn("inline-flex items-baseline gap-1", className)}
       >
         {children}

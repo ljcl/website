@@ -3,7 +3,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./global.css";
 
-import { type Metadata } from "next";
+import { type Metadata, type Viewport } from "next";
 import {
   Cormorant_Garamond,
   JetBrains_Mono,
@@ -48,6 +48,13 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#f5f0ea" },
+    { media: "(prefers-color-scheme: light)", color: "#07060a" },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -59,8 +66,11 @@ export default function RootLayout({
       className={`${display.variable} ${sans.variable} ${mono.variable} ${blackletter.variable}`}
     >
       <body>
+        <a href="#main" className="skip-link sr-only focus:not-sr-only">
+          {"Skip to content"}
+        </a>
         <Masthead />
-        <main>{children}</main>
+        <main id="main">{children}</main>
         <section className="layout-container">
           <Bio />
         </section>

@@ -77,17 +77,6 @@ function augmentMetadata(meta: PostMeta) {
   };
 }
 
-export const getSinglePostMeta = async (slug: string) => {
-  "use cache";
-  cacheLife("max");
-  const post = await import(`../content/posts/${slug}/page.mdx`);
-
-  return {
-    meta: augmentMetadata(post.metadata),
-    slug,
-  };
-};
-
 /**
  * Returns the chronologically adjacent posts around the given slug.
  * getAllPosts is newest-first, so index+1 is older (prev) and index-1 is newer (next).

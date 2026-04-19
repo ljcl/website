@@ -43,6 +43,10 @@ export const getAllPins = async (config: {
     `https://api.pinboard.in/v1/posts/recent?auth_token=${config.AUTH_TOKEN}&format=json&count=100&tag=site-feed`,
   );
 
+  if (!res.ok) {
+    throw new Error(`Pinboard API returned ${res.status}`);
+  }
+
   const json = (await res.json()) as PinboardResponse;
 
   const pins = json.posts.map(preparePinboardPins);

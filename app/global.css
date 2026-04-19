@@ -8,7 +8,23 @@
 @layer base {
   html {
     color: var(--page-text-body);
+    color-scheme: light dark;
     background: var(--page-bg);
+  }
+
+  .skip-link {
+    position: absolute;
+    top: var(--spacing-3);
+    left: var(--spacing-3);
+    z-index: 100;
+    padding: var(--spacing-2) var(--spacing-3);
+    color: var(--page-text-body);
+    background: var(--page-bg);
+    border: var(--layout-stroke-regular) solid var(--page-rule-strong);
+    transform: translateY(-150%);
+  }
+  .skip-link:focus {
+    transform: translateY(0);
   }
 
   body {
@@ -56,6 +72,19 @@
     background: var(--page-rule);
     border: 0;
   }
+
+  /* biome-ignore-start lint/complexity/noImportantStyles: required to override Tailwind utility specificity */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  /* biome-ignore-end lint/complexity/noImportantStyles: required to override Tailwind utility specificity */
 }
 
 @layer components {

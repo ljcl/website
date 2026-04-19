@@ -13,9 +13,8 @@ export async function Code({ codeblock }: CodeProps) {
   cacheLife("max");
   const highlighted = await highlight(codeblock, "github-from-css");
 
-  const displayMeta = highlighted?.meta?.match(/^name="([^"]+)"$/)
-    ? highlighted.meta.match(/^name="([^"]+)"$/)![1]
-    : highlighted.meta;
+  const nameMatch = highlighted?.meta?.match(/^name="([^"]+)"$/);
+  const displayMeta = nameMatch ? nameMatch[1] : highlighted.meta;
 
   return (
     <div className="relative mb-12! overflow-hidden rounded-lg border border-code-border bg-code-bg text-code-text leading-normal! lg:mx-(--spacing-breakout) lg:max-w-[calc(100vw-2*var(--layout-container-padding))]">

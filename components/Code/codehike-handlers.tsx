@@ -180,10 +180,6 @@ export const lineNumbers: AnnotationHandler = {
   },
 };
 
-// ============================================
-// Export All Handlers
-// ============================================
-
 export const handlers: AnnotationHandler[] = [
   focusHandler,
   markHandler,

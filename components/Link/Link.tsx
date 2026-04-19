@@ -8,7 +8,6 @@ import { cn } from "#util/cn";
 interface LinkProps extends NextLinkProps {
   children?: React.ReactNode;
   className?: string;
-  underline?: boolean;
   target?: string;
   rel?: string;
 }
@@ -24,8 +23,6 @@ export const Link = ({
   target,
   rel,
   href,
-  // underline retained for backwards compatibility; global a rules apply.
-  underline: _underline,
   ...linkProps
 }: LinkProps) => {
   if (isExternal(href)) {

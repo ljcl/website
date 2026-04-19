@@ -8,25 +8,6 @@ interface CodeProps {
   codeblock: RawCode;
 }
 
-/**
- * Code component using CodeHike
- *
- * This is a React Server Component that renders syntax-highlighted code blocks
- * with annotation support. It replaces the previous rehype-pretty-code setup.
- *
- * Features:
- * - Syntax highlighting via CodeHike
- * - Annotation support (border, highlight, focus, callout, etc.)
- * - Design token integration for theming
- * - Automatic dark mode support
- *
- * Usage in MDX:
- * ```js title="example.js"
- * // !mark(2)
- * const greeting = "Hello"
- * console.log(greeting)
- * ```
- */
 export async function Code({ codeblock }: CodeProps) {
   "use cache";
   cacheLife("max");

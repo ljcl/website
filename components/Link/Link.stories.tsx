@@ -28,18 +28,6 @@ Primary.test(
   },
 );
 
-/** Link with underline prop disabled (retained for back-compat, no visible effect). */
-export const NoUnderline = Primary.extend({
-  args: {
-    underline: false,
-  },
-});
-
-NoUnderline.test("should still render link", async ({ canvas }) => {
-  const link = await canvas.findByRole("link");
-  await expect(link).toBeInTheDocument();
-});
-
 /** External link renders a plain anchor with an ArrowUpRight glyph suffix. */
 export const External = meta.story({
   args: {
@@ -167,7 +155,6 @@ export const AllProps = meta.story({
     target: "_blank",
     rel: "noopener noreferrer",
     className: "font-semibold",
-    underline: true,
   },
 });
 

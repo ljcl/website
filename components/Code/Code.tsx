@@ -19,7 +19,7 @@ export function CodeView({ highlighted }: { highlighted: HighlightedCode }) {
   const displayMeta = nameMatch ? nameMatch[1] : highlighted.meta;
 
   return (
-    <div className="relative mb-12! overflow-hidden rounded-lg border border-code-border bg-code-bg text-code-text leading-normal! lg:mx-(--spacing-breakout) lg:max-w-[calc(100vw-2*var(--layout-container-padding))]">
+    <div className="ch-code relative mb-12! overflow-hidden rounded-lg border border-code-border bg-code-bg text-code-text leading-normal! lg:mx-(--spacing-breakout) lg:max-w-[calc(100vw-2*var(--layout-container-padding))]">
       {displayMeta ? (
         <div className="flex border-code-border border-b bg-code-bg px-4 py-4 text-sm">
           <div className="flex items-center gap-3 text-sm">
@@ -61,7 +61,7 @@ export function InlineCodeView({
     <Inline
       code={highlighted}
       style={highlighted.style}
-      className="rounded-lg selection:bg-code-highlight selection:text-code-text"
+      className="ch-code-inline rounded-lg selection:bg-code-highlight selection:text-code-text"
     />
   );
 }

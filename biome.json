@@ -78,13 +78,19 @@
         "useRegexpExec": "warn"
       },
       "suspicious": {
-        "noReactForwardRef": "error",
+        "noReactForwardRef": {
+          "level": "error",
+          "fix": "safe"
+        },
         "noDeprecatedImports": "error",
         "noImportCycles": "error",
         "noUnusedExpressions": "error"
       },
       "complexity": {
-        "noUselessCatchBinding": "error",
+        "noUselessCatchBinding": {
+          "level": "error",
+          "fix": "safe"
+        },
         "noUselessUndefined": "error"
       }
     }

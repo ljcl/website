@@ -468,6 +468,7 @@ Defined in `app/global.css` under `@layer components`.
 
 - See `tokens/stories/DesignTokens.mdx` for complete token system documentation
 - View tokens in Storybook under "Design Tokens" section (Options + Decisions visualizers in `tokens/stories/`)
+- **Ordo Noctis design handoff bundle** (supplemental reference for palette rationale, type specimens, component previews, and voice guidelines): https://api.anthropic.com/v1/design/h/-mcGAT43_NYdd3GHQKqsiQ. The URL returns a gzipped tarball; decompress and read the README plus `project/preview/*.html` for visual references. Use this to resolve questions about aesthetic intent that the local tokens do not capture directly. The local `tokens/` tree is authoritative for values; the bundle is authoritative for intent.
 
 ### Blog Posts Structure
 

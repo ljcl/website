@@ -1,0 +1,26 @@
+name: Setup
+description: Checkout, install pnpm, setup Node with pnpm cache, install dependencies.
+inputs:
+  fetch-depth:
+    description: Git history depth for checkout
+    required: false
+    default: "1"
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v5
+      with:
+        fetch-depth: ${{ inputs.fetch-depth }}
+
+    - name: Install pnpm
+      uses: pnpm/action-setup@a15d269cd4658e1107c09f1fabf4cbd7bd1f308a # v4.4.0
+
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version-file: .tool-versions
+        cache: pnpm
+
+    - name: Install dependencies
+      run: pnpm install --frozen-lockfile
+      shell: bash

@@ -28,6 +28,65 @@
           }
         ]
       }
+    },
+    {
+      "label": "typecheck",
+      "type": "shell",
+      "command": "pnpm typecheck",
+      "problemMatcher": "$tsc",
+      "group": "test",
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "typecheck: watch",
+      "type": "shell",
+      "command": "pnpm typecheck --watch",
+      "isBackground": true,
+      "problemMatcher": "$tsc-watch",
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "tokens: build",
+      "type": "shell",
+      "command": "pnpm tokens"
+    },
+    {
+      "label": "next: dev",
+      "type": "shell",
+      "command": "pnpm dev",
+      "isBackground": true,
+      "presentation": {
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "storybook: dev",
+      "type": "shell",
+      "command": "pnpm storybook",
+      "isBackground": true,
+      "presentation": {
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "test-storybook",
+      "type": "shell",
+      "command": "pnpm test-storybook"
+    },
+    {
+      "label": "dev: everything",
+      "dependsOn": ["next: dev", "storybook: dev", "typecheck: watch"],
+      "dependsOrder": "parallel",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
     }
   ]
 }

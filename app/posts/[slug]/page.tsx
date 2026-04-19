@@ -43,8 +43,10 @@ export default async function PostPage({ params }: PageProps) {
   const { slug } = await params;
 
   try {
-    const { meta, Content } = await getSinglePost(slug);
-    const { prev, next } = await getAdjacentPosts(slug);
+    const [{ meta, Content }, { prev, next }] = await Promise.all([
+      getSinglePost(slug),
+      getAdjacentPosts(slug),
+    ]);
 
     return (
       <>
@@ -53,7 +55,7 @@ export default async function PostPage({ params }: PageProps) {
         </Article>
         {(prev || next) && (
           <section className="layout-container pb-16">
-            <hr className="mb-0 h-[3px] border-0 bg-page-rule-strong" />
+            <hr className="rule rule--strong" />
             <nav
               aria-label="Post navigation"
               className="grid grid-cols-1 md:grid-cols-2"
@@ -70,7 +72,7 @@ export default async function PostPage({ params }: PageProps) {
                   />
                 </div>
               ) : (
-                <div aria-hidden />
+                <div />
               )}
               {next ? (
                 <div className="grid grid-rows-[auto_1fr]">
@@ -84,7 +86,7 @@ export default async function PostPage({ params }: PageProps) {
                   />
                 </div>
               ) : (
-                <div aria-hidden />
+                <div />
               )}
             </nav>
           </section>

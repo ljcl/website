@@ -54,13 +54,14 @@ WithIndex.test("should render padded index in mono", async ({ canvas }) => {
 });
 
 /** Card with a trailing icon (external link indicator) */
-export const WithIcon = meta.story({
+export const External = meta.story({
   args: {
     href: "https://example.com",
     eyebrow: "Link",
     title: "External resource",
     description: "Opens in a new tab.",
-    icon: (
+    external: true,
+    trailing: (
       <ArrowUpRight
         aria-hidden
         className="h-[0.8em] w-[0.8em] shrink-0 self-center"

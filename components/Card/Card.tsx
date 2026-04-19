@@ -1,43 +1,93 @@
 import Link from "next/link";
 import { type ReactNode } from "react";
 import { cn } from "#util/cn";
+import { formatLedgerDate } from "#util/formatDate";
 
-interface CardProps {
+export interface CardProps {
   href: string;
   title: string;
-  eyebrow?: string;
+  eyebrow: string;
+  date?: string;
   description?: string;
-  icon?: ReactNode;
+  hostTag?: string;
+  trailing?: ReactNode;
+  external?: boolean;
   index?: number;
   className?: string;
 }
 
+const LedgerIndex = ({ value }: { value: number }) => (
+  <span className="text-right font-mono text-caption text-page-text-muted tabular-nums">
+    {String(value).padStart(2, "0")}
+  </span>
+);
+
 export const Card = ({
-  title,
   href,
-  eyebrow = "Item",
+  title,
+  eyebrow,
+  date,
   description,
-  icon,
+  hostTag,
+  trailing,
+  external,
   index,
   className,
-}: CardProps) => (
-  <Link href={href} className={cn("ledger-row group", className)}>
-    <div className="flex flex-col gap-1">
-      <span className="eyebrow">{eyebrow}</span>
-    </div>
-    <div className="flex flex-col gap-2">
-      <h3 className="display-m inline-flex items-baseline gap-2 transition-colors duration-fast ease-ritual group-hover:text-brand-primary-hover">
-        {title}
-        {icon}
-      </h3>
-      {description && (
-        <p className="max-w-prose text-page-text-muted">{description}</p>
-      )}
-    </div>
-    {index !== undefined && (
-      <span className="text-right font-mono text-caption text-page-text-muted tabular-nums">
-        {String(index).padStart(2, "0")}
-      </span>
-    )}
-  </Link>
-);
+}: CardProps) => {
+  const body = (
+    <>
+      <div className="flex flex-col gap-1">
+        <span className="eyebrow">{eyebrow}</span>
+        {date && (
+          <time
+            className="font-mono text-caption text-page-text-muted"
+            dateTime={date}
+          >
+            {formatLedgerDate(date)}
+          </time>
+        )}
+      </div>
+      <div className="flex flex-col gap-2">
+        <h3
+          className={cn(
+            "display-m transition-colors duration-fast ease-ritual group-hover:text-brand-primary-hover",
+            trailing && "inline-flex items-baseline gap-2",
+          )}
+        >
+          {title}
+          {trailing}
+        </h3>
+        {hostTag && (
+          <span className="font-mono text-caption text-page-text-muted">
+            {hostTag}
+          </span>
+        )}
+        {description && (
+          <p className="max-w-prose text-page-text-muted">{description}</p>
+        )}
+      </div>
+      {index !== undefined && <LedgerIndex value={index} />}
+    </>
+  );
+
+  const wrapperClassName = cn("ledger-row group", className);
+
+  if (external) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={wrapperClassName}
+      >
+        {body}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={href} className={wrapperClassName}>
+      {body}
+    </Link>
+  );
+};

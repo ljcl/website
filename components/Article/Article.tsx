@@ -1,13 +1,9 @@
 import { type ReactNode } from "react";
 
 interface ArticleProps {
-  /** The article title */
   title: string;
-  /** The date as a Date object for formatting */
   date: Date;
-  /** ISO date string for the datetime attribute */
   dateTime: string;
-  /** The article content */
   children: ReactNode;
 }
 

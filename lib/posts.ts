@@ -90,8 +90,7 @@ export const getSinglePostMeta = async (slug: string) => {
 
 /**
  * Returns the chronologically adjacent posts around the given slug.
- * prev = older post (chronologically before), next = newer post (chronologically after).
- * getAllPosts returns newest-first, so index+1 is older (prev) and index-1 is newer (next).
+ * getAllPosts is newest-first, so index+1 is older (prev) and index-1 is newer (next).
  */
 export const getAdjacentPosts = async (
   currentSlug: string,
@@ -106,12 +105,11 @@ export const getAdjacentPosts = async (
 };
 
 export const getSinglePost = async (slug: string) => {
-  const { meta, slug: postSlug } = await getSinglePostMeta(slug);
   const post = await import(`../content/posts/${slug}/page.mdx`);
 
   return {
-    meta,
-    slug: postSlug,
+    meta: augmentMetadata(post.metadata),
+    slug,
     Content: post.default,
   };
 };

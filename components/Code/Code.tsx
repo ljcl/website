@@ -39,7 +39,7 @@ export function CodeView({ highlighted }: { highlighted: HighlightedCode }) {
       <Pre
         code={highlighted}
         handlers={handlers}
-        className="group m-0 flex-1 whitespace-pre-wrap rounded-none px-0 py-4 selection:bg-code-highlight selection:text-code-text"
+        className="group m-0 flex-1 overflow-x-auto whitespace-pre rounded-none px-0 py-4 selection:bg-code-highlight selection:text-code-text"
       />
     </div>
   );

@@ -5,7 +5,7 @@ export default defineMain({
     ...config,
     optimizeDeps: {
       ...config.optimizeDeps,
-      include: [...(config.optimizeDeps?.include ?? []), "react-wrap-balancer"],
+      include: [...(config.optimizeDeps?.include ?? [])],
     },
   }),
   stories: [

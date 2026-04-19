@@ -1,4 +1,10 @@
-import { highlight, Inline, Pre, type RawCode } from "codehike/code";
+import {
+  type HighlightedCode,
+  highlight,
+  Inline,
+  Pre,
+  type RawCode,
+} from "codehike/code";
 import { cacheLife } from "next/cache";
 import { CopyButton } from "./CopyButton";
 import { handlers } from "./codehike-handlers";
@@ -8,11 +14,7 @@ interface CodeProps {
   codeblock: RawCode;
 }
 
-export async function Code({ codeblock }: CodeProps) {
-  "use cache";
-  cacheLife("max");
-  const highlighted = await highlight(codeblock, "github-from-css");
-
+export function CodeView({ highlighted }: { highlighted: HighlightedCode }) {
   const nameMatch = highlighted?.meta?.match(/^name="([^"]+)"$/);
   const displayMeta = nameMatch ? nameMatch[1] : highlighted.meta;
 
@@ -43,10 +45,18 @@ export async function Code({ codeblock }: CodeProps) {
   );
 }
 
-export async function InlineCode({ codeblock }: { codeblock: RawCode }) {
+export async function Code({ codeblock }: CodeProps) {
   "use cache";
   cacheLife("max");
   const highlighted = await highlight(codeblock, "github-from-css");
+  return <CodeView highlighted={highlighted} />;
+}
+
+export function InlineCodeView({
+  highlighted,
+}: {
+  highlighted: HighlightedCode;
+}) {
   return (
     <Inline
       code={highlighted}
@@ -54,4 +64,11 @@ export async function InlineCode({ codeblock }: { codeblock: RawCode }) {
       className="rounded-lg selection:bg-code-highlight selection:text-code-text"
     />
   );
+}
+
+export async function InlineCode({ codeblock }: { codeblock: RawCode }) {
+  "use cache";
+  cacheLife("max");
+  const highlighted = await highlight(codeblock, "github-from-css");
+  return <InlineCodeView highlighted={highlighted} />;
 }

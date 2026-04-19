@@ -19,21 +19,9 @@ const Bio = () => (
         </p>
         <p>
           {"@ljcl — "}
-          <Link
-            href="https://github.com/ljcl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {"github"}
-          </Link>
+          <Link href="https://github.com/ljcl">{"github"}</Link>
           {", "}
-          <Link
-            href="https://instagram.com/ljcl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {"gram"}
-          </Link>
+          <Link href="https://instagram.com/ljcl">{"gram"}</Link>
         </p>
       </div>
     </div>

@@ -11,7 +11,7 @@ export default function NotFound() {
       </p>
       <h1 className="eyebrow mt-8">{"Not found"}</h1>
       <p className="mt-4 max-w-prose text-page-text-muted">
-        {"Sorry, couldn't find that one"}
+        {"Sorry, couldn’t find that one"}
       </p>
       <Link href="/" className="mt-8 text-meta">
         {"Head on back home"}

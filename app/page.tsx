@@ -1,6 +1,7 @@
 import { type Metadata } from "next";
 import { PinCard } from "#components/Card/PinCard/PinCard";
 import { PostCard } from "#components/Card/PostCard/PostCard";
+import { VisuallyHidden } from "#components/VisuallyHidden/VisuallyHidden";
 import { getAllPins, type PinboardPostPrepared } from "#lib/pinboard";
 import { getAllPosts, type PostMetadata } from "#lib/posts";
 
@@ -43,6 +44,9 @@ export default async function Page() {
 
   return (
     <section className="layout-container pt-8">
+      <VisuallyHidden>
+        <h1>{"Luke Clark"}</h1>
+      </VisuallyHidden>
       <ol className="m-0 list-none p-0">
         {content.map((item) => (
           <li key={isPost(item) ? item.slug : item.href}>

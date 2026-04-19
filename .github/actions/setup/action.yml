@@ -1,17 +1,8 @@
 name: Setup
-description: Checkout, install pnpm, setup Node with pnpm cache, install dependencies.
-inputs:
-  fetch-depth:
-    description: Git history depth for checkout
-    required: false
-    default: "1"
+description: Install pnpm, setup Node with pnpm cache, install dependencies. Caller must run actions/checkout first.
 runs:
   using: composite
   steps:
-    - uses: actions/checkout@v5
-      with:
-        fetch-depth: ${{ inputs.fetch-depth }}
-
     - name: Install pnpm
       uses: pnpm/action-setup@a15d269cd4658e1107c09f1fabf4cbd7bd1f308a # v4.4.0
 

@@ -24,5 +24,29 @@
   },
   "[jsonc]": {
     "editor.defaultFormatter": "biomejs.biome"
+  },
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/tsconfig.tsbuildinfo": true
+  },
+  "search.exclude": {
+    "generated/**": true,
+    ".next/**": true,
+    "storybook-static/**": true,
+    "pnpm-lock.yaml": true,
+    "coverage/**": true
+  },
+  "files.readonlyInclude": {
+    "generated/**": true
+  },
+  "files.associations": {
+    "*.mdx": "mdx"
+  },
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.tsx": "${capture}.module.css, ${capture}.stories.tsx, ${capture}.test.tsx",
+    "package.json": "pnpm-lock.yaml, pnpm-workspace.yaml, .npmrc",
+    "tsconfig.json": "tsconfig.*.json, tsconfig.tsbuildinfo",
+    "next.config.ts": "next-env.d.ts, middleware.ts, instrumentation.ts"
   }
 }

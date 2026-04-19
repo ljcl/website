@@ -48,5 +48,27 @@
     "package.json": "pnpm-lock.yaml, pnpm-workspace.yaml, .npmrc",
     "tsconfig.json": "tsconfig.*.json, tsconfig.tsbuildinfo",
     "next.config.ts": "next-env.d.ts, middleware.ts, instrumentation.ts"
+  },
+  "tailwindCSS.experimental.classRegex": [
+    ["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+  ],
+  "tailwindCSS.includeLanguages": {
+    "mdx": "html"
+  },
+  "tailwindCSS.classAttributes": ["class", "className", "ngClass"],
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.preferences.preferTypeOnlyAutoImports": true,
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "[mdx]": {
+    "editor.formatOnSave": false,
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "comments": false,
+      "strings": true,
+      "other": true
+    }
+  },
+  "[css]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
   }
 }

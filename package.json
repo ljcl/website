@@ -5,9 +5,9 @@
   "type": "module",
   "engines": {
     "node": "^24.0.0",
-    "pnpm": "10.24.0"
+    "pnpm": "10.33.2"
   },
-  "packageManager": "pnpm@10.24.0",
+  "packageManager": "pnpm@10.33.2",
   "imports": {
     "#.storybook/*": [
       "./.storybook/*"

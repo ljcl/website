@@ -58,32 +58,32 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.15",
-    "@storybook/addon-a11y": "^10.4.0",
-    "@storybook/addon-docs": "^10.4.0",
+    "@storybook/addon-a11y": "^10.4.1",
+    "@storybook/addon-docs": "^10.4.1",
     "@storybook/addon-mcp": "^0.6.0",
-    "@storybook/addon-vitest": "^10.4.0",
-    "@storybook/nextjs-vite": "^10.4.0",
+    "@storybook/addon-vitest": "^10.4.1",
+    "@storybook/nextjs-vite": "^10.4.1",
     "@tailwindcss/postcss": "^4.3.0",
     "@tailwindcss/typography": "^0.5.19",
     "@types/mdx": "^2.0.13",
-    "@types/node": "^25.8.0",
-    "@types/react": "19.2.14",
+    "@types/node": "^25.9.1",
+    "@types/react": "19.2.15",
     "@types/react-dom": "19.2.3",
-    "@vitest/browser-playwright": "^4.1.6",
-    "@vitest/coverage-v8": "^4.1.6",
+    "@vitest/browser-playwright": "^4.1.7",
+    "@vitest/coverage-v8": "^4.1.7",
     "autoprefixer": "^10.5.0",
-    "lefthook": "^2.1.6",
+    "lefthook": "^2.1.8",
     "playwright": "^1.60.0",
-    "postcss": "^8.5.14",
-    "storybook": "^10.4.0",
-    "style-dictionary": "^5.4.0",
+    "postcss": "^8.5.15",
+    "storybook": "^10.4.1",
+    "style-dictionary": "^5.4.1",
     "tailwindcss": "^4.3.0",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.6"
+    "vitest": "^4.1.7"
   },
   "pnpm": {
     "overrides": {
-      "@types/react": "19.2.14",
+      "@types/react": "19.2.15",
       "@types/react-dom": "19.2.3"
     }
   }

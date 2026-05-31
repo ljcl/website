@@ -45,7 +45,7 @@
     "@vercel/speed-insights": "^2.0.0",
     "clsx": "^2.1.1",
     "codehike": "^1.1.0",
-    "lucide-react": "^1.16.0",
+    "lucide-react": "^1.17.0",
     "next": "16.2.6",
     "react": "19.2.6",
     "react-dom": "19.2.6",
@@ -57,7 +57,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.15",
+    "@biomejs/biome": "^2.4.16",
     "@storybook/addon-a11y": "^10.4.1",
     "@storybook/addon-docs": "^10.4.1",
     "@storybook/addon-mcp": "^0.6.0",
@@ -72,11 +72,11 @@
     "@vitest/browser-playwright": "^4.1.7",
     "@vitest/coverage-v8": "^4.1.7",
     "autoprefixer": "^10.5.0",
-    "lefthook": "^2.1.8",
+    "lefthook": "^2.1.9",
     "playwright": "^1.60.0",
     "postcss": "^8.5.15",
     "storybook": "^10.4.1",
-    "style-dictionary": "^5.4.1",
+    "style-dictionary": "^5.4.2",
     "tailwindcss": "^4.3.0",
     "typescript": "^6.0.3",
     "vitest": "^4.1.7"

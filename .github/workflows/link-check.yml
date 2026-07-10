@@ -26,6 +26,9 @@ jobs:
           key: lychee-cache-${{ github.run_id }}
           restore-keys: lychee-cache-
 
+      # --scheme limits checks to external links; without it lychee parses MDX
+      # <Image src={expression} /> attributes as local file paths and reports
+      # "Cannot find file" false positives.
       - name: Run lychee
         id: lychee
         uses: lycheeverse/lychee-action@8646ba30535128ac92d33dfc9133794bfdd9b411 # v2
@@ -35,6 +38,8 @@ jobs:
             --max-cache-age 7d
             --no-progress
             --include-fragments
+            --scheme https
+            --scheme http
             './content/posts/**/*.mdx'
           fail: false
           output: lychee-report.md

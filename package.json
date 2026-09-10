@@ -79,7 +79,7 @@
     "style-dictionary": "^5.4.4",
     "tailwindcss": "^4.3.0",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.8"
+    "vitest": "^4.1.11"
   },
   "pnpm": {
     "overrides": {

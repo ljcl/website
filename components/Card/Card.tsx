@@ -17,7 +17,7 @@ export interface CardProps {
 }
 
 const LedgerIndex = ({ value }: { value: number }) => (
-  <span className="text-right font-mono text-caption text-page-text-muted tabular-nums">
+  <span className="text-caption text-page-text-muted text-right font-mono tabular-nums">
     {String(value).padStart(2, "0")}
   </span>
 );
@@ -40,7 +40,7 @@ export const Card = ({
         <span className="eyebrow">{eyebrow}</span>
         {date ? (
           <time
-            className="font-mono text-caption text-page-text-muted"
+            className="text-caption text-page-text-muted font-mono"
             dateTime={date}
           >
             {formatLedgerDate(date)}
@@ -50,7 +50,7 @@ export const Card = ({
       <div className="flex flex-col gap-2">
         <h3
           className={cn(
-            "display-m transition-colors duration-fast ease-ritual group-hover:text-brand-primary-hover",
+            "display-m duration-fast ease-ritual group-hover:text-brand-primary-hover transition-colors",
             trailing && "inline-flex items-baseline gap-2",
           )}
         >
@@ -58,12 +58,12 @@ export const Card = ({
           {trailing}
         </h3>
         {hostTag ? (
-          <span className="font-mono text-caption text-page-text-muted">
+          <span className="text-caption text-page-text-muted font-mono">
             {hostTag}
           </span>
         ) : null}
         {description ? (
-          <p className="max-w-prose text-page-text-muted">{description}</p>
+          <p className="text-page-text-muted max-w-prose">{description}</p>
         ) : null}
       </div>
       {index !== undefined && <LedgerIndex value={index} />}

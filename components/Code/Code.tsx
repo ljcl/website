@@ -15,15 +15,15 @@ interface CodeProps {
 }
 
 export function CodeView({ highlighted }: { highlighted: HighlightedCode }) {
-  const nameMatch = highlighted?.meta
+  const nameMatch = highlighted.meta
     ? /^name="([^"]+)"$/.exec(highlighted.meta)
     : null;
   const displayMeta = nameMatch ? nameMatch[1] : highlighted.meta;
 
   return (
-    <div className="ch-code relative mb-12! overflow-hidden rounded-lg border border-code-border bg-code-bg text-code-text leading-normal! lg:mx-(--spacing-breakout) lg:max-w-[calc(100vw-2*var(--layout-container-padding))]">
+    <div className="ch-code border-code-border bg-code-bg text-code-text relative mb-12! overflow-hidden rounded-lg border leading-normal! lg:mx-(--spacing-breakout) lg:max-w-[calc(100vw-2*var(--layout-container-padding))]">
       {displayMeta ? (
-        <div className="flex border-code-border border-b bg-code-bg px-4 py-4 text-sm">
+        <div className="border-code-border bg-code-bg flex border-b px-4 py-4 text-sm">
           <div className="flex items-center gap-3 text-sm">
             <CodeIcon title={displayMeta} />
             <span>{displayMeta}</span>
@@ -41,7 +41,7 @@ export function CodeView({ highlighted }: { highlighted: HighlightedCode }) {
       <Pre
         code={highlighted}
         handlers={handlers}
-        className="group m-0 flex-1 overflow-x-auto whitespace-pre rounded-none px-0 py-4 selection:bg-code-highlight selection:text-code-text"
+        className="group selection:bg-code-highlight selection:text-code-text m-0 flex-1 overflow-x-auto rounded-none px-0 py-4 whitespace-pre"
       />
     </div>
   );
@@ -63,7 +63,7 @@ export function InlineCodeView({
     <Inline
       code={highlighted}
       style={highlighted.style}
-      className="ch-code-inline rounded-lg selection:bg-code-highlight selection:text-code-text"
+      className="ch-code-inline selection:bg-code-highlight selection:text-code-text rounded-lg"
     />
   );
 }

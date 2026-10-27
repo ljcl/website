@@ -21,10 +21,6 @@ export async function generateMetadata({
   const { slug } = await params;
   const { meta } = await getSinglePost(slug);
 
-  if (!meta) {
-    return {};
-  }
-
   return {
     title: meta.title,
     description: meta.description,

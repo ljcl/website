@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.4.13/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.6.3/schema.json",
   "vcs": {
     "enabled": true,
     "clientKind": "git",
@@ -7,7 +7,7 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "includes": ["**", "!.zed/settings.json"]
+    "includes": ["**", "!.zed/settings.json", "!pnpm-lock.yaml", "!**/*.svg"]
   },
   "formatter": {
     "enabled": true,
@@ -31,7 +31,8 @@
           "level": "error",
           "fix": "safe"
         },
-        "noNextAsyncClientComponent": "error"
+        "noNextAsyncClientComponent": "error",
+        "noBeforeInteractiveScriptOutsideDocument": "error"
       },
       "style": {
         "noNonNullAssertion": "off",
@@ -42,40 +43,26 @@
           }
         },
         "noJsxLiterals": "error",
-        "useConsistentArrowReturn": "error"
-      },
-      "nursery": {
-        "useSortedClasses": {
-          "level": "error",
-          "fix": "safe",
-          "options": {
-            "functions": ["clsx", "cn", "twMerge"]
-          }
-        },
+        "useConsistentArrowReturn": "error",
         "noContinue": "error",
         "noIncrementDecrement": "error",
+        "useImportsFirst": "warn"
+      },
+      "nursery": {
         "noMisusedPromises": "error",
         "noFloatingPromises": "error",
-        "noParametersOnlyUsedInRecursion": "error",
-        "noShadow": "error",
-        "noUnknownAttribute": "error",
-        "noUnnecessaryConditions": "error",
-        "useArraySortCompare": "error",
         "useExhaustiveSwitchCases": "error",
-        "noLeakedRender": "error",
         "useNullishCoalescing": {
           "level": "error",
           "fix": "safe"
         },
         "useAwaitThenable": "error",
-        "noDuplicatedSpreadProps": "error",
-        "noSyncScripts": "error",
-        "useRequiredScripts": "error",
-        "noBeforeInteractiveScriptOutsideDocument": "error",
-        "useFind": "warn",
-        "useImportsFirst": "warn",
         "noUnsafePlusOperands": "warn",
-        "useRegexpExec": "warn"
+        "useRegexpExec": "warn",
+        "useTailwindSortedClasses": {
+          "level": "error",
+          "fix": "safe"
+        }
       },
       "suspicious": {
         "noReactForwardRef": {
@@ -84,14 +71,26 @@
         },
         "noDeprecatedImports": "error",
         "noImportCycles": "error",
-        "noUnusedExpressions": "error"
+        "noUnusedExpressions": "error",
+        "noParametersOnlyUsedInRecursion": "error",
+        "noShadow": "error",
+        "noUnknownAttribute": "error",
+        "noUnnecessaryConditions": "error",
+        "useArraySortCompare": "error",
+        "noLeakedRender": "error",
+        "noDuplicatedSpreadProps": "error",
+        "useRequiredScripts": "error"
       },
       "complexity": {
         "noUselessCatchBinding": {
           "level": "error",
           "fix": "safe"
         },
-        "noUselessUndefined": "error"
+        "noUselessUndefined": "error",
+        "useArrayFind": "warn"
+      },
+      "performance": {
+        "noSyncScripts": "error"
       }
     }
   },
@@ -120,7 +119,7 @@
     "enabled": true,
     "actions": {
       "source": {
-        "recommended": true,
+        "preset": "recommended",
         "organizeImports": {
           "level": "on",
           "options": {
@@ -130,5 +129,6 @@
         "useSortedProperties": "on"
       }
     }
-  }
+  },
+  "tailwind": { "mergeFunctions": ["clsx", "cn", "twMerge"] }
 }

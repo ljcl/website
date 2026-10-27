@@ -23,11 +23,9 @@ const fetchBlackletter = async (): Promise<ArrayBuffer> => {
 };
 
 export const loadBlackletter = (): Promise<ArrayBuffer> => {
-  if (!cached) {
-    cached = fetchBlackletter().catch((err) => {
-      cached = null;
-      throw err;
-    });
-  }
+  cached ??= fetchBlackletter().catch((err) => {
+    cached = null;
+    throw err;
+  });
   return cached;
 };

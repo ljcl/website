@@ -11,13 +11,13 @@ export interface TokenGridProps {
 /** Table header component */
 const TableHeader = () => (
   <div className={styles.tableHeader}>
-    <span className="font-semibold text-page-text-muted text-xs uppercase tracking-wide">
+    <span className="text-page-text-muted text-xs font-semibold tracking-wide uppercase">
       {"Token and description"}
     </span>
-    <span className="font-semibold text-page-text-muted text-xs uppercase tracking-wide">
+    <span className="text-page-text-muted text-xs font-semibold tracking-wide uppercase">
       {"Light value"}
     </span>
-    <span className="font-semibold text-page-text-muted text-xs uppercase tracking-wide">
+    <span className="text-page-text-muted text-xs font-semibold tracking-wide uppercase">
       {"Dark value"}
     </span>
   </div>
@@ -55,7 +55,7 @@ export const TokenGrid = ({
       <div className="p-8">
         {Object.entries(grouped).map(([category, categoryTokens]) => (
           <section key={category} className="mb-10">
-            <h3 className="mb-2 font-semibold text-lg text-page-text-heading capitalize">
+            <h3 className="text-page-text-heading mb-2 text-lg font-semibold capitalize">
               {category}
             </h3>
             <TokenTable tokens={categoryTokens} />

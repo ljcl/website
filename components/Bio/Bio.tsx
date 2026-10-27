@@ -5,7 +5,7 @@ import profileImg from "./profile-img.jpg";
 const Bio = () => (
   <aside className="border-page-rule border-t pt-8 pb-12">
     <span className="eyebrow">{"The Author"}</span>
-    <div className="mt-4 flex max-w-prose font-sans text-page-text-body">
+    <div className="text-page-text-body mt-4 flex max-w-prose font-sans">
       <figure className="mr-4 mb-8 block h-24 w-24 overflow-hidden">
         <Image
           src={profileImg}

@@ -10,10 +10,10 @@ export default function NotFound() {
         {"404"}
       </p>
       <h1 className="eyebrow mt-8">{"Not found"}</h1>
-      <p className="mt-4 max-w-prose text-page-text-muted">
+      <p className="text-page-text-muted mt-4 max-w-prose">
         {"Sorry, couldn’t find that one"}
       </p>
-      <Link href="/" className="mt-8 text-meta">
+      <Link href="/" className="text-meta mt-8">
         {"Head on back home"}
       </Link>
     </section>

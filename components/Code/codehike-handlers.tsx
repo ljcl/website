@@ -104,11 +104,11 @@ export const calloutHandler: AnnotationHandler = {
         {children}
         <div
           style={{ minWidth: `${column + 4}ch` }}
-          className="relative prose-p:mx-2 my-1 prose-p:my-1 w-fit select-none whitespace-break-spaces rounded border border-brand-primary bg-code-bg px-0"
+          className="prose-p:mx-2 prose-p:my-1 border-brand-primary bg-code-bg relative my-1 w-fit rounded border px-0 whitespace-break-spaces select-none"
         >
           <div
             style={{ left: `${column}ch` }}
-            className="absolute -top-px h-2 w-2 -translate-y-1/2 rotate-45 border-brand-primary border-t border-l bg-code-bg"
+            className="border-brand-primary bg-code-bg absolute -top-px h-2 w-2 -translate-y-1/2 rotate-45 border-t border-l"
           />
           <p>{annotation.query}</p>
         </div>
@@ -118,12 +118,12 @@ export const calloutHandler: AnnotationHandler = {
 
   Inline: ({ annotation, children }) => (
     <span
-      className="group relative cursor-help underline decoration-accent decoration-dotted"
+      className="group decoration-accent relative cursor-help underline decoration-dotted"
       title={annotation.query}
     >
       {children}
       {annotation.query ? (
-        <span className="absolute top-full left-0 z-10 mt-2 hidden whitespace-nowrap rounded border border-code-border bg-code-bg p-2 text-code-text text-sm shadow-lg group-hover:block">
+        <span className="border-code-border bg-code-bg text-code-text absolute top-full left-0 z-10 mt-2 hidden rounded border p-2 text-sm whitespace-nowrap shadow-lg group-hover:block">
           {annotation.query}
         </span>
       ) : null}
@@ -153,7 +153,7 @@ export const diffHandler: AnnotationHandler = {
     const innerLineClassName = annotation?.query === "-" ? "select-none" : "";
     return (
       <>
-        <div className="box-content min-w-[1ch] select-none pl-2 opacity-70">
+        <div className="box-content min-w-[1ch] pl-2 opacity-70 select-none">
           {annotation?.query}
         </div>
         <InnerLine className={innerLineClassName} merge={props} />
@@ -169,7 +169,7 @@ export const lineNumbers: AnnotationHandler = {
     return (
       <div className="flex">
         <span
-          className="select-none text-right opacity-30"
+          className="text-right opacity-30 select-none"
           style={{ minWidth: `${width}ch` }}
         >
           {props.lineNumber}

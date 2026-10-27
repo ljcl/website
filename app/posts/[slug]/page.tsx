@@ -1,5 +1,6 @@
 import { type Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { Article } from "#components/Article/Article";
 import { PostCard } from "#components/Card/PostCard/PostCard";
 import { getAdjacentPosts, getAllPosts, getSinglePost } from "#lib/posts";
@@ -35,7 +36,15 @@ export async function generateMetadata({
   };
 }
 
-export default async function PostPage({ params }: PageProps) {
+export default function PostPage({ params }: PageProps) {
+  return (
+    <Suspense>
+      <Post params={params} />
+    </Suspense>
+  );
+}
+
+async function Post({ params }: PageProps) {
   const { slug } = await params;
   const [post, adjacent] = await Promise.all([
     getSinglePost(slug).catch(() => null),

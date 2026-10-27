@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
   partialPrefetching: true,
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   reactStrictMode: true,
+  experimental: {
+    // Only for the e2e instant() suite; never set on real production builds.
+    exposeTestingApiInProductionBuild: process.env.EXPOSE_TESTING_API === "1",
+  },
   async redirects() {
     return [
       {

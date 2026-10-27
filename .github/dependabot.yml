@@ -7,10 +7,42 @@ updates:
       day: monday
       time: "09:00"
       timezone: Australia/Melbourne
-    open-pull-requests-limit: 5
+    # Groups keep the PR count low, but leave room so a stuck major update
+    # cannot block the weekly minor/patch group.
+    open-pull-requests-limit: 10
     commit-message:
       prefix: "chore(deps)"
+    # Packages that must move in lockstep are grouped for every update type,
+    # including majors. A package goes into the first group that matches, so
+    # the catch-all minor-patch group must stay last.
     groups:
+      storybook:
+        patterns:
+          - "storybook"
+          - "@storybook/*"
+      vitest:
+        patterns:
+          - "vitest"
+          - "@vitest/*"
+          - "playwright"
+      next:
+        patterns:
+          - "next"
+          - "@next/*"
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
+      tailwind:
+        patterns:
+          - "tailwindcss"
+          - "@tailwindcss/*"
+      opentelemetry:
+        patterns:
+          - "@opentelemetry/*"
+          - "@vercel/otel"
       minor-patch:
         applies-to: version-updates
         update-types:
@@ -20,7 +52,9 @@ updates:
       - ljcl
 
   - package-ecosystem: github-actions
-    directory: "/"
+    directories:
+      - "/"
+      - "/.github/actions/*"
     schedule:
       interval: weekly
       day: monday
@@ -30,10 +64,8 @@ updates:
     commit-message:
       prefix: "chore(ci)"
     groups:
-      actions-minor-patch:
-        applies-to: version-updates
-        update-types:
-          - minor
-          - patch
+      actions:
+        patterns:
+          - "*"
     reviewers:
       - ljcl

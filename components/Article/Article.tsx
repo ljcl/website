@@ -10,10 +10,10 @@ interface ArticleProps {
 export const Article = ({ title, date, dateTime, children }: ArticleProps) => (
   <article className="article-prose">
     <header>
-      <h1 className="layout-container display-l mx-auto mt-8 mb-6 text-balance md:max-w-narrow md:text-center">
+      <h1 className="layout-container display-l md:max-w-narrow mx-auto mt-8 mb-6 text-balance md:text-center">
         {title}
       </h1>
-      <section className="layout-container mb-12 md:max-w-narrow md:text-center">
+      <section className="layout-container md:max-w-narrow mb-12 md:text-center">
         <time dateTime={dateTime} className="text-meta">
           {date.toLocaleDateString("en-AU", {
             year: "numeric",

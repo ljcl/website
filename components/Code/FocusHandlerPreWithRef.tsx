@@ -35,6 +35,7 @@ function useScrollToFocus(ref: React.RefObject<HTMLPreElement>) {
       if (bottom > containerRect.height || top < 0) {
         ref.current.scrollTo({
           top: ref.current.scrollTop + top - 10,
+          // biome-ignore lint/suspicious/noUnnecessaryConditions: the ref is set to false after the first render
           behavior: firstRender.current ? "instant" : "smooth",
         });
       }

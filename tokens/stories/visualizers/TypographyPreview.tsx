@@ -21,7 +21,7 @@ export const TypographyPreview = ({ value, label }: TypographyPreviewProps) => {
       aria-label={label ?? `Typography: ${value}`}
     >
       <span
-        className="font-semibold text-page-text-body leading-none"
+        className="text-page-text-body leading-none font-semibold"
         style={{ fontSize: previewSize }}
       >
         {"Aa"}

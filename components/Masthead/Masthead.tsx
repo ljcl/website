@@ -7,7 +7,7 @@ export const Masthead = () => (
       <Link href="/" className="hover:no-underline">
         <span
           aria-hidden
-          className="font-blackletter text-[4rem] text-page-text-body leading-none tracking-[-0.02em]"
+          className="font-blackletter text-page-text-body text-[4rem] leading-none tracking-[-0.02em]"
         >
           {"lc"}
           <span className="text-brand-primary">{"."}</span>

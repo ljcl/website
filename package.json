@@ -31,7 +31,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "vitest",
-    "test-storybook": "vitest --project=storybook"
+    "test-storybook": "vitest --project=storybook",
+    "test:e2e": "EXPOSE_TESTING_API=1 pnpm build && playwright test"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
@@ -58,6 +59,8 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.6.3",
+    "@next/playwright": "16.4.3",
+    "@playwright/test": "1.64.1",
     "@storybook/addon-a11y": "^10.6.4",
     "@storybook/addon-docs": "^10.6.4",
     "@storybook/addon-mcp": "^10.6.4",

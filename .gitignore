@@ -43,3 +43,7 @@ storybook-static
 
 # typescript
 *.tsbuildinfo
+
+# playwright
+/test-results/
+/playwright-report/

@@ -25,5 +25,7 @@ export const PostCard = ({
     description={description}
     index={index}
     className={className}
+    // Posts are fully static, so the per-link prefetch is served from cache.
+    prefetch
   />
 );

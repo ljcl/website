@@ -1,10 +1,12 @@
+@AGENTS.md
+
 # Luke Clark Personal Site - Project Documentation
 
-This is a Next.js 15 personal blog using the App Router, MDX content, and Pinboard integration for link aggregation.
+This is a Next.js 16 personal blog using the App Router, MDX content, and Pinboard integration for link aggregation.
 
 ## Architecture Overview
 
-**Framework**: Next.js 15 with App Router (not Pages Router)
+**Framework**: Next.js 16 with App Router (not Pages Router), Cache Components and Partial Prefetching enabled
 **Language**: TypeScript 5.9 (strict mode enabled)
 **Styling**: Tailwind CSS v4 + CSS Modules + Style Dictionary v5
 **Design Tokens**: Three-tier system (Options → Decisions → Components)
@@ -69,7 +71,6 @@ The site merges two content sources on the homepage, sorted chronologically:
 │   ├── style-dictionary.config.js # Token build config (light + dark)
 │   ├── tsconfig.json            # Path aliases and strict mode
 │   ├── mdx-components.tsx       # Custom MDX component mappings
-│   ├── middleware.ts            # Pathname injection for post layout metadata
 │   └── .env.local               # Environment variables (PINBOARD_AUTH)
 ```
 
@@ -509,7 +510,7 @@ Write your content here using MDX syntax.
 // Props extend interfaces
 interface PostCardProps extends PostMetadata {}
 
-// Async components in Next.js 15
+// Async components in Next.js 16
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
@@ -690,7 +691,6 @@ app/page.tsx
 - `tailwind.config.js`: Custom font sizes and typography
 - `tsconfig.json`: Path aliases and compiler options
 - `mdx-components.tsx`: Custom MDX component mappings
-- `middleware.ts`: Pathname injection for post layout metadata
 
 ### Libraries
 
@@ -706,7 +706,6 @@ app/page.tsx
 - **Vercel Analytics**: Integrated via `@vercel/analytics/react`
 - **Google Analytics**: Custom script in `app/layout.tsx` (GA_STRING)
 - **Pinboard API**: Fetches recent posts tagged with `site-feed`
-- **Middleware**: Adds pathname header for post metadata resolution
 
 ## Routing & Rendering
 

@@ -40,6 +40,9 @@ const blackletter = Pirata_One({
   display: "swap",
 });
 
+// Every route is built ahead of time; fail the build if one turns dynamic.
+export const ensureStatic = "navigation";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.lukeclark.com.au"),
   title: {

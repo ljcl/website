@@ -12,6 +12,8 @@ export interface CardProps {
   hostTag?: string;
   trailing?: ReactNode;
   external?: boolean;
+  /** Per-link prefetch of the destination's URL-specific content */
+  prefetch?: boolean;
   index?: number;
   className?: string;
 }
@@ -31,6 +33,7 @@ export const Card = ({
   hostTag,
   trailing,
   external,
+  prefetch,
   index,
   className,
 }: CardProps) => {
@@ -86,7 +89,7 @@ export const Card = ({
   }
 
   return (
-    <Link href={href} className={wrapperClassName}>
+    <Link href={href} prefetch={prefetch} className={wrapperClassName}>
       {body}
     </Link>
   );
